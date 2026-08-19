@@ -1,0 +1,6 @@
+skia-python>=138.0
+numpy>=1.26
+scipy>=1.11
+PyYAML>=6.0
+google-api-python-client>=2.120
+google-auth>=2.28

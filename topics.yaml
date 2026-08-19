@@ -1,0 +1,1909 @@
+topics:
+- id: sp_pop_totl__world
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in the World
+  chart_title: Population — The World
+  source_label: World Bank
+- id: sp_pop_totl__europe
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in Europe
+  chart_title: Population — Europe
+  source_label: World Bank
+- id: sp_pop_totl__asia
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in Asia
+  chart_title: Population — Asia
+  source_label: World Bank
+- id: sp_pop_totl__africa
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in Africa & Middle East
+  chart_title: Population — Africa & Middle East
+  source_label: World Bank
+- id: sp_pop_totl__americas
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in the Americas
+  chart_title: Population — The Americas
+  source_label: World Bank
+- id: sp_pop_totl__middle_east
+  source: worldbank
+  indicator: SP.POP.TOTL
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Population in the Middle East
+  chart_title: Population — The Middle East
+  source_label: World Bank
+- id: sp_urb_totl__world
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in the World
+  chart_title: Urban Population — The World
+  source_label: World Bank
+- id: sp_urb_totl__europe
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in Europe
+  chart_title: Urban Population — Europe
+  source_label: World Bank
+- id: sp_urb_totl__asia
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in Asia
+  chart_title: Urban Population — Asia
+  source_label: World Bank
+- id: sp_urb_totl__africa
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in Africa & Middle East
+  chart_title: Urban Population — Africa & Middle East
+  source_label: World Bank
+- id: sp_urb_totl__americas
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in the Americas
+  chart_title: Urban Population — The Americas
+  source_label: World Bank
+- id: sp_urb_totl__middle_east
+  source: worldbank
+  indicator: SP.URB.TOTL
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Urban Population in the Middle East
+  chart_title: Urban Population — The Middle East
+  source_label: World Bank
+- id: sp_dyn_le00_in__world
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in the World
+  chart_title: Life Expectancy — The World
+  source_label: World Bank
+- id: sp_dyn_le00_in__europe
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in Europe
+  chart_title: Life Expectancy — Europe
+  source_label: World Bank
+- id: sp_dyn_le00_in__asia
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in Asia
+  chart_title: Life Expectancy — Asia
+  source_label: World Bank
+- id: sp_dyn_le00_in__africa
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in Africa & Middle East
+  chart_title: Life Expectancy — Africa & Middle East
+  source_label: World Bank
+- id: sp_dyn_le00_in__americas
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in the Americas
+  chart_title: Life Expectancy — The Americas
+  source_label: World Bank
+- id: sp_dyn_le00_in__middle_east
+  source: worldbank
+  indicator: SP.DYN.LE00.IN
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ' yrs'
+  title: Top 10 Countries by Life Expectancy in the Middle East
+  chart_title: Life Expectancy — The Middle East
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__world
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in the World
+  chart_title: Fertility Rate — The World
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__europe
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in Europe
+  chart_title: Fertility Rate — Europe
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__asia
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in Asia
+  chart_title: Fertility Rate — Asia
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__africa
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in Africa & Middle East
+  chart_title: Fertility Rate — Africa & Middle East
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__americas
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in the Americas
+  chart_title: Fertility Rate — The Americas
+  source_label: World Bank
+- id: sp_dyn_tfrt_in__middle_east
+  source: worldbank
+  indicator: SP.DYN.TFRT.IN
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: ''
+  title: Top 10 Countries by Fertility Rate in the Middle East
+  chart_title: Fertility Rate — The Middle East
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__world
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in the World
+  chart_title: Share of Population Over 65 — The World
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__europe
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in Europe
+  chart_title: Share of Population Over 65 — Europe
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__asia
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in Asia
+  chart_title: Share of Population Over 65 — Asia
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__africa
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in Africa & Middle East
+  chart_title: Share of Population Over 65 — Africa & Middle East
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__americas
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in the Americas
+  chart_title: Share of Population Over 65 — The Americas
+  source_label: World Bank
+- id: sp_pop_65up_to_zs__middle_east
+  source: worldbank
+  indicator: SP.POP.65UP.TO.ZS
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Share of Population Over 65 in the Middle East
+  chart_title: Share of Population Over 65 — The Middle East
+  source_label: World Bank
+- id: se_adt_litr_zs__world
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: world
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in the World
+  chart_title: Literacy Rate — The World
+  source_label: World Bank
+- id: se_adt_litr_zs__europe
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: europe
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in Europe
+  chart_title: Literacy Rate — Europe
+  source_label: World Bank
+- id: se_adt_litr_zs__asia
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: asia
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in Asia
+  chart_title: Literacy Rate — Asia
+  source_label: World Bank
+- id: se_adt_litr_zs__africa
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: africa
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in Africa & Middle East
+  chart_title: Literacy Rate — Africa & Middle East
+  source_label: World Bank
+- id: se_adt_litr_zs__americas
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: americas
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in the Americas
+  chart_title: Literacy Rate — The Americas
+  source_label: World Bank
+- id: se_adt_litr_zs__middle_east
+  source: worldbank
+  indicator: SE.ADT.LITR.ZS
+  scope: middle_east
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Literacy Rate in the Middle East
+  chart_title: Literacy Rate — The Middle East
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__world
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in the World
+  chart_title: GDP — The World
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__europe
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in Europe
+  chart_title: GDP — Europe
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__asia
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in Asia
+  chart_title: GDP — Asia
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__africa
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in Africa & Middle East
+  chart_title: GDP — Africa & Middle East
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__americas
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in the Americas
+  chart_title: GDP — The Americas
+  source_label: World Bank
+- id: ny_gdp_mktp_cd__middle_east
+  source: worldbank
+  indicator: NY.GDP.MKTP.CD
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP in the Middle East
+  chart_title: GDP — The Middle East
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__world
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in the World
+  chart_title: GDP per Capita — The World
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__europe
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in Europe
+  chart_title: GDP per Capita — Europe
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__asia
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in Asia
+  chart_title: GDP per Capita — Asia
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__africa
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in Africa & Middle East
+  chart_title: GDP per Capita — Africa & Middle East
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__americas
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in the Americas
+  chart_title: GDP per Capita — The Americas
+  source_label: World Bank
+- id: ny_gdp_pcap_cd__middle_east
+  source: worldbank
+  indicator: NY.GDP.PCAP.CD
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by GDP per Capita in the Middle East
+  chart_title: GDP per Capita — The Middle East
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__world
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in the World
+  chart_title: Exports — The World
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__europe
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in Europe
+  chart_title: Exports — Europe
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__asia
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in Asia
+  chart_title: Exports — Asia
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__africa
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in Africa & Middle East
+  chart_title: Exports — Africa & Middle East
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__americas
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in the Americas
+  chart_title: Exports — The Americas
+  source_label: World Bank
+- id: ne_exp_gnfs_cd__middle_east
+  source: worldbank
+  indicator: NE.EXP.GNFS.CD
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Exports in the Middle East
+  chart_title: Exports — The Middle East
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__world
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in the World
+  chart_title: Imports — The World
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__europe
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in Europe
+  chart_title: Imports — Europe
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__asia
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in Asia
+  chart_title: Imports — Asia
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__africa
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in Africa & Middle East
+  chart_title: Imports — Africa & Middle East
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__americas
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in the Americas
+  chart_title: Imports — The Americas
+  source_label: World Bank
+- id: ne_imp_gnfs_cd__middle_east
+  source: worldbank
+  indicator: NE.IMP.GNFS.CD
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Imports in the Middle East
+  chart_title: Imports — The Middle East
+  source_label: World Bank
+- id: fp_cpi_totl_zg__world
+  source: worldbank
+  indicator: FP.CPI.TOTL.ZG
+  scope: world
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Inflation Rate in the World
+  chart_title: Inflation Rate — The World
+  source_label: World Bank
+- id: sl_uem_totl_zs__world
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: world
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in the World
+  chart_title: Unemployment Rate — The World
+  source_label: World Bank
+- id: sl_uem_totl_zs__europe
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: europe
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in Europe
+  chart_title: Unemployment Rate — Europe
+  source_label: World Bank
+- id: sl_uem_totl_zs__asia
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: asia
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in Asia
+  chart_title: Unemployment Rate — Asia
+  source_label: World Bank
+- id: sl_uem_totl_zs__africa
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: africa
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in Africa & Middle East
+  chart_title: Unemployment Rate — Africa & Middle East
+  source_label: World Bank
+- id: sl_uem_totl_zs__americas
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: americas
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in the Americas
+  chart_title: Unemployment Rate — The Americas
+  source_label: World Bank
+- id: sl_uem_totl_zs__middle_east
+  source: worldbank
+  indicator: SL.UEM.TOTL.ZS
+  scope: middle_east
+  start: 1991
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Unemployment Rate in the Middle East
+  chart_title: Unemployment Rate — The Middle East
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__world
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: world
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in the World
+  chart_title: Foreign Direct Investment — The World
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__europe
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: europe
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in Europe
+  chart_title: Foreign Direct Investment — Europe
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__asia
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: asia
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in Asia
+  chart_title: Foreign Direct Investment — Asia
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__africa
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: africa
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in Africa & Middle East
+  chart_title: Foreign Direct Investment — Africa & Middle East
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__americas
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: americas
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in the Americas
+  chart_title: Foreign Direct Investment — The Americas
+  source_label: World Bank
+- id: bx_klt_dinv_cd_wd__middle_east
+  source: worldbank
+  indicator: BX.KLT.DINV.CD.WD
+  scope: middle_east
+  start: 1970
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: ' $'
+  title: Top 10 Countries by Foreign Direct Investment in the Middle East
+  chart_title: Foreign Direct Investment — The Middle East
+  source_label: World Bank
+- id: gc_dod_totl_gd_zs__world
+  source: worldbank
+  indicator: GC.DOD.TOTL.GD.ZS
+  scope: world
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: economy
+  unit: '%'
+  title: Top 10 Countries by Government Debt (% of GDP) in the World
+  chart_title: Government Debt (% of GDP) — The World
+  source_label: World Bank
+- id: co2__world
+  source: owid
+  indicator: co2
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in the World
+  chart_title: CO2 Emissions — The World
+  source_label: Our World in Data
+- id: co2__europe
+  source: owid
+  indicator: co2
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in Europe
+  chart_title: CO2 Emissions — Europe
+  source_label: Our World in Data
+- id: co2__asia
+  source: owid
+  indicator: co2
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in Asia
+  chart_title: CO2 Emissions — Asia
+  source_label: Our World in Data
+- id: co2__africa
+  source: owid
+  indicator: co2
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in Africa & Middle East
+  chart_title: CO2 Emissions — Africa & Middle East
+  source_label: Our World in Data
+- id: co2__americas
+  source: owid
+  indicator: co2
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in the Americas
+  chart_title: CO2 Emissions — The Americas
+  source_label: Our World in Data
+- id: co2__middle_east
+  source: owid
+  indicator: co2
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 Emissions in the Middle East
+  chart_title: CO2 Emissions — The Middle East
+  source_label: Our World in Data
+- id: co2_per_capita__world
+  source: owid
+  indicator: co2_per_capita
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in the World
+  chart_title: CO2 Emissions per Person — The World
+  source_label: Our World in Data
+- id: co2_per_capita__europe
+  source: owid
+  indicator: co2_per_capita
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in Europe
+  chart_title: CO2 Emissions per Person — Europe
+  source_label: Our World in Data
+- id: co2_per_capita__asia
+  source: owid
+  indicator: co2_per_capita
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in Asia
+  chart_title: CO2 Emissions per Person — Asia
+  source_label: Our World in Data
+- id: co2_per_capita__africa
+  source: owid
+  indicator: co2_per_capita
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in Africa & Middle East
+  chart_title: CO2 Emissions per Person — Africa & Middle East
+  source_label: Our World in Data
+- id: co2_per_capita__americas
+  source: owid
+  indicator: co2_per_capita
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in the Americas
+  chart_title: CO2 Emissions per Person — The Americas
+  source_label: Our World in Data
+- id: co2_per_capita__middle_east
+  source: owid
+  indicator: co2_per_capita
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' t'
+  title: Top 10 Countries by CO2 Emissions per Person in the Middle East
+  chart_title: CO2 Emissions per Person — The Middle East
+  source_label: Our World in Data
+- id: coal_co2__world
+  source: owid
+  indicator: coal_co2
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in the World
+  chart_title: CO2 from Coal — The World
+  source_label: Our World in Data
+- id: coal_co2__europe
+  source: owid
+  indicator: coal_co2
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in Europe
+  chart_title: CO2 from Coal — Europe
+  source_label: Our World in Data
+- id: coal_co2__asia
+  source: owid
+  indicator: coal_co2
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in Asia
+  chart_title: CO2 from Coal — Asia
+  source_label: Our World in Data
+- id: coal_co2__africa
+  source: owid
+  indicator: coal_co2
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in Africa & Middle East
+  chart_title: CO2 from Coal — Africa & Middle East
+  source_label: Our World in Data
+- id: coal_co2__americas
+  source: owid
+  indicator: coal_co2
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in the Americas
+  chart_title: CO2 from Coal — The Americas
+  source_label: Our World in Data
+- id: coal_co2__middle_east
+  source: owid
+  indicator: coal_co2
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Coal in the Middle East
+  chart_title: CO2 from Coal — The Middle East
+  source_label: Our World in Data
+- id: oil_co2__world
+  source: owid
+  indicator: oil_co2
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in the World
+  chart_title: CO2 from Oil — The World
+  source_label: Our World in Data
+- id: oil_co2__europe
+  source: owid
+  indicator: oil_co2
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in Europe
+  chart_title: CO2 from Oil — Europe
+  source_label: Our World in Data
+- id: oil_co2__asia
+  source: owid
+  indicator: oil_co2
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in Asia
+  chart_title: CO2 from Oil — Asia
+  source_label: Our World in Data
+- id: oil_co2__africa
+  source: owid
+  indicator: oil_co2
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in Africa & Middle East
+  chart_title: CO2 from Oil — Africa & Middle East
+  source_label: Our World in Data
+- id: oil_co2__americas
+  source: owid
+  indicator: oil_co2
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in the Americas
+  chart_title: CO2 from Oil — The Americas
+  source_label: Our World in Data
+- id: oil_co2__middle_east
+  source: owid
+  indicator: oil_co2
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Oil in the Middle East
+  chart_title: CO2 from Oil — The Middle East
+  source_label: Our World in Data
+- id: gas_co2__world
+  source: owid
+  indicator: gas_co2
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in the World
+  chart_title: CO2 from Gas — The World
+  source_label: Our World in Data
+- id: gas_co2__europe
+  source: owid
+  indicator: gas_co2
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in Europe
+  chart_title: CO2 from Gas — Europe
+  source_label: Our World in Data
+- id: gas_co2__asia
+  source: owid
+  indicator: gas_co2
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in Asia
+  chart_title: CO2 from Gas — Asia
+  source_label: Our World in Data
+- id: gas_co2__africa
+  source: owid
+  indicator: gas_co2
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in Africa & Middle East
+  chart_title: CO2 from Gas — Africa & Middle East
+  source_label: Our World in Data
+- id: gas_co2__americas
+  source: owid
+  indicator: gas_co2
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in the Americas
+  chart_title: CO2 from Gas — The Americas
+  source_label: Our World in Data
+- id: gas_co2__middle_east
+  source: owid
+  indicator: gas_co2
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by CO2 from Gas in the Middle East
+  chart_title: CO2 from Gas — The Middle East
+  source_label: Our World in Data
+- id: cumulative_co2__world
+  source: owid
+  indicator: cumulative_co2
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in the World
+  chart_title: Cumulative CO2 Emissions — The World
+  source_label: Our World in Data
+- id: cumulative_co2__europe
+  source: owid
+  indicator: cumulative_co2
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in Europe
+  chart_title: Cumulative CO2 Emissions — Europe
+  source_label: Our World in Data
+- id: cumulative_co2__asia
+  source: owid
+  indicator: cumulative_co2
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in Asia
+  chart_title: Cumulative CO2 Emissions — Asia
+  source_label: Our World in Data
+- id: cumulative_co2__africa
+  source: owid
+  indicator: cumulative_co2
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in Africa & Middle East
+  chart_title: Cumulative CO2 Emissions — Africa & Middle East
+  source_label: Our World in Data
+- id: cumulative_co2__americas
+  source: owid
+  indicator: cumulative_co2
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in the Americas
+  chart_title: Cumulative CO2 Emissions — The Americas
+  source_label: Our World in Data
+- id: cumulative_co2__middle_east
+  source: owid
+  indicator: cumulative_co2
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' Mt'
+  title: Top 10 Countries by Cumulative CO2 Emissions in the Middle East
+  chart_title: Cumulative CO2 Emissions — The Middle East
+  source_label: Our World in Data
+- id: eg_use_elec_kh_pc__world
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: world
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in the World
+  chart_title: Electricity Use per Person — The World
+  source_label: World Bank
+- id: eg_use_elec_kh_pc__europe
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: europe
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in Europe
+  chart_title: Electricity Use per Person — Europe
+  source_label: World Bank
+- id: eg_use_elec_kh_pc__asia
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: asia
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in Asia
+  chart_title: Electricity Use per Person — Asia
+  source_label: World Bank
+- id: eg_use_elec_kh_pc__africa
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: africa
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in Africa & Middle East
+  chart_title: Electricity Use per Person — Africa & Middle East
+  source_label: World Bank
+- id: eg_use_elec_kh_pc__americas
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: americas
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in the Americas
+  chart_title: Electricity Use per Person — The Americas
+  source_label: World Bank
+- id: eg_use_elec_kh_pc__middle_east
+  source: worldbank
+  indicator: EG.USE.ELEC.KH.PC
+  scope: middle_east
+  start: 1971
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' kWh'
+  title: Top 10 Countries by Electricity Use per Person in the Middle East
+  chart_title: Electricity Use per Person — The Middle East
+  source_label: World Bank
+- id: ag_lnd_frst_k2__world
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: world
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in the World
+  chart_title: Forest Area — The World
+  source_label: World Bank
+- id: ag_lnd_frst_k2__europe
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: europe
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in Europe
+  chart_title: Forest Area — Europe
+  source_label: World Bank
+- id: ag_lnd_frst_k2__asia
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: asia
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in Asia
+  chart_title: Forest Area — Asia
+  source_label: World Bank
+- id: ag_lnd_frst_k2__africa
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: africa
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in Africa & Middle East
+  chart_title: Forest Area — Africa & Middle East
+  source_label: World Bank
+- id: ag_lnd_frst_k2__americas
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: americas
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in the Americas
+  chart_title: Forest Area — The Americas
+  source_label: World Bank
+- id: ag_lnd_frst_k2__middle_east
+  source: worldbank
+  indicator: AG.LND.FRST.K2
+  scope: middle_east
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: energy
+  unit: ' km2'
+  title: Top 10 Countries by Forest Area in the Middle East
+  chart_title: Forest Area — The Middle East
+  source_label: World Bank
+- id: it_net_user_zs__world
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: world
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in the World
+  chart_title: Internet Users — The World
+  source_label: World Bank
+- id: it_net_user_zs__europe
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: europe
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in Europe
+  chart_title: Internet Users — Europe
+  source_label: World Bank
+- id: it_net_user_zs__asia
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: asia
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in Asia
+  chart_title: Internet Users — Asia
+  source_label: World Bank
+- id: it_net_user_zs__africa
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: africa
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in Africa & Middle East
+  chart_title: Internet Users — Africa & Middle East
+  source_label: World Bank
+- id: it_net_user_zs__americas
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: americas
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in the Americas
+  chart_title: Internet Users — The Americas
+  source_label: World Bank
+- id: it_net_user_zs__middle_east
+  source: worldbank
+  indicator: IT.NET.USER.ZS
+  scope: middle_east
+  start: 1990
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by Internet Users in the Middle East
+  chart_title: Internet Users — The Middle East
+  source_label: World Bank
+- id: it_cel_sets_p2__world
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: world
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in the World
+  chart_title: Mobile Subscriptions per 100 — The World
+  source_label: World Bank
+- id: it_cel_sets_p2__europe
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: europe
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in Europe
+  chart_title: Mobile Subscriptions per 100 — Europe
+  source_label: World Bank
+- id: it_cel_sets_p2__asia
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: asia
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in Asia
+  chart_title: Mobile Subscriptions per 100 — Asia
+  source_label: World Bank
+- id: it_cel_sets_p2__africa
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: africa
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in Africa & Middle East
+  chart_title: Mobile Subscriptions per 100 — Africa & Middle East
+  source_label: World Bank
+- id: it_cel_sets_p2__americas
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: americas
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in the Americas
+  chart_title: Mobile Subscriptions per 100 — The Americas
+  source_label: World Bank
+- id: it_cel_sets_p2__middle_east
+  source: worldbank
+  indicator: IT.CEL.SETS.P2
+  scope: middle_east
+  start: 1980
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: ''
+  title: Top 10 Countries by Mobile Subscriptions per 100 in the Middle East
+  chart_title: Mobile Subscriptions per 100 — The Middle East
+  source_label: World Bank
+- id: gb_xpd_rsdv_gd_zs__world
+  source: worldbank
+  indicator: GB.XPD.RSDV.GD.ZS
+  scope: world
+  start: 1996
+  end: 2024
+  top_n: 12
+  theme: tech
+  unit: '%'
+  title: Top 10 Countries by R&D Spending (% of GDP) in the World
+  chart_title: R&D Spending (% of GDP) — The World
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__world
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: world
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in the World
+  chart_title: Military Spending — The World
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__europe
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: europe
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in Europe
+  chart_title: Military Spending — Europe
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__asia
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: asia
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in Asia
+  chart_title: Military Spending — Asia
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__africa
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: africa
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in Africa & Middle East
+  chart_title: Military Spending — Africa & Middle East
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__americas
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: americas
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in the Americas
+  chart_title: Military Spending — The Americas
+  source_label: World Bank
+- id: ms_mil_xpnd_cd__middle_east
+  source: worldbank
+  indicator: MS.MIL.XPND.CD
+  scope: middle_east
+  start: 1960
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ' $'
+  title: Top 10 Countries by Military Spending in the Middle East
+  chart_title: Military Spending — The Middle East
+  source_label: World Bank
+- id: ms_mil_totl_p1__world
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: world
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in the World
+  chart_title: Armed Forces Personnel — The World
+  source_label: World Bank
+- id: ms_mil_totl_p1__europe
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: europe
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in Europe
+  chart_title: Armed Forces Personnel — Europe
+  source_label: World Bank
+- id: ms_mil_totl_p1__asia
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: asia
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in Asia
+  chart_title: Armed Forces Personnel — Asia
+  source_label: World Bank
+- id: ms_mil_totl_p1__africa
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: africa
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in Africa & Middle East
+  chart_title: Armed Forces Personnel — Africa & Middle East
+  source_label: World Bank
+- id: ms_mil_totl_p1__americas
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: americas
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in the Americas
+  chart_title: Armed Forces Personnel — The Americas
+  source_label: World Bank
+- id: ms_mil_totl_p1__middle_east
+  source: worldbank
+  indicator: MS.MIL.TOTL.P1
+  scope: middle_east
+  start: 1985
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by Armed Forces Personnel in the Middle East
+  chart_title: Armed Forces Personnel — The Middle East
+  source_label: World Bank
+- id: st_int_arvl__world
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: world
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in the World
+  chart_title: International Tourist Arrivals — The World
+  source_label: World Bank
+- id: st_int_arvl__europe
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: europe
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in Europe
+  chart_title: International Tourist Arrivals — Europe
+  source_label: World Bank
+- id: st_int_arvl__asia
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: asia
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in Asia
+  chart_title: International Tourist Arrivals — Asia
+  source_label: World Bank
+- id: st_int_arvl__africa
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: africa
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in Africa & Middle East
+  chart_title: International Tourist Arrivals — Africa & Middle East
+  source_label: World Bank
+- id: st_int_arvl__americas
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: americas
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in the Americas
+  chart_title: International Tourist Arrivals — The Americas
+  source_label: World Bank
+- id: st_int_arvl__middle_east
+  source: worldbank
+  indicator: ST.INT.ARVL
+  scope: middle_east
+  start: 1995
+  end: 2024
+  top_n: 12
+  theme: power
+  unit: ''
+  title: Top 10 Countries by International Tourist Arrivals in the Middle East
+  chart_title: International Tourist Arrivals — The Middle East
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__world
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: world
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in the World
+  chart_title: Health Spending (% of GDP) — The World
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__europe
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: europe
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in Europe
+  chart_title: Health Spending (% of GDP) — Europe
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__asia
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: asia
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in Asia
+  chart_title: Health Spending (% of GDP) — Asia
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__africa
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: africa
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in Africa & Middle East
+  chart_title: Health Spending (% of GDP) — Africa & Middle East
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__americas
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: americas
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in the Americas
+  chart_title: Health Spending (% of GDP) — The Americas
+  source_label: World Bank
+- id: sh_xpd_chex_gd_zs__middle_east
+  source: worldbank
+  indicator: SH.XPD.CHEX.GD.ZS
+  scope: middle_east
+  start: 2000
+  end: 2024
+  top_n: 12
+  theme: society
+  unit: '%'
+  title: Top 10 Countries by Health Spending (% of GDP) in the Middle East
+  chart_title: Health Spending (% of GDP) — The Middle East
+  source_label: World Bank
