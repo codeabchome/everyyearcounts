@@ -1,0 +1,53 @@
+name: Daily Shorts
+
+on:
+  schedule:
+    # gunde 3 Shorts — ABD Dogu saatine gore yayilmis
+    - cron: '30 12 * * *'
+    - cron: '30 17 * * *'
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: eyc-publish        # iki calisma ayni anda kuyruga dokunmasin
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Sistem bagimliliklari
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-inter
+
+      - name: Python bagimliliklari
+        run: pip install -r requirements.txt
+
+      - name: Veri onbellegi
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: eyc-data-${{ github.run_id }}
+          restore-keys: eyc-data-
+
+      - name: Render + yukle
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python3 main.py short
+
+      - name: Durumu isle
+        run: |
+          git config user.name  "eyc-bot"
+          git config user.email "bot@everyyearcounts.local"
+          git add state.json
+          git diff --staged --quiet || git commit -m "state: $(date -u +%F_%H:%M)"
+          git push
