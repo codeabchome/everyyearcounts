@@ -55,13 +55,26 @@ def load_topics():
 
 
 def next_topic(topics, state):
-    """Sirasi gelen ilk yayinlanmamis konu. 3 kez patlayan konu atlanir."""
+    """Sirasi gelen ilk yayinlanmamis konu. 3 kez patlayan konu atlanir.
+
+    Kuyruk bitince bastan baslar: veriler her yil guncellendigi icin ayni
+    konu yeni verilerle tekrar uretilebilir. Boylece kanal hic durmaz."""
     done = set(state["published_short"])
     for t in topics:
         if t["id"] in done:
             continue
         if state["failed"].get(t["id"], 0) >= 3:
             continue
+        return t
+
+    # --- kuyruk bitti: yeni tura basla
+    state["cycle"] = state.get("cycle", 1) + 1
+    state["published_short"] = []
+    state["failed"] = {}
+    print(f"[kuyruk] tur {state['cycle'] - 1} bitti, tur {state['cycle']} basliyor "
+          f"(guncel verilerle yeniden uretim)")
+    save_state(state)
+    for t in topics:
         return t
     return None
 
