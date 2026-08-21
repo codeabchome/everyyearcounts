@@ -1,7 +1,5 @@
 {
-  "published_short": [
-    "sp_pop_totl__world"
-  ],
+  "published_short": [],
   "published_long": [],
   "failed": {},
   "log": [
@@ -9,7 +7,8 @@
       "id": "sp_pop_totl__world",
       "video_id": "DWT-twTVxcg",
       "kind": "short",
-      "at": "2026-08-21T20:33:21+00:00"
+      "at": "2026-08-21T20:33:21+00:00",
+      "note": "WLD toplam satiri hatasiyla uretildi - YouTube'dan silinecek, konu tekrar kuyrukta"
     }
   ]
 }
