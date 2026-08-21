@@ -157,17 +157,24 @@ def build_race(series, names, regions, scope, start, end,
 def load_topic(topic):
     """topics.yaml'daki tek bir konu kaydini veriye cevirir."""
     start, end = int(topic["start"]), int(topic["end"])
+    scope = topic.get("scope", "world")
+
     if topic["source"] == "worldbank":
         meta = wb_countries()
         names   = {i: v[0] for i, v in meta.items()}
         regions = {i: v[1] for i, v in meta.items()}
         series = wb_series(topic["indicator"], start, end)
+
     elif topic["source"] == "owid":
         series, names = owid_series(topic["indicator"], start, end)
-        wb = wb_countries()
-        regions = {i: v[1] for i, v in wb.items()}
+        # Bolge bilgisi sadece dar kapsamda gerekli; 'world' icin World Bank'e
+        # hic cikma (OWID konusu WB kesintisinde patlamasin).
+        regions = {}
+        if scope != "world":
+            regions = {i: v[1] for i, v in wb_countries().items()}
+
     else:
         raise ValueError(f"bilinmeyen kaynak: {topic['source']}")
 
-    return build_race(series, names, regions, topic.get("scope", "world"),
+    return build_race(series, names, regions, scope,
                       start, end, top_n=int(topic.get("top_n", 12)))
