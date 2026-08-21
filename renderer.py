@@ -365,7 +365,8 @@ def render_card(out_path, title, subtitle, index, total, seconds=2.0, crf=18):
 
 
 def render(data, out_path, meta, kind="short",
-           seconds_per_step=None, hold_end=2.5, crf=18, preset="medium"):
+           seconds_per_step=None, hold_end=2.5, crf=18, preset="medium",
+           with_audio=True):
     L = Layout(kind)
     n = len(data.steps)
     if seconds_per_step is None:
@@ -395,4 +396,47 @@ def render(data, out_path, meta, kind="short",
     finally:
         ff.stdin.close()
         ff.wait()
-    return out_path, (body + tail) / FPS
+
+    duration = (body + tail) / FPS
+    if with_audio:
+        _add_ambient(out_path, duration,
+                     seed=abs(hash(meta.get("title", ""))) % 9999)
+    return out_path, duration
+
+
+def _add_ambient(video_path, duration, seed=0):
+    """Prosedurel ambient muzigi videoya ekler. Ses tamamen kod tabanli
+    uretilir (audio.py), dolayisiyla Content ID riski yoktur.
+    Herhangi bir hata olursa video sessiz olarak birakilir."""
+    try:
+        import audio
+    except ImportError:
+        return video_path
+
+    base = os.path.splitext(video_path)[0]
+    wav = base + "_bg.wav"
+    tmp = base + "_snd.mp4"
+    try:
+        audio.make_ambient(wav, duration + 0.5, seed=seed)
+        r = subprocess.run([
+            "ffmpeg", "-y", "-loglevel", "error",
+            "-i", video_path, "-i", wav,
+            "-c:v", "copy", "-c:a", "aac", "-b:a", "128k",
+            "-shortest", tmp
+        ], capture_output=True)
+        if r.returncode != 0 or not os.path.exists(tmp):
+            print("[ses] mux basarisiz, sessiz devam")
+            return video_path
+        os.replace(tmp, video_path)
+        print("[ses] ambient muzik eklendi")
+        return video_path
+    except Exception as exc:
+        print(f"[ses] atlandi: {exc}")
+        return video_path
+    finally:
+        for f in (wav, tmp):
+            if os.path.exists(f):
+                try:
+                    os.remove(f)
+                except OSError:
+                    pass
