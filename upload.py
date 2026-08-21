@@ -26,7 +26,13 @@ def _client():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
-def upload_video(path, meta, category="27", privacy="public", thumbnail=None):
+def upload_video(path, meta, category="27", privacy=None, thumbnail=None):
+    """
+    privacy: None ise EYC_PRIVACY ortam degiskeni kullanilir (varsayilan 'private').
+    Ilk testlerde video gizli kalir; public'e gecmek icin workflow'da
+    EYC_PRIVACY: public yaz.
+    """
+    privacy = privacy or os.environ.get("EYC_PRIVACY", "private")
     yt = _client()
     body = {
         "snippet": {
