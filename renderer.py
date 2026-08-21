@@ -86,11 +86,11 @@ class Layout:
         self.kind = kind
         if kind == "short":                      # dikey 9:16
             self.W, self.H = 1080, 1920
-            self.n_bars   = 8
+            self.n_bars   = 10
             self.mL, self.mR = 60, 300
             self.mT, self.mB = 520, 230
-            self.f_label = make_font(40, "semibold")
-            self.f_value = make_font(36, "bold")
+            self.f_label = make_font(37, "semibold")
+            self.f_value = make_font(33, "bold")
             self.f_title = make_font(62, "extrabold")
             self.f_sub   = make_font(30, "regular")
             self.f_year  = make_font(200, "extrabold")
