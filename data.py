@@ -17,6 +17,7 @@ CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
 os.makedirs(CACHE, exist_ok=True)
 
 WB_BASE   = "https://api.worldbank.org/v2"
+FAO_BASE  = "https://faostatservices.fao.org/api/v1/en/data"
 OWID_CO2  = "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"
 
 # World Bank'in ulke listesinde bolge/gelir grubu toplamlari da var; bunlari eleriz
@@ -116,6 +117,51 @@ def owid_series(column, start, end):
     return series, names
 
 
+# ------------------------------------------------------------------ FAOSTAT
+# FAO urun kodlari (domain QCL = Crops and Livestock Products)
+# element 5510 = uretim (ton), 5111 = canli hayvan sayisi (bas)
+FAO_ITEMS = {
+    "coffee":  (656,  5510), "cocoa":   (661,  5510), "tea":     (667,  5510),
+    "wine":    (564,  5510), "rice":    (27,   5510), "wheat":   (15,   5510),
+    "banana":  (486,  5510), "olive":   (260,  5510), "honey":   (1182, 5510),
+    "potato":  (116,  5510), "tomato":  (388,  5510), "grape":   (560,  5510),
+    "orange":  (490,  5510), "apple":   (515,  5510), "sugar":   (156,  5510),
+    "cattle":  (866,  5111), "sheep":   (976,  5111), "chicken": (1057, 5111),
+}
+
+
+def faostat_series(key, start, end):
+    """{iso3: {yil: deger}}, {iso3: isim} — FAOSTAT uretim/stok verisi."""
+    if key not in FAO_ITEMS:
+        raise ValueError(f"bilinmeyen FAO urunu: {key}")
+    item, element = FAO_ITEMS[key]
+    fname = f"fao_{key}_{start}_{end}.json"
+    url = (f"{FAO_BASE}/QCL?area=all&item={item}&element={element}"
+           f"&year_range={start}:{end}&area_cs=ISO3&show_codes=true"
+           f"&show_unit=false&show_flags=false&null_values=false&output_type=objects")
+    payload = json.loads(_cached(fname, lambda: _get(url)))
+    rows = payload.get("data") or []
+    if not rows:
+        raise RuntimeError(f"FAOSTAT '{key}' icin veri donmedi")
+
+    series, names = {}, {}
+    for r in rows:
+        iso = str(r.get("Area Code (ISO3)") or r.get("Area Code") or "").strip()
+        if len(iso) != 3 or not iso.isalpha():
+            continue
+        try:
+            year = int(r.get("Year"))
+            val = float(str(r.get("Value")).replace(",", ""))
+        except (TypeError, ValueError):
+            continue
+        if start <= year <= end and val > 0:
+            series.setdefault(iso, {})[year] = val
+            names[iso] = r.get("Area") or iso
+    if not series:
+        raise RuntimeError(f"FAOSTAT '{key}': satir var ama ISO3 eslesmedi")
+    return series, names
+
+
 # ------------------------------------------------------------------ hazirlama
 def build_race(series, names, regions, scope, start, end,
                top_n=12, min_coverage=0.85):
@@ -164,6 +210,12 @@ def load_topic(topic):
         names   = {i: v[0] for i, v in meta.items()}
         regions = {i: v[1] for i, v in meta.items()}
         series = wb_series(topic["indicator"], start, end)
+
+    elif topic["source"] == "faostat":
+        series, names = faostat_series(topic["indicator"], start, end)
+        regions = {}
+        if scope != "world":
+            regions = {i: v[1] for i, v in wb_countries().items()}
 
     elif topic["source"] == "owid":
         series, names = owid_series(topic["indicator"], start, end)
