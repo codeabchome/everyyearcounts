@@ -30,7 +30,6 @@ INDICATORS = [
     ("NY.GDP.MKTP.CD",    "worldbank", "GDP",                            " $",    "economy", 1960, 1, ["world","europe","asia","africa"]),
     ("SP.POP.TOTL",       "worldbank", "Population",                     "",      "society", 1960, 1, ["world","africa","europe"]),
     ("NY.GDP.PCAP.CD",    "worldbank", "GDP per Capita",                 " $",    "economy", 1960, 1, ["world","europe","asia"]),
-    ("MS.MIL.TOTL.P1",    "worldbank", "Army Size",                      "",      "power",   1985, 1, ["world","asia"]),
     ("FI.RES.TOTL.CD",    "worldbank", "Gold & Foreign Reserves",        " $",    "economy", 1960, 1, ["world","asia"]),
     ("VC.IHR.PSRC.P5",    "worldbank", "Homicide Rate",                  " /100k","society", 1990, 1, ["world","americas"]),
     ("SP.DYN.LE00.IN",    "worldbank", "Life Expectancy",                " yrs",  "society", 1960, 1, ["world","europe","africa"]),
