@@ -44,8 +44,14 @@ def save_state(state):
 
 
 def load_topics():
-    with open(os.path.join(HERE, "topics.yaml"), encoding="utf-8") as f:
-        return yaml.safe_load(f)["topics"]
+    """topics.yaml varsa onu kullan; yoksa topics.py'dan uret.
+    Uretim deterministik oldugu icin id'ler sabit kalir, state.json bozulmaz."""
+    path = os.path.join(HERE, "topics.yaml")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            return yaml.safe_load(f)["topics"]
+    import topics as topicgen
+    return topicgen.build()
 
 
 def next_topic(topics, state):
@@ -89,13 +95,23 @@ def run_short(dry=False):
         print("kuyruk bos — yeni konu ekle veya verileri guncelle")
         return 0
 
-    print(f"[konu] {topic['id']}  ({topic['title']})")
-    try:
-        raw, years = datalayer.load_topic(topic)
-    except Exception as exc:
-        state["failed"][topic["id"]] = state["failed"].get(topic["id"], 0) + 1
-        save_state(state)
-        print(f"[hata] veri alinamadi: {exc}")
+    # Veri alinamazsa gunu bosa harcama: ayni calistirmada sonraki konuyu dene.
+    raw = years = None
+    for attempt in range(6):
+        print(f"[konu] {topic['id']}  ({topic['title']})")
+        try:
+            raw, years = datalayer.load_topic(topic)
+            break
+        except Exception as exc:
+            state["failed"][topic["id"]] = state["failed"].get(topic["id"], 0) + 1
+            save_state(state)
+            print(f"[atlandi] {topic['id']}: {exc}")
+            topic = next_topic(topics, state)
+            if topic is None:
+                print("kuyrukta denenecek konu kalmadi")
+                return 1
+    if raw is None:
+        print("[hata] 6 konu denendi, hicbiri yuklenemedi")
         return 1
 
     print(f"[veri] {len(raw)} ulke x {len(years)} yil")
