@@ -314,6 +314,56 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta):
 
 
 # ------------------------------------------------------------------ render
+def render_card(out_path, title, subtitle, index, total, seconds=2.0, crf=18):
+    """
+    Derleme segmentleri arasina giren gecis karti.
+    Mid-roll reklamlar buraya denk gelsin diye 2 sn sabit; izleyici kopmaz.
+    Uzun form ile ayni cozunurluk/codec, boylece -c copy ile birlesir.
+    """
+    L = Layout("long")
+    f_num  = make_font(150, "extrabold")
+    f_tit  = make_font(74, "extrabold")
+    f_sub  = make_font(34, "regular")
+
+    surface = skia.Surface(L.W, L.H)
+    canvas = surface.getCanvas()
+    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+
+    accent = PALETTE[(index - 1) % len(PALETTE)]
+    canvas.drawRect(skia.Rect.MakeXYWH(0, 0, L.W, 12),
+                    skia.Paint(AntiAlias=True, Color=accent))
+    draw_brand(canvas, L)
+
+    num = f"{index:02d}"
+    canvas.drawString(num, L.mL, L.H / 2 - 40, f_num,
+                      skia.Paint(AntiAlias=True, Color=accent))
+    canvas.drawString(f"of {total:02d}", L.mL + f_num.measureText(num) + 22,
+                      L.H / 2 - 40, f_sub,
+                      skia.Paint(AntiAlias=True, Color=TEXT_DIM))
+    canvas.drawString(title, L.mL, L.H / 2 + 60, f_tit,
+                      skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+    canvas.drawString(subtitle, L.mL, L.H / 2 + 118, f_sub,
+                      skia.Paint(AntiAlias=True, Color=TEXT_DIM))
+
+    img = surface.makeImageSnapshot().tobytes()
+    ff = subprocess.Popen([
+        "ffmpeg", "-y", "-loglevel", "error",
+        "-f", "rawvideo", "-pix_fmt", "rgba",
+        "-s", f"{L.W}x{L.H}", "-r", str(FPS), "-i", "-",
+        "-c:v", "libx264", "-preset", "medium", "-crf", str(crf),
+        "-pix_fmt", "yuv420p", out_path
+    ], stdin=subprocess.PIPE)
+    try:
+        for _ in range(int(seconds * FPS)):
+            ff.stdin.write(bytes(img))
+    finally:
+        ff.stdin.close()
+        ff.wait()
+    return out_path
+
+
 def render(data, out_path, meta, kind="short",
            seconds_per_step=None, hold_end=2.5, crf=18, preset="medium"):
     L = Layout(kind)
