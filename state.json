@@ -1,5 +1,7 @@
 {
-  "published_short": [],
+  "published_short": [
+    "ms_mil_xpnd_cd__world"
+  ],
   "published_long": [],
   "failed": {},
   "log": [
@@ -9,6 +11,12 @@
       "kind": "short",
       "at": "2026-08-21T20:33:21+00:00",
       "note": "WLD toplam satiri hatasiyla uretildi - YouTube'dan silinecek, konu tekrar kuyrukta"
+    },
+    {
+      "id": "ms_mil_xpnd_cd__world",
+      "video_id": "FQFGAQzSW8o",
+      "kind": "short",
+      "at": "2026-08-21T21:26:11+00:00"
     }
   ]
 }
