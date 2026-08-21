@@ -176,6 +176,11 @@ def build_race(series, names, regions, scope, start, end,
     allowed = SCOPES.get(scope)
     ok = {}
     for iso, by_year in series.items():
+        # KRITIK: WLD (Dunya), OED (OECD), IBT (IBRD+IDA), EUU (AB) gibi toplam
+        # satirlari gercek ulke degil. names sadece gercek ulkeleri icerir;
+        # listede olmayan her kod elenir.
+        if iso not in names:
+            continue
         if allowed is not None:
             reg = regions.get(iso)
             if reg not in allowed:
