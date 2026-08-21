@@ -1,55 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-EveryYearCounts — topics.py
-Gosterge x kapsam carpimi ile konu kuyrugunu uretir -> topics.yaml
-Bir kere calistirilir, ciktisi repoya girer. Sonra elle satir eklenip cikarilabilir.
+EveryYearCounts - topics.py
+Konu kuyrugunu MERAK SIRASINA gore uretir.
+
+tier 1  - herkesin merak ettigi, arama hacmi yuksek (once bunlar)
+tier 2  - guclu ama biraz daha nis
+tier 3  - derinlik/cesitlilik (havuzu buyutur, tum kapsamlara acilir)
+
+Ayni gosterge arka arkaya gelmesin diye kapsamlar serpistirilir.
 """
-import itertools
 import yaml
 
-# ---------------------------------------------------------------- gostergeler
-# (kod, kaynak, baslik sablonu, birim, tema, baslangic yili)
-INDICATORS = [
-    # --- Nufus & toplum
-    ("SP.POP.TOTL",        "worldbank", "Population",                    "",     "society", 1960),
-    ("SP.URB.TOTL",        "worldbank", "Urban Population",              "",     "society", 1960),
-    ("SP.DYN.LE00.IN",     "worldbank", "Life Expectancy",               " yrs", "society", 1960),
-    ("SP.DYN.TFRT.IN",     "worldbank", "Fertility Rate",                "",     "society", 1960),
-    ("SP.POP.65UP.TO.ZS",  "worldbank", "Share of Population Over 65",   "%",    "society", 1960),
-    ("SE.ADT.LITR.ZS",     "worldbank", "Literacy Rate",                 "%",    "society", 1980),
-
-    # --- Ekonomi
-    ("NY.GDP.MKTP.CD",     "worldbank", "GDP",                           " $",   "economy", 1960),
-    ("NY.GDP.PCAP.CD",     "worldbank", "GDP per Capita",                " $",   "economy", 1960),
-    ("NE.EXP.GNFS.CD",     "worldbank", "Exports",                       " $",   "economy", 1960),
-    ("NE.IMP.GNFS.CD",     "worldbank", "Imports",                       " $",   "economy", 1960),
-    ("FP.CPI.TOTL.ZG",     "worldbank", "Inflation Rate",                "%",    "economy", 1970),
-    ("SL.UEM.TOTL.ZS",     "worldbank", "Unemployment Rate",             "%",    "economy", 1991),
-    ("BX.KLT.DINV.CD.WD",  "worldbank", "Foreign Direct Investment",     " $",   "economy", 1970),
-    ("GC.DOD.TOTL.GD.ZS",  "worldbank", "Government Debt (% of GDP)",    "%",    "economy", 1990),
-
-    # --- Enerji & cevre
-    ("co2",                "owid",      "CO2 Emissions",                 " Mt",  "energy",  1960),
-    ("co2_per_capita",     "owid",      "CO2 Emissions per Person",      " t",   "energy",  1960),
-    ("coal_co2",           "owid",      "CO2 from Coal",                 " Mt",  "energy",  1960),
-    ("oil_co2",            "owid",      "CO2 from Oil",                  " Mt",  "energy",  1960),
-    ("gas_co2",            "owid",      "CO2 from Gas",                  " Mt",  "energy",  1960),
-    ("cumulative_co2",     "owid",      "Cumulative CO2 Emissions",      " Mt",  "energy",  1960),
-    ("EG.USE.ELEC.KH.PC",  "worldbank", "Electricity Use per Person",    " kWh", "energy",  1971),
-    ("AG.LND.FRST.K2",     "worldbank", "Forest Area",                   " km2", "energy",  1990),
-
-    # --- Teknoloji
-    ("IT.NET.USER.ZS",     "worldbank", "Internet Users",                "%",    "tech",    1990),
-    ("IT.CEL.SETS.P2",     "worldbank", "Mobile Subscriptions per 100",  "",     "tech",    1980),
-    ("GB.XPD.RSDV.GD.ZS",  "worldbank", "R&D Spending (% of GDP)",       "%",    "tech",    1996),
-
-    # --- Devlet & altyapi
-    ("MS.MIL.XPND.CD",     "worldbank", "Military Spending",             " $",   "power",   1960),
-    ("MS.MIL.TOTL.P1",     "worldbank", "Armed Forces Personnel",        "",     "power",   1985),
-    ("ST.INT.ARVL",        "worldbank", "International Tourist Arrivals", "",    "power",   1995),
-    ("SH.XPD.CHEX.GD.ZS",  "worldbank", "Health Spending (% of GDP)",    "%",    "society", 2000),
-]
+END_YEAR = 2024
 
 SCOPE_LABEL = {
     "world":       "the World",
@@ -60,20 +23,67 @@ SCOPE_LABEL = {
     "middle_east": "the Middle East",
 }
 
-# Yuzde/oran gostergeleri kucuk kapsamda anlamsizlasabilir; sadece genis kapsam
-WORLD_ONLY = {"FP.CPI.TOTL.ZG", "GC.DOD.TOTL.GD.ZS", "GB.XPD.RSDV.GD.ZS"}
+# (kod, kaynak, baslik, birim, tema, baslangic, tier, kapsamlar)
+INDICATORS = [
+    # ------------------------------------------------------------ TIER 1
+    ("MS.MIL.XPND.CD",    "worldbank", "Military Spending",              " $",    "power",   1960, 1, ["world","europe","asia"]),
+    ("NY.GDP.MKTP.CD",    "worldbank", "GDP",                            " $",    "economy", 1960, 1, ["world","europe","asia","africa"]),
+    ("SP.POP.TOTL",       "worldbank", "Population",                     "",      "society", 1960, 1, ["world","africa","europe"]),
+    ("NY.GDP.PCAP.CD",    "worldbank", "GDP per Capita",                 " $",    "economy", 1960, 1, ["world","europe","asia"]),
+    ("MS.MIL.TOTL.P1",    "worldbank", "Army Size",                      "",      "power",   1985, 1, ["world","asia"]),
+    ("FI.RES.TOTL.CD",    "worldbank", "Gold & Foreign Reserves",        " $",    "economy", 1960, 1, ["world","asia"]),
+    ("VC.IHR.PSRC.P5",    "worldbank", "Homicide Rate",                  " /100k","society", 1990, 1, ["world","americas"]),
+    ("SP.DYN.LE00.IN",    "worldbank", "Life Expectancy",                " yrs",  "society", 1960, 1, ["world","europe","africa"]),
+    ("ST.INT.ARVL",       "worldbank", "Tourist Arrivals",               "",      "power",   1995, 1, ["world","europe"]),
+    ("SH.ALC.PCAP.LI",    "worldbank", "Alcohol Consumption per Person", " L",    "society", 2000, 1, ["world","europe"]),
 
-END_YEAR = 2024
+    # ------------------------------------------------------------ TIER 2
+    ("IT.NET.USER.ZS",    "worldbank", "Internet Users",                 "%",     "tech",    1990, 2, ["world","africa","asia"]),
+    ("co2",               "owid",      "CO2 Emissions",                  " Mt",   "energy",  1960, 2, ["world","asia","europe"]),
+    ("NE.EXP.GNFS.CD",    "worldbank", "Exports",                        " $",    "economy", 1960, 2, ["world","asia","europe"]),
+    ("SM.POP.TOTL",       "worldbank", "Immigrant Population",           "",      "society", 1990, 2, ["world","europe"]),
+    ("BX.TRF.PWKR.CD.DT", "worldbank", "Money Sent Home by Migrants",    " $",    "economy", 1970, 2, ["world","asia"]),
+    ("EG.FEC.RNEW.ZS",    "worldbank", "Renewable Energy Share",         "%",     "energy",  1990, 2, ["world","europe"]),
+    ("SP.URB.TOTL",       "worldbank", "Urban Population",               "",      "society", 1960, 2, ["world","asia","africa"]),
+    ("SL.UEM.TOTL.ZS",    "worldbank", "Unemployment Rate",              "%",     "economy", 1991, 2, ["world","europe"]),
+    ("SH.XPD.CHEX.GD.ZS", "worldbank", "Health Spending",                "%",     "society", 2000, 2, ["world","europe"]),
+    ("IT.CEL.SETS.P2",    "worldbank", "Mobile Phones per 100 People",   "",      "tech",    1980, 2, ["world","africa"]),
+    ("EG.USE.ELEC.KH.PC", "worldbank", "Electricity Use per Person",     " kWh",  "energy",  1971, 2, ["world","asia"]),
+
+    # ------------------------------------------------------------ TIER 3
+    ("FP.CPI.TOTL.ZG",    "worldbank", "Inflation Rate",                 "%",     "economy", 1970, 3, ["world"]),
+    ("SP.DYN.TFRT.IN",    "worldbank", "Births per Woman",               "",      "society", 1960, 3, ["world"]),
+    ("SE.ADT.LITR.ZS",    "worldbank", "Literacy Rate",                  "%",     "society", 1980, 3, ["world"]),
+    ("NE.IMP.GNFS.CD",    "worldbank", "Imports",                        " $",    "economy", 1960, 3, ["world"]),
+    ("BX.KLT.DINV.CD.WD", "worldbank", "Foreign Investment",             " $",    "economy", 1970, 3, ["world"]),
+    ("AG.LND.FRST.K2",    "worldbank", "Forest Area",                    " km2",  "energy",  1990, 3, ["world"]),
+    ("SP.POP.65UP.TO.ZS", "worldbank", "Share of People Over 65",        "%",     "society", 1960, 3, ["world"]),
+    ("GB.XPD.RSDV.GD.ZS", "worldbank", "R&D Spending",                   "%",     "tech",    1996, 3, ["world"]),
+    ("co2_per_capita",    "owid",      "CO2 per Person",                 " t",    "energy",  1960, 3, ["world"]),
+    ("coal_co2",          "owid",      "CO2 from Coal",                  " Mt",   "energy",  1960, 3, ["world"]),
+    ("oil_co2",           "owid",      "CO2 from Oil",                   " Mt",   "energy",  1960, 3, ["world"]),
+    ("cumulative_co2",    "owid",      "Total CO2 Ever Emitted",         " Mt",   "energy",  1960, 3, ["world"]),
+]
+
+WORLD_ONLY = {"FP.CPI.TOTL.ZG", "GB.XPD.RSDV.GD.ZS"}
+
+# tier 3'te havuzu genisletmek icin kapsamlari tamamla
+ALL_SCOPES = ["world", "europe", "asia", "africa", "americas", "middle_east"]
+
+SOURCE_LABEL = {"worldbank": "World Bank",
+                "owid": "Our World in Data",
+                "faostat": "FAO (UN)"}
 
 
-def make_topics():
-    topics = []
-    for (code, source, label, unit, theme, start) in INDICATORS:
-        scopes = ["world"] if code in WORLD_ONLY else list(SCOPE_LABEL)
-        for scope in scopes:
-            slug = f"{code.replace('.', '_').lower()}__{scope}"
-            topics.append({
-                "id": slug,
+def build():
+    rows = []
+    for (code, source, label, unit, theme, start, tier, scopes) in INDICATORS:
+        use = ["world"] if code in WORLD_ONLY else scopes
+        if tier == 3 and code not in WORLD_ONLY:
+            use = ALL_SCOPES
+        for scope in use:
+            rows.append({
+                "id": f"{code.replace('.', '_').lower()}__{scope}",
                 "source": source,
                 "indicator": code,
                 "scope": scope,
@@ -81,25 +91,41 @@ def make_topics():
                 "end": END_YEAR,
                 "top_n": 12,
                 "theme": theme,
+                "tier": tier,
                 "unit": unit,
                 "title": f"Top 10 Countries by {label} in {SCOPE_LABEL[scope]}",
-                "chart_title": f"{label} — {SCOPE_LABEL[scope].title()}",
-                "source_label": ("World Bank" if source == "worldbank"
-                                 else "Our World in Data"),
+                "chart_title": f"{label} - {SCOPE_LABEL[scope].title()}",
+                "source_label": SOURCE_LABEL[source],
             })
-    return topics
+
+    buckets = {1: [], 2: [], 3: []}
+    for r in rows:
+        buckets[r["tier"]].append(r)
+
+    out = []
+    for tier in (1, 2, 3):
+        groups = {}
+        for r in buckets[tier]:
+            groups.setdefault(r["indicator"], []).append(r)
+        while groups:
+            for key in list(groups):
+                if groups[key]:
+                    out.append(groups[key].pop(0))
+                if not groups[key]:
+                    del groups[key]
+    return out
 
 
 def main():
-    topics = make_topics()
+    topics = build()
     with open("topics.yaml", "w", encoding="utf-8") as f:
         yaml.safe_dump({"topics": topics}, f, sort_keys=False, allow_unicode=True)
-    themes = {}
-    for t in topics:
-        themes[t["theme"]] = themes.get(t["theme"], 0) + 1
-    print(f"{len(topics)} konu yazildi -> topics.yaml")
-    for k, v in sorted(themes.items()):
-        print(f"  {k:10s} {v}")
+    t = {1: 0, 2: 0, 3: 0}
+    for x in topics:
+        t[x["tier"]] += 1
+    print(f"{len(topics)} konu | tier1 {t[1]} tier2 {t[2]} tier3 {t[3]}")
+    for i, x in enumerate(topics[:12], 1):
+        print(f"  {i:2d}. {x['title']}")
 
 
 if __name__ == "__main__":
