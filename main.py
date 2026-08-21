@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 import yaml
 
 import data as datalayer
-from renderer import RaceData, render
+from renderer import RaceData, render, render_card
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
@@ -140,16 +140,30 @@ def run_long(theme, dry=False):
         return 0
 
     segment = pool[:9]
+    total = len(segment)
     clips = []
-    for t in segment:
+    last_rows = last_unit = last_title = None
+    for i, t in enumerate(segment, start=1):
         raw, years = datalayer.load_topic(t)
+
+        # gecis karti: mid-roll reklamlar buraya denk gelsin
+        card = os.path.join(OUT_DIR, f"{t['id']}_card.mp4")
+        render_card(card, t["chart_title"], f"{years[0]}–{years[-1]}", i, total)
+        clips.append(card)
+
         race = RaceData(raw, years)
         out = os.path.join(OUT_DIR, f"{t['id']}_seg.mp4")
         meta = {"title": t["chart_title"], "subtitle": f"{years[0]}–{years[-1]}",
                 "unit": t.get("unit", ""), "source": t["source_label"]}
         render(race, out, meta, kind="long")
         clips.append(out)
-        print(f"[segment] {t['id']}")
+        print(f"[segment {i}/{total}] {t['id']}")
+
+        # kapak icin son segmentin bitis tablosunu sakla
+        last_rows = sorted(((n, v[-1]) for n, v in raw.items()),
+                           key=lambda x: x[1], reverse=True)
+        last_unit = t.get("unit", "")
+        last_title = t["chart_title"]
 
     final = os.path.join(OUT_DIR, f"compilation_{theme}.mp4")
     concat_list = os.path.join(OUT_DIR, "concat.txt")
@@ -163,6 +177,14 @@ def run_long(theme, dry=False):
     if dry:
         return 0
 
+    # 3 varyantli kapak (YouTube Test & Compare icin)
+    thumbs = []
+    if last_rows:
+        import thumbnail
+        thumbs = thumbnail.build_all(f"compilation_{theme}", last_title,
+                                     last_rows, last_unit)
+        print("[kapak] " + ", ".join(os.path.basename(p) for p in thumbs))
+
     import upload
     yt = {
         "title": f"{theme.title()} Data Races — Every Year Counts Compilation",
@@ -170,7 +192,8 @@ def run_long(theme, dry=False):
                        "Sources: World Bank, Our World in Data.",
         "tags": ["bar chart race", "data visualization", theme, "compilation"],
     }
-    video_id = upload.upload_video(final, yt, category="27")
+    video_id = upload.upload_video(final, yt, category="27",
+                                   thumbnail=thumbs[0] if thumbs else None)
     state["published_long"].extend([t["id"] for t in segment])
     save_state(state)
     print(f"[upload] https://youtu.be/{video_id}")
