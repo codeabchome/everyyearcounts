@@ -216,12 +216,43 @@ def run_long(theme, dry=False):
     return 0
 
 
+def run_validate():
+    """Her gostergeyi tek tek dener ve rapor verir.
+    Actions uzerinden calistirilir (orada ag acik), olu gosterge ayiklanir."""
+    topics = load_topics()
+    ok, dead = [], []
+    seen = set()
+    for t in topics:
+        key = (t["source"], t["indicator"])
+        if key in seen:
+            continue
+        seen.add(key)
+        try:
+            raw, years = datalayer.load_topic(t)
+            top = max(raw.items(), key=lambda kv: kv[1][-1])
+            ok.append(f"OK    {t['source']:9s} {t['indicator']:20s} "
+                      f"{len(raw)} ulke, {years[0]}-{years[-1]}, lider {top[0]}")
+        except Exception as exc:
+            dead.append(f"DEAD  {t['source']:9s} {t['indicator']:20s} -> {exc}")
+
+    print("\n".join(ok))
+    print("\n" + "=" * 60)
+    if dead:
+        print("\n".join(dead))
+        print(f"\n{len(ok)} calisiyor, {len(dead)} OLU gosterge var")
+    else:
+        print(f"{len(ok)} gostergenin hepsi calisiyor")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["short", "long"])
+    ap.add_argument("mode", choices=["short", "long", "validate"])
     ap.add_argument("--theme", default="economy")
     ap.add_argument("--dry", action="store_true")
     args = ap.parse_args()
+    if args.mode == "validate":
+        return run_validate()
     return run_short(args.dry) if args.mode == "short" else run_long(args.theme, args.dry)
 
 
