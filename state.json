@@ -9,7 +9,8 @@
     "sp_dyn_le00_in__world",
     "st_int_arvl__world",
     "ms_mil_xpnd_cd__europe",
-    "ny_gdp_mktp_cd__europe"
+    "ny_gdp_mktp_cd__europe",
+    "sp_pop_totl__africa"
   ],
   "published_long": [],
   "failed": {
@@ -82,6 +83,12 @@
       "video_id": "q8hrSLivUrg",
       "kind": "short",
       "at": "2026-08-24T17:56:53+00:00"
+    },
+    {
+      "id": "sp_pop_totl__africa",
+      "video_id": "GD4jnD45VME",
+      "kind": "short",
+      "at": "2026-08-24T22:57:24+00:00"
     }
   ]
 }
