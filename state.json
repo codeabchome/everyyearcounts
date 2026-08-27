@@ -16,7 +16,8 @@
     "vc_ihr_psrc_p5__americas",
     "sp_dyn_le00_in__europe",
     "st_int_arvl__europe",
-    "ms_mil_xpnd_cd__asia"
+    "ms_mil_xpnd_cd__asia",
+    "ny_gdp_mktp_cd__asia"
   ],
   "published_long": [],
   "failed": {
@@ -132,6 +133,12 @@
       "video_id": "2QElJIYE9oI",
       "kind": "short",
       "at": "2026-08-27T03:30:32+00:00"
+    },
+    {
+      "id": "ny_gdp_mktp_cd__asia",
+      "video_id": "wVhNGOEOsAc",
+      "kind": "short",
+      "at": "2026-08-27T22:29:05+00:00"
     }
   ]
 }
