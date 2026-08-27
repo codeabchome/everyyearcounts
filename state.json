@@ -15,11 +15,13 @@
     "fi_res_totl_cd__asia",
     "vc_ihr_psrc_p5__americas",
     "sp_dyn_le00_in__europe",
-    "st_int_arvl__europe"
+    "st_int_arvl__europe",
+    "ms_mil_xpnd_cd__asia"
   ],
   "published_long": [],
   "failed": {
-    "sh_alc_pcap_li__world": 3
+    "sh_alc_pcap_li__world": 3,
+    "sh_alc_pcap_li__europe": 3
   },
   "log": [
     {
@@ -124,6 +126,12 @@
       "video_id": "U7xEG9u6u40",
       "kind": "short",
       "at": "2026-08-26T19:24:56+00:00"
+    },
+    {
+      "id": "ms_mil_xpnd_cd__asia",
+      "video_id": "2QElJIYE9oI",
+      "kind": "short",
+      "at": "2026-08-27T03:30:32+00:00"
     }
   ]
 }
