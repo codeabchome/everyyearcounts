@@ -19,7 +19,8 @@
     "ms_mil_xpnd_cd__asia",
     "ny_gdp_mktp_cd__asia",
     "sp_pop_totl__europe",
-    "ny_gdp_pcap_cd__asia"
+    "ny_gdp_pcap_cd__asia",
+    "sp_dyn_le00_in__africa"
   ],
   "published_long": [],
   "failed": {
@@ -153,6 +154,12 @@
       "video_id": "kPSDolcVxLA",
       "kind": "short",
       "at": "2026-08-28T06:16:45+00:00"
+    },
+    {
+      "id": "sp_dyn_le00_in__africa",
+      "video_id": "3D8rH1_TnLQ",
+      "kind": "short",
+      "at": "2026-08-28T22:32:04+00:00"
     }
   ]
 }
