@@ -18,7 +18,8 @@
     "st_int_arvl__europe",
     "ms_mil_xpnd_cd__asia",
     "ny_gdp_mktp_cd__asia",
-    "sp_pop_totl__europe"
+    "sp_pop_totl__europe",
+    "ny_gdp_pcap_cd__asia"
   ],
   "published_long": [],
   "failed": {
@@ -146,6 +147,12 @@
       "video_id": "fZ9FTH5R0l0",
       "kind": "short",
       "at": "2026-08-28T01:35:22+00:00"
+    },
+    {
+      "id": "ny_gdp_pcap_cd__asia",
+      "video_id": "kPSDolcVxLA",
+      "kind": "short",
+      "at": "2026-08-28T06:16:45+00:00"
     }
   ]
 }
