@@ -23,7 +23,8 @@
     "sp_dyn_le00_in__africa",
     "ny_gdp_mktp_cd__africa",
     "it_net_user_zs__world",
-    "co2__world"
+    "co2__world",
+    "ne_exp_gnfs_cd__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -198,6 +199,12 @@
       "video_id": "8QMAYd_4eJ4",
       "kind": "short",
       "at": "2026-08-29T16:51:17+00:00"
+    },
+    {
+      "id": "ne_exp_gnfs_cd__world",
+      "video_id": "ggXSfpVmLi4",
+      "kind": "short",
+      "at": "2026-08-29T19:52:37+00:00"
     }
   ]
 }
