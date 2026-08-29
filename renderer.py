@@ -228,6 +228,33 @@ def draw_header(canvas, L, meta):
                     skia.Paint(AntiAlias=True, Color=0x221A1C22))
 
 
+def draw_cta(canvas, L, alpha):
+    """Videonun son saniyelerinde beliren abone cagrisi.
+    alpha 0..1; yumusak belirir, izleyiciyi rahatsiz etmez."""
+    a = max(0.0, min(1.0, alpha))
+    f_big = make_font(46 if L.kind == "short" else 40, "extrabold")
+    f_sm  = make_font(28 if L.kind == "short" else 25, "regular")
+
+    text = "SUBSCRIBE"
+    sub  = "new rankings every day"
+    tw = f_big.measureText(text)
+    sw = f_sm.measureText(sub)
+    box_w = max(tw, sw) + 72
+    box_h = 116
+    x = (L.W - box_w) / 2
+    y = L.H - box_h - (78 if L.kind == "short" else 62)
+
+    canvas.drawRect(skia.Rect.MakeXYWH(x, y, box_w, box_h),
+                    skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=0.94 * a))
+    canvas.drawRect(skia.Rect.MakeXYWH(x, y, 8, box_h),
+                    skia.Paint(AntiAlias=True, Color=PALETTE[0], Alphaf=a))
+
+    canvas.drawString(text, x + 36, y + 56, f_big,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=a))
+    canvas.drawString(sub, x + 36, y + 92, f_sm,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.75 * a))
+
+
 def draw_footer(canvas, L, meta):
     p_dim = skia.Paint(AntiAlias=True, Color=TEXT_DIM)
     y = L.H - 40
@@ -242,7 +269,7 @@ def draw_footer(canvas, L, meta):
                       skia.Paint(AntiAlias=True, Color=0x551A1C22))
 
 
-def draw_frame(canvas, L, data, tracker, colors, t, frame, meta):
+def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0):
     canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
         Shader=skia.GradientShader.MakeLinear(
             [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
@@ -310,6 +337,8 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta):
             canvas.drawString(e, L.mL + w + 16, ty, L.f_label, p_main)
             canvas.drawString(val_s, L.mL + w + 26 + lw, ty, L.f_value, p_dim)
 
+    if cta > 0:
+        draw_cta(canvas, L, cta)
     draw_footer(canvas, L, meta)
 
 
@@ -478,9 +507,14 @@ def render(data, out_path, meta, kind="short",
     surface = skia.Surface(L.W, L.H)
     canvas  = surface.getCanvas()
     try:
+        cta_fade = max(int(0.5 * FPS), 1)
         for frame in range(body + tail):
             t = min(frame / (seconds_per_step * FPS), n - 1)
-            draw_frame(canvas, L, data, tracker, colors, t, frame, meta)
+            # son bekleme suresinde abone cagrisi yumusakca belirir
+            cta = 0.0
+            if frame >= body:
+                cta = min((frame - body) / cta_fade, 1.0)
+            draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta)
             ff.stdin.write(bytes(surface.makeImageSnapshot().tobytes()))
     finally:
         ff.stdin.close()
