@@ -314,6 +314,95 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta):
 
 
 # ------------------------------------------------------------------ render
+def render_cover(out_path, title, subtitle, rows, unit="", seconds=3.0, crf=18):
+    """
+    Videonun basina giren kapak karti.
+    Iki isi var:
+      1) YouTube otomatik kapak secerken buradan net, markali bir kare bulur
+      2) Izleyici ilk saniyede ne izleyecegini anlar
+    Uzun form ile ayni cozunurluk/codec: -c copy ile sorunsuz birlesir.
+    """
+    L = Layout("long")
+    f_title = make_font(84, "extrabold")
+    f_sub   = make_font(38, "regular")
+    f_lab   = make_font(30, "semibold")
+    f_val   = make_font(28, "bold")
+
+    surface = skia.Surface(L.W, L.H)
+    canvas = surface.getCanvas()
+    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+
+    for i in range(5):
+        w = L.W / 5
+        canvas.drawRect(skia.Rect.MakeXYWH(i * w, 0, w, 10),
+                        skia.Paint(AntiAlias=True, Color=PALETTE[i]))
+    draw_brand(canvas, L)
+
+    p_main = skia.Paint(AntiAlias=True, Color=TEXT_MAIN)
+    p_dim  = skia.Paint(AntiAlias=True, Color=TEXT_DIM)
+
+    words, lines, cur = title.upper().split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if f_title.measureText(t) <= L.W - 2 * L.mL or not cur:
+            cur = t
+        else:
+            lines.append(cur); cur = w
+    if cur:
+        lines.append(cur)
+    lines = lines[:2]
+
+    y = 300
+    for ln in lines:
+        canvas.drawString(ln, L.mL, y, f_title, p_main)
+        y += 96
+    canvas.drawString(subtitle, L.mL, y + 6, f_sub, p_dim)
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, y + 40, 90, 5),
+                    skia.Paint(AntiAlias=True, Color=PALETTE[2]))
+
+    top = rows[:5]
+    if top:
+        vmax = max(v for _, v in top) or 1
+        bar_h, gap = 46, 14
+        by = y + 90
+        for i, (name, val) in enumerate(top):
+            w = max((L.W - 2 * L.mL - 420) * val / vmax, 6)
+            yy = by + i * (bar_h + gap)
+            c = skia.Color4f.FromColor(PALETTE[i % len(PALETTE)])
+            c2 = skia.Color4f(c.fR * .74, c.fG * .74, c.fB * .74, 1.0)
+            canvas.drawRect(skia.Rect.MakeXYWH(L.mL, yy, w, bar_h), skia.Paint(
+                AntiAlias=True, Shader=skia.GradientShader.MakeLinear(
+                    [skia.Point(0, yy), skia.Point(0, yy + bar_h)],
+                    [c.toColor(), c2.toColor()])))
+            ty = yy + bar_h / 2 + 10
+            lw = f_lab.measureText(name)
+            if lw + 30 < w:
+                canvas.drawString(name, L.mL + 20, ty, f_lab,
+                                  skia.Paint(AntiAlias=True, Color=0xFF101218))
+                canvas.drawString(fmt_value(val, unit), L.mL + w + 14, ty, f_val, p_main)
+            else:
+                canvas.drawString(name, L.mL + w + 14, ty, f_lab, p_main)
+                canvas.drawString(fmt_value(val, unit), L.mL + w + 24 + lw, ty, f_val, p_dim)
+
+    img = surface.makeImageSnapshot().tobytes()
+    ff = subprocess.Popen([
+        "ffmpeg", "-y", "-loglevel", "error",
+        "-f", "rawvideo", "-pix_fmt", "rgba",
+        "-s", f"{L.W}x{L.H}", "-r", str(FPS), "-i", "-",
+        "-c:v", "libx264", "-preset", "medium", "-crf", str(crf),
+        "-pix_fmt", "yuv420p", out_path
+    ], stdin=subprocess.PIPE)
+    try:
+        for _ in range(int(seconds * FPS)):
+            ff.stdin.write(bytes(img))
+    finally:
+        ff.stdin.close()
+        ff.wait()
+    return out_path
+
+
 def render_card(out_path, title, subtitle, index, total, seconds=2.0, crf=18):
     """
     Derleme segmentleri arasina giren gecis karti.
