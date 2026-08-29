@@ -58,7 +58,14 @@ def upload_video(path, meta, category="27", privacy=None, thumbnail=None):
             print(f"  yukleniyor: %{int(status.progress() * 100)}")
     video_id = response["id"]
 
+    # Kapak ayarlamak kanalin dogrulanmis olmasini gerektirir. Basarisiz
+    # olursa video zaten yuklenmistir; islemi cokertme, sadece uyar.
     if thumbnail and os.path.exists(thumbnail):
-        yt.thumbnails().set(videoId=video_id,
-                            media_body=MediaFileUpload(thumbnail)).execute()
+        try:
+            yt.thumbnails().set(videoId=video_id,
+                                media_body=MediaFileUpload(thumbnail)).execute()
+            print("  kapak ayarlandi")
+        except Exception as exc:
+            print(f"  [uyari] kapak ayarlanamadi (kanal dogrulamasi gerekebilir): "
+                  f"{str(exc)[:160]}")
     return video_id
