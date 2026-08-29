@@ -21,7 +21,8 @@
     "sp_pop_totl__europe",
     "ny_gdp_pcap_cd__asia",
     "sp_dyn_le00_in__africa",
-    "ny_gdp_mktp_cd__africa"
+    "ny_gdp_mktp_cd__africa",
+    "it_net_user_zs__world"
   ],
   "published_long": [],
   "failed": {
@@ -167,6 +168,12 @@
       "video_id": "RluwFGvSnkk",
       "kind": "short",
       "at": "2026-08-29T01:05:34+00:00"
+    },
+    {
+      "id": "it_net_user_zs__world",
+      "video_id": "3YRGwAzPYns",
+      "kind": "short",
+      "at": "2026-08-29T03:50:03+00:00"
     }
   ]
 }
