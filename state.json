@@ -24,7 +24,17 @@
     "ny_gdp_mktp_cd__africa",
     "it_net_user_zs__world"
   ],
-  "published_long": [],
+  "published_long": [
+    "ny_gdp_mktp_cd__world",
+    "ny_gdp_pcap_cd__world",
+    "fi_res_totl_cd__world",
+    "ny_gdp_mktp_cd__europe",
+    "ny_gdp_pcap_cd__europe",
+    "fi_res_totl_cd__asia",
+    "ny_gdp_mktp_cd__asia",
+    "ny_gdp_pcap_cd__asia",
+    "ny_gdp_mktp_cd__africa"
+  ],
   "failed": {
     "sh_alc_pcap_li__world": 3,
     "sh_alc_pcap_li__europe": 3
@@ -174,6 +184,13 @@
       "video_id": "3YRGwAzPYns",
       "kind": "short",
       "at": "2026-08-29T03:50:03+00:00"
+    },
+    {
+      "id": "compilation_economy",
+      "video_id": "vXs7BF3rFcg",
+      "kind": "long",
+      "at": "2026-08-29T16:00:00+00:00",
+      "note": "yuklendi; kapak 403 verdigi icin state elle isaretlendi"
     }
   ]
 }
