@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 import yaml
 
 import data as datalayer
-from renderer import RaceData, render, render_card
+from renderer import RaceData, render, render_card, render_cover
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
@@ -171,6 +171,7 @@ def run_long(theme, dry=False):
     segment = pool[:9]
     total = len(segment)
     clips = []
+    cover_path = os.path.join(OUT_DIR, f"cover_{theme}.mp4")
     last_rows = last_unit = last_title = None
     for i, t in enumerate(segment, start=1):
         raw, years = datalayer.load_topic(t)
@@ -193,6 +194,15 @@ def run_long(theme, dry=False):
                            key=lambda x: x[1], reverse=True)
         last_unit = t.get("unit", "")
         last_title = t["chart_title"]
+
+    # kapak karti en basa: YouTube otomatik kapak secerken buradan alsin
+    if last_rows:
+        render_cover(cover_path,
+                     f"{theme.title()} Data Races",
+                     f"{total} rankings, year by year",
+                     last_rows, last_unit)
+        clips.insert(0, cover_path)
+        print("[kapak karti] videonun basina eklendi")
 
     final = os.path.join(OUT_DIR, f"compilation_{theme}.mp4")
     concat_list = os.path.join(OUT_DIR, "concat.txt")
