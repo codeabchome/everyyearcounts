@@ -24,7 +24,8 @@
     "ny_gdp_mktp_cd__africa",
     "it_net_user_zs__world",
     "co2__world",
-    "ne_exp_gnfs_cd__world"
+    "ne_exp_gnfs_cd__world",
+    "bx_trf_pwkr_cd_dt__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -39,7 +40,8 @@
   ],
   "failed": {
     "sh_alc_pcap_li__world": 3,
-    "sh_alc_pcap_li__europe": 3
+    "sh_alc_pcap_li__europe": 3,
+    "sm_pop_totl__world": 3
   },
   "log": [
     {
@@ -205,6 +207,12 @@
       "video_id": "ggXSfpVmLi4",
       "kind": "short",
       "at": "2026-08-29T19:52:37+00:00"
+    },
+    {
+      "id": "bx_trf_pwkr_cd_dt__world",
+      "video_id": "-hIw9-ABYkg",
+      "kind": "short",
+      "at": "2026-08-30T00:36:34+00:00"
     }
   ]
 }
