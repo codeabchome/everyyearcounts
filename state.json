@@ -26,7 +26,8 @@
     "co2__world",
     "ne_exp_gnfs_cd__world",
     "bx_trf_pwkr_cd_dt__world",
-    "eg_fec_rnew_zs__world"
+    "eg_fec_rnew_zs__world",
+    "sp_urb_totl__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -220,6 +221,12 @@
       "video_id": "GR5ovwvbKEU",
       "kind": "short",
       "at": "2026-08-30T16:51:28+00:00"
+    },
+    {
+      "id": "sp_urb_totl__world",
+      "video_id": "nrssieYkOaM",
+      "kind": "short",
+      "at": "2026-08-30T19:56:48+00:00"
     }
   ]
 }
