@@ -29,7 +29,8 @@
     "eg_fec_rnew_zs__world",
     "sp_urb_totl__world",
     "sl_uem_totl_zs__world",
-    "sh_xpd_chex_gd_zs__world"
+    "sh_xpd_chex_gd_zs__world",
+    "it_cel_sets_p2__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -241,6 +242,12 @@
       "video_id": "4s9-FDySIfA",
       "kind": "short",
       "at": "2026-08-31T19:12:18+00:00"
+    },
+    {
+      "id": "it_cel_sets_p2__world",
+      "video_id": "62j4tZKrBMI",
+      "kind": "short",
+      "at": "2026-08-31T21:59:23+00:00"
     }
   ]
 }
