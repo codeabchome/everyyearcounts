@@ -31,7 +31,8 @@
     "sl_uem_totl_zs__world",
     "sh_xpd_chex_gd_zs__world",
     "it_cel_sets_p2__world",
-    "it_net_user_zs__africa"
+    "it_net_user_zs__africa",
+    "co2__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -256,6 +257,12 @@
       "video_id": "a2IYBdvjhxc",
       "kind": "short",
       "at": "2026-09-01T01:23:33+00:00"
+    },
+    {
+      "id": "co2__asia",
+      "video_id": "B0NmhPlJJ8M",
+      "kind": "short",
+      "at": "2026-09-01T16:48:41+00:00"
     }
   ]
 }
