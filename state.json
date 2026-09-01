@@ -30,7 +30,8 @@
     "sp_urb_totl__world",
     "sl_uem_totl_zs__world",
     "sh_xpd_chex_gd_zs__world",
-    "it_cel_sets_p2__world"
+    "it_cel_sets_p2__world",
+    "it_net_user_zs__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -46,7 +47,8 @@
   "failed": {
     "sh_alc_pcap_li__world": 3,
     "sh_alc_pcap_li__europe": 3,
-    "sm_pop_totl__world": 3
+    "sm_pop_totl__world": 3,
+    "eg_use_elec_kh_pc__world": 3
   },
   "log": [
     {
@@ -248,6 +250,12 @@
       "video_id": "62j4tZKrBMI",
       "kind": "short",
       "at": "2026-08-31T21:59:23+00:00"
+    },
+    {
+      "id": "it_net_user_zs__africa",
+      "video_id": "a2IYBdvjhxc",
+      "kind": "short",
+      "at": "2026-09-01T01:23:33+00:00"
     }
   ]
 }
