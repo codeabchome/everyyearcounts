@@ -34,7 +34,8 @@
     "it_net_user_zs__africa",
     "co2__asia",
     "ne_exp_gnfs_cd__asia",
-    "bx_trf_pwkr_cd_dt__asia"
+    "bx_trf_pwkr_cd_dt__asia",
+    "eg_fec_rnew_zs__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -278,6 +279,12 @@
       "video_id": "An6HD1YuG2I",
       "kind": "short",
       "at": "2026-09-02T00:27:16+00:00"
+    },
+    {
+      "id": "eg_fec_rnew_zs__europe",
+      "video_id": "pTokpnsBH8g",
+      "kind": "short",
+      "at": "2026-09-02T16:44:02+00:00"
     }
   ]
 }
