@@ -36,7 +36,8 @@
     "ne_exp_gnfs_cd__asia",
     "bx_trf_pwkr_cd_dt__asia",
     "eg_fec_rnew_zs__europe",
-    "sp_urb_totl__asia"
+    "sp_urb_totl__asia",
+    "sl_uem_totl_zs__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -292,6 +293,12 @@
       "video_id": "hbl2lqFOC4k",
       "kind": "short",
       "at": "2026-09-02T19:57:08+00:00"
+    },
+    {
+      "id": "sl_uem_totl_zs__europe",
+      "video_id": "4GscPoji6VQ",
+      "kind": "short",
+      "at": "2026-09-03T00:32:57+00:00"
     }
   ]
 }
