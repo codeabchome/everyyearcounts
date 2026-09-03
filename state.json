@@ -38,7 +38,8 @@
     "eg_fec_rnew_zs__europe",
     "sp_urb_totl__asia",
     "sl_uem_totl_zs__europe",
-    "sh_xpd_chex_gd_zs__europe"
+    "sh_xpd_chex_gd_zs__europe",
+    "it_cel_sets_p2__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -306,6 +307,12 @@
       "video_id": "hvj7MwjivRw",
       "kind": "short",
       "at": "2026-09-03T16:35:03+00:00"
+    },
+    {
+      "id": "it_cel_sets_p2__africa",
+      "video_id": "pmz9ORHfTwU",
+      "kind": "short",
+      "at": "2026-09-03T20:00:17+00:00"
     }
   ]
 }
