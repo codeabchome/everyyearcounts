@@ -55,7 +55,15 @@
     "fi_res_totl_cd__asia",
     "ny_gdp_mktp_cd__asia",
     "ny_gdp_pcap_cd__asia",
-    "ny_gdp_mktp_cd__africa"
+    "ny_gdp_mktp_cd__africa",
+    "ne_exp_gnfs_cd__world",
+    "bx_trf_pwkr_cd_dt__world",
+    "sl_uem_totl_zs__world",
+    "ne_exp_gnfs_cd__asia",
+    "bx_trf_pwkr_cd_dt__asia",
+    "sl_uem_totl_zs__europe",
+    "ne_exp_gnfs_cd__europe",
+    "fp_cpi_totl_zg__world"
   ],
   "failed": {
     "sh_alc_pcap_li__world": 3,
