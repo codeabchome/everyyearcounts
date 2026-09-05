@@ -42,7 +42,8 @@
     "it_cel_sets_p2__africa",
     "it_net_user_zs__asia",
     "co2__europe",
-    "ne_exp_gnfs_cd__europe"
+    "ne_exp_gnfs_cd__europe",
+    "sp_urb_totl__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -335,6 +336,12 @@
       "video_id": "llNdum4fj1c",
       "kind": "short",
       "at": "2026-09-04T19:45:27+00:00"
+    },
+    {
+      "id": "sp_urb_totl__africa",
+      "video_id": "FMg3-rpRUuQ",
+      "kind": "short",
+      "at": "2026-09-05T00:19:24+00:00"
     }
   ]
 }
