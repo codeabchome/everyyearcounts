@@ -46,7 +46,8 @@
     "sp_urb_totl__africa",
     "fp_cpi_totl_zg__world",
     "sp_dyn_tfrt_in__world",
-    "ne_imp_gnfs_cd__world"
+    "ne_imp_gnfs_cd__world",
+    "bx_klt_dinv_cd_wd__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -372,6 +373,12 @@
       "video_id": "ZRv4McbRZU8",
       "kind": "short",
       "at": "2026-09-06T00:10:19+00:00"
+    },
+    {
+      "id": "bx_klt_dinv_cd_wd__world",
+      "video_id": "xfH6fJLyIcI",
+      "kind": "short",
+      "at": "2026-09-06T15:37:36+00:00"
     }
   ]
 }
