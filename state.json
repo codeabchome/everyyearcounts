@@ -50,7 +50,8 @@
     "bx_klt_dinv_cd_wd__world",
     "ag_lnd_frst_k2__world",
     "sp_pop_65up_to_zs__world",
-    "gb_xpd_rsdv_gd_zs__world"
+    "gb_xpd_rsdv_gd_zs__world",
+    "co2_per_capita__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -400,6 +401,12 @@
       "video_id": "8gLCklkEa0I",
       "kind": "short",
       "at": "2026-09-07T17:48:34+00:00"
+    },
+    {
+      "id": "co2_per_capita__world",
+      "video_id": "Vmx_NBy6cUQ",
+      "kind": "short",
+      "at": "2026-09-07T20:42:48+00:00"
     }
   ]
 }
