@@ -53,7 +53,8 @@
     "gb_xpd_rsdv_gd_zs__world",
     "co2_per_capita__world",
     "coal_co2__world",
-    "oil_co2__world"
+    "oil_co2__world",
+    "cumulative_co2__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -421,6 +422,12 @@
       "video_id": "8NDCtzx2BJI",
       "kind": "short",
       "at": "2026-09-08T16:47:01+00:00"
+    },
+    {
+      "id": "cumulative_co2__world",
+      "video_id": "76NTzcBrIeI",
+      "kind": "short",
+      "at": "2026-09-08T20:01:19+00:00"
     }
   ]
 }
