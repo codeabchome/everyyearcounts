@@ -51,7 +51,8 @@
     "ag_lnd_frst_k2__world",
     "sp_pop_65up_to_zs__world",
     "gb_xpd_rsdv_gd_zs__world",
-    "co2_per_capita__world"
+    "co2_per_capita__world",
+    "coal_co2__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -407,6 +408,12 @@
       "video_id": "Vmx_NBy6cUQ",
       "kind": "short",
       "at": "2026-09-07T20:42:48+00:00"
+    },
+    {
+      "id": "coal_co2__world",
+      "video_id": "cokltEq5PMo",
+      "kind": "short",
+      "at": "2026-09-08T00:38:54+00:00"
     }
   ]
 }
