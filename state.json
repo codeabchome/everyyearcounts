@@ -56,7 +56,8 @@
     "oil_co2__world",
     "cumulative_co2__world",
     "sp_dyn_tfrt_in__europe",
-    "ne_imp_gnfs_cd__europe"
+    "ne_imp_gnfs_cd__europe",
+    "bx_klt_dinv_cd_wd__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -443,6 +444,12 @@
       "video_id": "daJzsIeYl2Q",
       "kind": "short",
       "at": "2026-09-09T16:48:46+00:00"
+    },
+    {
+      "id": "bx_klt_dinv_cd_wd__europe",
+      "video_id": "Lsf2T6FioeE",
+      "kind": "short",
+      "at": "2026-09-09T19:56:04+00:00"
     }
   ]
 }
