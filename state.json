@@ -58,7 +58,8 @@
     "sp_dyn_tfrt_in__europe",
     "ne_imp_gnfs_cd__europe",
     "bx_klt_dinv_cd_wd__europe",
-    "ag_lnd_frst_k2__europe"
+    "ag_lnd_frst_k2__europe",
+    "sp_pop_65up_to_zs__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -457,6 +458,12 @@
       "video_id": "TFRSFKR_U54",
       "kind": "short",
       "at": "2026-09-10T00:28:02+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__europe",
+      "video_id": "JUb5vrs2mUg",
+      "kind": "short",
+      "at": "2026-09-10T16:35:06+00:00"
     }
   ]
 }
