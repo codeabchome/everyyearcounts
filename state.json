@@ -62,7 +62,8 @@
     "sp_pop_65up_to_zs__europe",
     "co2_per_capita__europe",
     "coal_co2__europe",
-    "oil_co2__europe"
+    "oil_co2__europe",
+    "cumulative_co2__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -485,6 +486,12 @@
       "video_id": "p8j8TUjVgi4",
       "kind": "short",
       "at": "2026-09-11T16:40:09+00:00"
+    },
+    {
+      "id": "cumulative_co2__europe",
+      "video_id": "ZqoY8Xl9Efs",
+      "kind": "short",
+      "at": "2026-09-11T19:55:07+00:00"
     }
   ]
 }
