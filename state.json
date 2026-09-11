@@ -60,7 +60,8 @@
     "bx_klt_dinv_cd_wd__europe",
     "ag_lnd_frst_k2__europe",
     "sp_pop_65up_to_zs__europe",
-    "co2_per_capita__europe"
+    "co2_per_capita__europe",
+    "coal_co2__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -471,6 +472,12 @@
       "video_id": "cGML83LiGvI",
       "kind": "short",
       "at": "2026-09-10T19:55:12+00:00"
+    },
+    {
+      "id": "coal_co2__europe",
+      "video_id": "0rQuQgWXd1w",
+      "kind": "short",
+      "at": "2026-09-11T00:25:27+00:00"
     }
   ]
 }
