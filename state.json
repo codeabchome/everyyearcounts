@@ -63,7 +63,8 @@
     "co2_per_capita__europe",
     "coal_co2__europe",
     "oil_co2__europe",
-    "cumulative_co2__europe"
+    "cumulative_co2__europe",
+    "sp_dyn_tfrt_in__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -492,6 +493,12 @@
       "video_id": "ZqoY8Xl9Efs",
       "kind": "short",
       "at": "2026-09-11T19:55:07+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__asia",
+      "video_id": "OKtS26QkhD0",
+      "kind": "short",
+      "at": "2026-09-12T00:31:28+00:00"
     }
   ]
 }
