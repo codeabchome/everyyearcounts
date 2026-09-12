@@ -64,7 +64,8 @@
     "coal_co2__europe",
     "oil_co2__europe",
     "cumulative_co2__europe",
-    "sp_dyn_tfrt_in__asia"
+    "sp_dyn_tfrt_in__asia",
+    "ne_imp_gnfs_cd__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -93,7 +94,8 @@
     "sm_pop_totl__europe": 3,
     "eg_use_elec_kh_pc__asia": 3,
     "se_adt_litr_zs__world": 3,
-    "se_adt_litr_zs__europe": 3
+    "se_adt_litr_zs__europe": 3,
+    "se_adt_litr_zs__asia": 3
   },
   "log": [
     {
@@ -499,6 +501,12 @@
       "video_id": "OKtS26QkhD0",
       "kind": "short",
       "at": "2026-09-12T00:31:28+00:00"
+    },
+    {
+      "id": "ne_imp_gnfs_cd__asia",
+      "video_id": "SbIPr9uqThs",
+      "kind": "short",
+      "at": "2026-09-12T15:41:29+00:00"
     }
   ]
 }
