@@ -67,7 +67,8 @@
     "sp_dyn_tfrt_in__asia",
     "ne_imp_gnfs_cd__asia",
     "bx_klt_dinv_cd_wd__asia",
-    "ag_lnd_frst_k2__asia"
+    "ag_lnd_frst_k2__asia",
+    "sp_pop_65up_to_zs__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -521,6 +522,12 @@
       "video_id": "wrAsdpMoi-E",
       "kind": "short",
       "at": "2026-09-13T00:10:20+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__asia",
+      "video_id": "3TckHq-Y2i0",
+      "kind": "short",
+      "at": "2026-09-13T16:31:45+00:00"
     }
   ]
 }
