@@ -71,7 +71,8 @@
     "sp_pop_65up_to_zs__asia",
     "co2_per_capita__asia",
     "coal_co2__asia",
-    "oil_co2__asia"
+    "oil_co2__asia",
+    "cumulative_co2__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -549,6 +550,12 @@
       "video_id": "1Ij-RqMz05k",
       "kind": "short",
       "at": "2026-09-14T18:08:47+00:00"
+    },
+    {
+      "id": "cumulative_co2__asia",
+      "video_id": "Sh744DJpBw8",
+      "kind": "short",
+      "at": "2026-09-14T21:01:26+00:00"
     }
   ]
 }
