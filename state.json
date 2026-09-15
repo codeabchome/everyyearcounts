@@ -74,7 +74,8 @@
     "oil_co2__asia",
     "cumulative_co2__asia",
     "sp_dyn_tfrt_in__africa",
-    "ne_imp_gnfs_cd__africa"
+    "ne_imp_gnfs_cd__africa",
+    "bx_klt_dinv_cd_wd__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -571,6 +572,12 @@
       "video_id": "d1jHg-YC_S0",
       "kind": "short",
       "at": "2026-09-15T17:11:13+00:00"
+    },
+    {
+      "id": "bx_klt_dinv_cd_wd__africa",
+      "video_id": "aPCmdDxtgkw",
+      "kind": "short",
+      "at": "2026-09-15T20:21:21+00:00"
     }
   ]
 }
