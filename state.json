@@ -72,7 +72,8 @@
     "co2_per_capita__asia",
     "coal_co2__asia",
     "oil_co2__asia",
-    "cumulative_co2__asia"
+    "cumulative_co2__asia",
+    "sp_dyn_tfrt_in__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -556,6 +557,12 @@
       "video_id": "Sh744DJpBw8",
       "kind": "short",
       "at": "2026-09-14T21:01:26+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__africa",
+      "video_id": "qTZNlhMbzmE",
+      "kind": "short",
+      "at": "2026-09-15T00:51:16+00:00"
     }
   ]
 }
