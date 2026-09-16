@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   compile:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 320
     steps:
       - uses: actions/checkout@v4
@@ -54,3 +54,19 @@ jobs:
           git add state.json
           git diff --staged --quiet || git commit -m "state: compilation $(date -u +%F)"
           git push
+
+      - name: Hata durumunda issue ac
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="Pipeline hatasi: Weekly Compilation"
+          NUM=$(gh issue list --state open --json number,title \
+                  --jq ".[] | select(.title == \"$TITLE\") | .number" | head -1)
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body "Yine basarisiz oldu: $RUN_URL"
+          else
+            gh issue create --title "$TITLE" \
+              --body "Bu is basarisiz oldu ve kanal yayin yapamiyor olabilir. Log: $RUN_URL"
+          fi
