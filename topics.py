@@ -47,7 +47,6 @@ INDICATORS = [
     ("SL.UEM.TOTL.ZS",    "worldbank", "Unemployment Rate",              "%",     "economy", 1991, 2, ["world","europe"]),
     ("SH.XPD.CHEX.GD.ZS", "worldbank", "Health Spending",                "%",     "society", 2000, 2, ["world","europe"]),
     ("IT.CEL.SETS.P2",    "worldbank", "Mobile Phones per 100 People",   "",      "tech",    1980, 2, ["world","africa"]),
-    ("EG.USE.ELEC.KH.PC", "worldbank", "Electricity Use per Person",     " kWh",  "energy",  1971, 2, ["world","asia"]),
     ("wine",              "faostat",   "Wine Production",                " t",    "food",    1961, 2, ["world","europe"]),
     ("sugar",             "faostat",   "Sugar Cane Production",          " t",    "food",    1961, 2, ["world","americas"]),
     ("maize",             "faostat",   "Maize Production",               " t",    "food",    1961, 2, ["world","americas"]),
@@ -55,7 +54,6 @@ INDICATORS = [
     # ------------------------------------------------------------ TIER 3
     ("FP.CPI.TOTL.ZG",    "worldbank", "Inflation Rate",                 "%",     "economy", 1970, 3, ["world"]),
     ("SP.DYN.TFRT.IN",    "worldbank", "Births per Woman",               "",      "society", 1960, 3, ["world"]),
-    ("SE.ADT.LITR.ZS",    "worldbank", "Literacy Rate",                  "%",     "society", 1980, 3, ["world"]),
     ("NE.IMP.GNFS.CD",    "worldbank", "Imports",                        " $",    "economy", 1960, 3, ["world"]),
     ("BX.KLT.DINV.CD.WD", "worldbank", "Foreign Investment",             " $",    "economy", 1970, 3, ["world"]),
     ("AG.LND.FRST.K2",    "worldbank", "Forest Area",                    " km2",  "energy",  1990, 3, ["world"]),
