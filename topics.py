@@ -34,15 +34,13 @@ INDICATORS = [
     ("VC.IHR.PSRC.P5",    "worldbank", "Homicide Rate",                  " /100k","society", 1990, 1, ["world","americas"]),
     ("SP.DYN.LE00.IN",    "worldbank", "Life Expectancy",                " yrs",  "society", 1960, 1, ["world","europe","africa"]),
     ("ST.INT.ARVL",       "worldbank", "Tourist Arrivals",               "",      "power",   1995, 1, ["world","europe"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("coffee",            "faostat",   "Coffee Production",              " t",    "food",    1961, 1, ["world","americas"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("cocoa",             "faostat",   "Cocoa Production",               " t",    "food",    1961, 1, ["world","africa"]),
-    ("SH.ALC.PCAP.LI",    "worldbank", "Alcohol Consumption per Person", " L",    "society", 2000, 1, ["world","europe"]),
+    ("coffee",            "faostat",   "Coffee Production",              " t",    "food",    1961, 1, ["world","americas"]),
+    ("cocoa",             "faostat",   "Cocoa Production",               " t",    "food",    1961, 1, ["world","africa"]),
 
     # ------------------------------------------------------------ TIER 2
     ("IT.NET.USER.ZS",    "worldbank", "Internet Users",                 "%",     "tech",    1990, 2, ["world","africa","asia"]),
     ("co2",               "owid",      "CO2 Emissions",                  " Mt",   "energy",  1960, 2, ["world","asia","europe"]),
     ("NE.EXP.GNFS.CD",    "worldbank", "Exports",                        " $",    "economy", 1960, 2, ["world","asia","europe"]),
-    ("SM.POP.TOTL",       "worldbank", "Immigrant Population",           "",      "society", 1990, 2, ["world","europe"]),
     ("BX.TRF.PWKR.CD.DT", "worldbank", "Money Sent Home by Migrants",    " $",    "economy", 1970, 2, ["world","asia"]),
     ("EG.FEC.RNEW.ZS",    "worldbank", "Renewable Energy Share",         "%",     "energy",  1990, 2, ["world","europe"]),
     ("SP.URB.TOTL",       "worldbank", "Urban Population",               "",      "society", 1960, 2, ["world","asia","africa"]),
@@ -50,9 +48,9 @@ INDICATORS = [
     ("SH.XPD.CHEX.GD.ZS", "worldbank", "Health Spending",                "%",     "society", 2000, 2, ["world","europe"]),
     ("IT.CEL.SETS.P2",    "worldbank", "Mobile Phones per 100 People",   "",      "tech",    1980, 2, ["world","africa"]),
     ("EG.USE.ELEC.KH.PC", "worldbank", "Electricity Use per Person",     " kWh",  "energy",  1971, 2, ["world","asia"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("tea",               "faostat",   "Tea Production",                 " t",    "food",    1961, 2, ["world","asia"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("wine",              "faostat",   "Wine Production",                " t",    "food",    1961, 2, ["world","europe"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("sugar",             "faostat",   "Sugar Production",               " t",    "food",    1961, 2, ["world","americas"]),
+    ("wine",              "faostat",   "Wine Production",                " t",    "food",    1961, 2, ["world","europe"]),
+    ("sugar",             "faostat",   "Sugar Cane Production",          " t",    "food",    1961, 2, ["world","americas"]),
+    ("maize",             "faostat",   "Maize Production",               " t",    "food",    1961, 2, ["world","americas"]),
 
     # ------------------------------------------------------------ TIER 3
     ("FP.CPI.TOTL.ZG",    "worldbank", "Inflation Rate",                 "%",     "economy", 1970, 3, ["world"]),
@@ -67,19 +65,15 @@ INDICATORS = [
     ("coal_co2",          "owid",      "CO2 from Coal",                  " Mt",   "energy",  1960, 3, ["world"]),
     ("oil_co2",           "owid",      "CO2 from Oil",                   " Mt",   "energy",  1960, 3, ["world"]),
     ("cumulative_co2",    "owid",      "Total CO2 Ever Emitted",         " Mt",   "energy",  1960, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("rice",              "faostat",   "Rice Production",                " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("wheat",             "faostat",   "Wheat Production",               " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("banana",            "faostat",   "Banana Production",              " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("olive",             "faostat",   "Olive Production",               " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("honey",             "faostat",   "Honey Production",               " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("potato",            "faostat",   "Potato Production",              " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("tomato",            "faostat",   "Tomato Production",              " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("grape",             "faostat",   "Grape Production",               " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("orange",            "faostat",   "Orange Production",              " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("apple",             "faostat",   "Apple Production",               " t",    "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("cattle",            "faostat",   "Cattle Population",              "",      "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("sheep",             "faostat",   "Sheep Population",               "",      "food",    1961, 3, ["world"]),
-    # [FAOSTAT devre disi - API formati calismadi, ayri turda duzeltilecek] ("chicken",           "faostat",   "Chicken Population",             "",      "food",    1961, 3, ["world"]),
+    ("rice",              "faostat",   "Rice Production",                " t",    "food",    1961, 3, ["world"]),
+    ("wheat",             "faostat",   "Wheat Production",               " t",    "food",    1961, 3, ["world"]),
+    ("banana",            "faostat",   "Banana Production",              " t",    "food",    1961, 3, ["world"]),
+    ("potato",            "faostat",   "Potato Production",              " t",    "food",    1961, 3, ["world"]),
+    ("tomato",            "faostat",   "Tomato Production",              " t",    "food",    1961, 3, ["world"]),
+    ("grape",             "faostat",   "Grape Production",               " t",    "food",    1961, 3, ["world"]),
+    ("orange",            "faostat",   "Orange Production",              " t",    "food",    1961, 3, ["world"]),
+    ("apple",             "faostat",   "Apple Production",               " t",    "food",    1961, 3, ["world"]),
+    ("soybean",           "faostat",   "Soybean Production",             " t",    "food",    1961, 3, ["world"]),
 ]
 
 WORLD_ONLY = {"FP.CPI.TOTL.ZG", "GB.XPD.RSDV.GD.ZS"}
@@ -89,8 +83,9 @@ ALL_SCOPES = ["world", "europe", "asia", "africa", "americas", "middle_east"]
 
 SOURCE_LABEL = {"worldbank": "World Bank",
                 "owid": "Our World in Data",
-                "faostat": "FAO (UN)"}
-
+                # Veri FAOSTAT'in, ama FAO API'si anahtar istedigi icin OWID
+                # uzerinden aliniyor. Ikisini de anmak dogrusu.
+                "faostat": "FAO via Our World in Data"}
 
 def build():
     rows = []
@@ -132,7 +127,6 @@ def build():
                     del groups[key]
     return out
 
-
 def main():
     topics = build()
     with open("topics.yaml", "w", encoding="utf-8") as f:
@@ -143,7 +137,6 @@ def main():
     print(f"{len(topics)} konu | tier1 {t[1]} tier2 {t[2]} tier3 {t[3]}")
     for i, x in enumerate(topics[:12], 1):
         print(f"  {i:2d}. {x['title']}")
-
 
 if __name__ == "__main__":
     main()
