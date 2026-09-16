@@ -23,14 +23,71 @@ OWID_CO2  = "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-dat
 # World Bank'in ulke listesinde bolge/gelir grubu toplamlari da var; bunlari eleriz
 AGGREGATE_REGION_ID = "NA"
 
-# Kapsam tanimlari — topics.yaml bunlari isimle cagirir
+# ------------------------------------------------------------------ kapsamlar
+# DIKKAT — World Bank BOLGE KODU ile filtrelemeyin. Kodlar cografi degil idari:
+#   EAS = "East Asia & Pacific"        -> Avustralya, Yeni Zelanda, Fiji iceride
+#   ECS = "Europe & Central Asia"      -> Kazakistan, Ozbekistan, Kirgizistan iceride
+#   MEA = "Middle East & North Africa" -> Malta iceride
+# Bu yuzden "Top 10 ... in Asia" videolarinda Avustralya, "in Europe"
+# videolarinda Kazakistan cikiyordu; izleyicilerden gelen 1 numarali sikayet buydu.
+# Artik kapsamlar elle dogrulanmis ISO3 listeleri. Yeni ulke eklerken listeye
+# elle ekleyin; bolge koduna GERI DONMEYIN.
+#
+# Kita sinirindaki ulkeler (RUS, TUR, ARM, GEO, AZE, CYP) bilerek hem Avrupa'da
+# hem Asya'da. Kazakistan bilerek SADECE Asya'da.
+
+_EUROPE = {
+    "ALB","AND","ARM","AUT","AZE","BEL","BGR","BIH","BLR","CHE","CHI","CYP",
+    "CZE","DEU","DNK","ESP","EST","FIN","FRA","FRO","GBR","GEO","GIB","GRC",
+    "HRV","HUN","IMN","IRL","ISL","ITA","LIE","LTU","LUX","LVA","MCO","MDA",
+    "MKD","MLT","MNE","NLD","NOR","POL","PRT","ROU","RUS","SMR","SRB","SVK",
+    "SVN","SWE","TUR","UKR","XKX",
+}
+
+_ASIA = {
+    # Dogu Asya
+    "CHN","HKG","JPN","KOR","MAC","MNG","PRK",
+    # Guneydogu Asya
+    "BRN","IDN","KHM","LAO","MMR","MYS","PHL","SGP","THA","TLS","VNM",
+    # Guney Asya
+    "AFG","BGD","BTN","IND","LKA","MDV","NPL","PAK",
+    # Orta Asya
+    "KAZ","KGZ","TJK","TKM","UZB",
+    # Bati Asya / Ortadogu
+    "ARE","ARM","AZE","BHR","CYP","GEO","IRN","IRQ","ISR","JOR","KWT","LBN",
+    "OMN","PSE","QAT","SAU","SYR","TUR","YEM",
+    # Avrasya
+    "RUS",
+}
+
+_MIDDLE_EAST = {
+    "ARE","BHR","EGY","IRN","IRQ","ISR","JOR","KWT","LBN","OMN","PSE","QAT",
+    "SAU","SYR","TUR","YEM",
+}
+
+_AFRICA = {
+    "AGO","BDI","BEN","BFA","BWA","CAF","CIV","CMR","COD","COG","COM","CPV",
+    "DJI","DZA","EGY","ERI","ESH","ETH","GAB","GHA","GIN","GMB","GNB","GNQ",
+    "KEN","LBR","LBY","LSO","MAR","MDG","MLI","MOZ","MRT","MUS","MWI","MYT",
+    "NAM","NER","NGA","RWA","SDN","SEN","SLE","SOM","SSD","STP","SWZ","SYC",
+    "TCD","TGO","TUN","TZA","UGA","ZAF","ZMB","ZWE",
+}
+
+_AMERICAS = {
+    "ABW","ARG","ATG","BHS","BLZ","BMU","BOL","BRA","BRB","CAN","CHL","COL",
+    "CRI","CUB","CUW","CYM","DMA","DOM","ECU","GRD","GTM","GUY","HND","HTI",
+    "JAM","KNA","LCA","MEX","NIC","PAN","PER","PRI","PRY","SLV","SUR","SXM",
+    "TCA","TTO","URY","USA","VCT","VEN","VGB","VIR",
+}
+
+# Kapsam tanimlari — topics.py bunlari isimle cagirir. None = tum ulkeler.
 SCOPES = {
-    "world":        None,   # tum ulkeler
-    "europe":       {"ECS"},
-    "asia":         {"EAS", "SAS"},
-    "africa":       {"SSF", "MEA"},
-    "americas":     {"LCN", "NAC"},
-    "middle_east":  {"MEA"},
+    "world":        None,
+    "europe":       _EUROPE,
+    "asia":         _ASIA,
+    "africa":       _AFRICA,
+    "americas":     _AMERICAS,
+    "middle_east":  _MIDDLE_EAST,
 }
 
 
@@ -163,11 +220,11 @@ def faostat_series(key, start, end):
 
 
 # ------------------------------------------------------------------ hazirlama
-def build_race(series, names, regions, scope, start, end,
+def build_race(series, names, regions, scope, start, end,   # regions: kullanilmiyor
                top_n=12, min_coverage=0.85):
     """
     Ham seriyi renderer'in bekledigi hale getirir:
-      - kapsama gore filtre
+      - kapsama gore filtre (SCOPES'taki ISO3 listesine gore)
       - eksik yillari komsu yillardan doldur, kapsamasi dusuk ulkeyi at
       - son yila gore ilk top_n ulkeyi sec
     Donus: (raw {isim: [deger...]}, years [..])
@@ -181,10 +238,8 @@ def build_race(series, names, regions, scope, start, end,
         # listede olmayan her kod elenir.
         if iso not in names:
             continue
-        if allowed is not None:
-            reg = regions.get(iso)
-            if reg not in allowed:
-                continue
+        if allowed is not None and iso not in allowed:
+            continue                                    # kapsam disi ulke
         have = [y for y in years if y in by_year]
         if len(have) < min_coverage * len(years):
             continue                                    # veri deligi cok
@@ -218,17 +273,13 @@ def load_topic(topic):
 
     elif topic["source"] == "faostat":
         series, names = faostat_series(topic["indicator"], start, end)
-        regions = {}
-        if scope != "world":
-            regions = {i: v[1] for i, v in wb_countries().items()}
+        regions = {}   # kapsam artik ISO3 listesinden geliyor, WB'ye cikmiyoruz
 
     elif topic["source"] == "owid":
         series, names = owid_series(topic["indicator"], start, end)
-        # Bolge bilgisi sadece dar kapsamda gerekli; 'world' icin World Bank'e
-        # hic cikma (OWID konusu WB kesintisinde patlamasin).
+        # Kapsam artik ISO3 listesinden geliyor; OWID konulari World Bank'e hic
+        # cikmiyor (WB kesintisi OWID videosunu artik patlatamaz).
         regions = {}
-        if scope != "world":
-            regions = {i: v[1] for i, v in wb_countries().items()}
 
     else:
         raise ValueError(f"bilinmeyen kaynak: {topic['source']}")
