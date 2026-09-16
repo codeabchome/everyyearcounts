@@ -18,7 +18,7 @@ SCOPE_LABEL = {
     "world":       "the World",
     "europe":      "Europe",
     "asia":        "Asia",
-    "africa":      "Africa & Middle East",
+    "africa":      "Africa",
     "americas":    "the Americas",
     "middle_east": "the Middle East",
 }
