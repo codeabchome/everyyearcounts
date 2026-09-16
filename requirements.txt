@@ -1,6 +1,11 @@
-skia-python>=138.0
-numpy>=1.26
-scipy>=1.11
-PyYAML>=6.0
-google-api-python-client>=2.120
-google-auth>=2.28
+# Surumler SABIT. Kanal 1 yil bakimsiz donebilsin diye bilerek == kullaniliyor:
+# bir bagimlilik major surum atlarsa pipeline sessizce degil, acikca patlar.
+# NOT: workflow'lar Python 3.11 kullaniyor. numpy 2.5+ ve scipy 1.18+ artik
+# 3.11 wheel'i yayinlamiyor, o yuzden bunlar 3.11'in son destekli surumunde.
+# Yukseltirken once validate.yml'i calistir.
+skia-python==144.0.post2
+numpy==2.4.6
+scipy==1.17.1
+PyYAML==6.0.3
+google-api-python-client==2.200.0
+google-auth==2.58.0
