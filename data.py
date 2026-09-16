@@ -17,8 +17,9 @@ CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
 os.makedirs(CACHE, exist_ok=True)
 
 WB_BASE   = "https://api.worldbank.org/v2"
-FAO_BASE  = "https://faostatservices.fao.org/api/v1/en/data"
 OWID_CO2  = "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"
+OWID_GRAPHER = ("https://ourworldindata.org/grapher/{}.csv"
+                "?v=1&csvType=full&useColumnShortNames=false")
 
 # World Bank'in ulke listesinde bolge/gelir grubu toplamlari da var; bunlari eleriz
 AGGREGATE_REGION_ID = "NA"
@@ -174,48 +175,69 @@ def owid_series(column, start, end):
     return series, names
 
 
-# ------------------------------------------------------------------ FAOSTAT
-# FAO urun kodlari (domain QCL = Crops and Livestock Products)
-# element 5510 = uretim (ton), 5111 = canli hayvan sayisi (bas)
-FAO_ITEMS = {
-    "coffee":  (656,  5510), "cocoa":   (661,  5510), "tea":     (667,  5510),
-    "wine":    (564,  5510), "rice":    (27,   5510), "wheat":   (15,   5510),
-    "banana":  (486,  5510), "olive":   (260,  5510), "honey":   (1182, 5510),
-    "potato":  (116,  5510), "tomato":  (388,  5510), "grape":   (560,  5510),
-    "orange":  (490,  5510), "apple":   (515,  5510), "sugar":   (156,  5510),
-    "cattle":  (866,  5111), "sheep":   (976,  5111), "chicken": (1057, 5111),
+# ------------------------------------------------------------------ FAO gida
+# FAOSTAT'in kendi API'si ARTIK ANAHTAR ISTIYOR:
+#   faostatservices.fao.org -> HTTP 401 Unauthorized
+#   fenixservices.fao.org   -> HTTP 521 (sunucu ayakta degil)
+# (16 Eyl 2026'da Actions uzerinden olculdu.) Kanalin "sifir maliyet, sifir
+# secret" modelini bozmamak icin ayni FAO verisini Our World in Data'nin
+# anahtarsiz grapher CSV'lerinden aliyoruz. OWID bu seriyi dogrudan
+# FAOSTAT'tan turetiyor, yani veri ayni; sadece tasiyici degisti.
+#
+# urun -> (OWID grapher slug, CSV'deki deger kolonu)
+# Bu esmeler 16 Eyl 2026'da tek tek dogrulandi. Yeni urun eklemeden once
+# slug'i gercekten kontrol et; yanlis slug sessiz bir konu kaybi demek.
+FOOD_SERIES = {
+    "coffee":  ("coffee-bean-production",  "Green coffee - Production (tonnes)"),
+    "cocoa":   ("cocoa-bean-production",   "Cocoa beans - Production (tonnes)"),
+    "wine":    ("wine-production",         "Wine - Production (tonnes)"),
+    "rice":    ("rice-production",         "Rice - Production (tonnes)"),
+    "wheat":   ("wheat-production",        "Wheat - Production (tonnes)"),
+    "banana":  ("banana-production",       "Bananas - Production (tonnes)"),
+    "potato":  ("potato-production",       "Potatoes - Production (tonnes)"),
+    "tomato":  ("tomato-production",       "Tomatoes - Production (tonnes)"),
+    "grape":   ("grapes-production",       "Grapes - Production (tonnes)"),
+    "orange":  ("orange-production",       "Oranges - Production (tonnes)"),
+    "apple":   ("apple-production",        "Apples - Production (tonnes)"),
+    "sugar":   ("sugar-cane-production",   "Sugar cane - Production (tonnes)"),
+    "maize":   ("maize-production",        "Maize (corn) - Production (tonnes)"),
+    "soybean": ("soybean-production",      "Soybeans - Production (tonnes)"),
 }
+# Denenip BULUNAMAYAN urunler (OWID'de bu isimle grapher yok): tea, olive,
+# honey, cattle, sheep, chicken. Eklemek istersen once slug'i dogrula.
 
 
-def faostat_series(key, start, end):
-    """{iso3: {yil: deger}}, {iso3: isim} — FAOSTAT uretim/stok verisi."""
-    if key not in FAO_ITEMS:
-        raise ValueError(f"bilinmeyen FAO urunu: {key}")
-    item, element = FAO_ITEMS[key]
-    fname = f"fao_{key}_{start}_{end}.json"
-    url = (f"{FAO_BASE}/QCL?area=all&item={item}&element={element}"
-           f"&year_range={start}:{end}&area_cs=ISO3&show_codes=true"
-           f"&show_unit=false&show_flags=false&null_values=false&output_type=objects")
-    payload = json.loads(_cached(fname, lambda: _get(url)))
-    rows = payload.get("data") or []
-    if not rows:
-        raise RuntimeError(f"FAOSTAT '{key}' icin veri donmedi")
+def food_series(key, start, end):
+    """{iso3: {yil: deger}}, {iso3: isim} — FAO uretim verisi (OWID uzerinden)."""
+    if key not in FOOD_SERIES:
+        raise ValueError(f"bilinmeyen urun: {key}")
+    slug, column = FOOD_SERIES[key]
+    blob = _cached(f"owid_{slug}.csv", lambda: _get(OWID_GRAPHER.format(slug)))
+    text = blob.decode("utf-8", errors="replace").splitlines()
 
     series, names = {}, {}
-    for r in rows:
-        iso = str(r.get("Area Code (ISO3)") or r.get("Area Code") or "").strip()
-        if len(iso) != 3 or not iso.isalpha():
+    for row in csv.DictReader(text):
+        iso = (row.get("Code") or "").strip()
+        # OWID kita/gelir gruplarini da ayni dosyada veriyor; onlarin Code'u ya
+        # bos ya da OWID_ ile basliyor. Gercek ulke disinda hicbir sey girmesin.
+        if len(iso) != 3 or iso.startswith("OWID"):
+            continue
+        raw = (row.get(column) or "").strip()
+        if not raw:
             continue
         try:
-            year = int(r.get("Year"))
-            val = float(str(r.get("Value")).replace(",", ""))
-        except (TypeError, ValueError):
+            year = int(row["Year"])
+            val = float(raw)
+        except (TypeError, ValueError, KeyError):
             continue
         if start <= year <= end and val > 0:
             series.setdefault(iso, {})[year] = val
-            names[iso] = r.get("Area") or iso
+            names[iso] = row.get("Entity") or iso
+
     if not series:
-        raise RuntimeError(f"FAOSTAT '{key}': satir var ama ISO3 eslesmedi")
+        raise RuntimeError(
+            f"'{key}' ({slug}) icin ISO3 satiri bulunamadi — "
+            f"slug veya '{column}' kolon adi degismis olabilir")
     return series, names
 
 
@@ -272,7 +294,7 @@ def load_topic(topic):
         series = wb_series(topic["indicator"], start, end)
 
     elif topic["source"] == "faostat":
-        series, names = faostat_series(topic["indicator"], start, end)
+        series, names = food_series(topic["indicator"], start, end)
         regions = {}   # kapsam artik ISO3 listesinden geliyor, WB'ye cikmiyoruz
 
     elif topic["source"] == "owid":
