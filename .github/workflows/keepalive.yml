@@ -1,0 +1,27 @@
+name: Keepalive
+
+# GitHub, 60 gun repo hareketsizliginden sonra zamanlanmis is'leri otomatik
+# durdurur. Normalde bot her gun state.json commit ettigi icin repo hareketli
+# sayiliyor; ama yayin uzun sure patlarsa o commit'ler de durur ve cron'lar
+# sessizce olur. Bu is ayda bir kucuk commit atarak o senaryoyu engeller.
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zaman damgasini guncelle
+        run: |
+          date -u +%F > .keepalive
+          git config user.name  "eyc-bot"
+          git config user.email "bot@everyyearcounts.local"
+          git add .keepalive
+          git diff --staged --quiet || git commit -m "keepalive: $(date -u +%F)"
+          git push
