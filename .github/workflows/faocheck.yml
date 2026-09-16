@@ -6,49 +6,78 @@ on:
 jobs:
   check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: FAOSTAT uc noktalarini dene
+      - name: OWID grapher slug'larini dene
         run: |
           python3 - <<'PYEOF'
-          import json, urllib.request, itertools
+          import csv, io, urllib.request
 
-          HOSTS = [
-              ("fenix",  "https://fenixservices.fao.org/faostat/api/v1/en/data"),
-              ("eski",   "https://faostatservices.fao.org/api/v1/en/data"),
-          ]
-          YEARS = [("year_range", "year_range=2018:2020"), ("year", "year=2018,2019,2020")]
-          AREACS = [("iso3", "&area_cs=ISO3"), ("yok", "")]
+          BASE = "https://ourworldindata.org/grapher/{}.csv?v=1&csvType=full&useColumnShortNames=false"
 
-          def get(url):
+          CANDIDATES = {
+            "coffee":  ["coffee-bean-production"],
+            "cocoa":   ["cocoa-beans-production", "cocoa-bean-production"],
+            "tea":     ["tea-production"],
+            "wine":    ["wine-production"],
+            "rice":    ["rice-production"],
+            "wheat":   ["wheat-production"],
+            "banana":  ["banana-production"],
+            "olive":   ["olive-production", "olives-production"],
+            "honey":   ["honey-production"],
+            "potato":  ["potato-production", "potatoes-production"],
+            "tomato":  ["tomato-production", "tomatoes-production"],
+            "grape":   ["grape-production", "grapes-production"],
+            "orange":  ["orange-production", "oranges-production"],
+            "apple":   ["apple-production", "apples-production"],
+            "sugar":   ["sugar-cane-production", "sugarcane-production"],
+            "maize":   ["maize-production"],
+            "soybean": ["soybean-production", "soybeans-production"],
+            "cattle":  ["cattle-livestock-count", "number-of-cattle", "live-cattle-stocks"],
+            "sheep":   ["sheep-and-goat-livestock-count", "number-of-sheep", "sheep-livestock-count"],
+            "chicken": ["chicken-livestock-count", "number-of-chickens", "poultry-livestock-count"],
+          }
+
+          def probe(slug):
+              url = BASE.format(slug)
               req = urllib.request.Request(url, headers={"User-Agent": "EveryYearCounts/1.0"})
-              with urllib.request.urlopen(req, timeout=45) as r:
-                  return r.status, r.read()
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  blob = r.read()
+              text = blob.decode("utf-8", errors="replace")
+              rdr = csv.DictReader(io.StringIO(text))
+              cols = rdr.fieldnames or []
+              rows = list(rdr)
+              iso = [x for x in rows if len((x.get("Code") or "").strip()) == 3]
+              yrs = sorted({int(x["Year"]) for x in iso if x.get("Year", "").strip().isdigit()})
+              return cols, len(rows), len(iso), (yrs[0], yrs[-1]) if yrs else None
 
-          for (hn, base), (yn, yq), (an, aq) in itertools.product(HOSTS, YEARS, AREACS):
-              url = (f"{base}/QCL?area=all&item=656&element=5510&{yq}{aq}"
-                     f"&show_codes=true&show_unit=false&show_flags=false"
-                     f"&null_values=false&output_type=objects")
-              tag = f"{hn:6s} {yn:10s} area_cs={an:4s}"
-              try:
-                  st, blob = get(url)
+          found, missing = {}, []
+          for key, slugs in CANDIDATES.items():
+              hit = None
+              for s in slugs:
                   try:
-                      d = json.loads(blob)
-                  except Exception:
-                      print(f"{tag} -> HTTP {st} ama JSON degil: {blob[:120]!r}")
-                      continue
-                  rows = d.get("data") or []
-                  if not rows:
-                      print(f"{tag} -> HTTP {st}, data BOS. ust anahtarlar={list(d)[:6]}")
-                      continue
-                  r0 = rows[0]
-                  print(f"{tag} -> HTTP {st}, {len(rows)} satir")
-                  print(f"        anahtarlar: {list(r0)}")
-                  print(f"        ilk satir : {json.dumps(r0, ensure_ascii=False)[:260]}")
-              except Exception as exc:
-                  print(f"{tag} -> HATA {type(exc).__name__}: {str(exc)[:140]}")
+                      cols, n, niso, span = probe(s)
+                      if niso > 500:
+                          hit = (s, cols, n, niso, span)
+                          break
+                  except Exception as exc:
+                      print(f"    {key:8s} {s:32s} -> {type(exc).__name__} {str(exc)[:60]}")
+              if hit:
+                  s, cols, n, niso, span = hit
+                  val = [c for c in cols if c not in ("Entity", "Code", "Year")]
+                  found[key] = (s, val[0] if val else "?")
+                  print(f"OK  {key:8s} {s:32s} satir={n:6d} iso3={niso:6d} {span} deger_kolonu='{val[0] if val else '?'}'")
+              else:
+                  missing.append(key)
+                  print(f"YOK {key:8s} adaylarin hicbiri tutmadi")
+
+          print("\n" + "=" * 60)
+          print(f"{len(found)} urun bulundu, {len(missing)} bulunamadi: {missing}")
+          print("\nPYTHON SOZLUGU:")
+          for k, (s, v) in found.items():
+              print(f'    "{k}": ("{s}", "{v}"),')
           PYEOF
