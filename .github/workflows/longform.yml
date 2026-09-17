@@ -2,8 +2,9 @@ name: Weekly Compilation
 
 on:
   schedule:
-    - cron: '0 15 * * 3'
-    - cron: '0 15 * * 6'
+    # dakika bilerek :00/:30 disinda (bkz. shorts.yml notu)
+    - cron: '41 14 * * 3'
+    - cron: '41 14 * * 6'
   workflow_dispatch:
     inputs:
       theme:
