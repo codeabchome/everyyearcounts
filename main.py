@@ -7,6 +7,7 @@ Yukleme upload.py'a devredilir. Durum state.json'da tutulur.
 
 Kullanim:
   python3 main.py short          # gunluk Shorts (kuyruktan 1 konu)
+  python3 main.py duel           # gunluk "X vs Y" duellosu
   python3 main.py long --theme economy   # haftalik derleme
   python3 main.py short --dry    # yuklemeden sadece render
 """
@@ -19,7 +20,8 @@ from datetime import datetime, timezone
 import yaml
 
 import data as datalayer
-from renderer import RaceData, render, render_card, render_cover
+from renderer import (RaceData, render, render_card, render_cover,
+                      render_duel)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
@@ -32,7 +34,8 @@ def load_state():
     if os.path.exists(STATE_PATH):
         with open(STATE_PATH, encoding="utf-8") as f:
             return json.load(f)
-    return {"published_short": [], "published_long": [], "failed": {}}
+    return {"published_short": [], "published_long": [],
+            "published_duel": [], "failed": {}}
 
 
 def save_state(state):
@@ -166,6 +169,102 @@ def run_short(dry=False):
     return 0
 
 
+def next_duel(duels, state):
+    """Sirasi gelen ilk yayinlanmamis duello. Kuyruk bitince bastan baslar."""
+    done = set(state.get("published_duel", []))
+    for d in duels:
+        if d["id"] in done:
+            continue
+        if state["failed"].get(d["id"], 0) >= 3:
+            continue
+        return d
+    state["duel_cycle"] = state.get("duel_cycle", 1) + 1
+    state["published_duel"] = []
+    print(f"[duello] kuyruk bitti, tur {state['duel_cycle']} basliyor")
+    save_state(state)
+    return duels[0] if duels else None
+
+
+def run_duel(dry=False):
+    """Gunluk 'X vs Y' duellosu."""
+    import topics as topicgen
+    duels, state = topicgen.build_duels(), load_state()
+    state.setdefault("published_duel", [])
+    topic = next_duel(duels, state)
+    if topic is None:
+        print("duello kuyrugu bos")
+        return 0
+
+    raw = years = None
+    for _ in range(6):
+        print(f"[duello] {topic['id']}  ({topic['title']})")
+        try:
+            raw, years = datalayer.load_duel(topic)
+            break
+        except Exception as exc:
+            state["failed"][topic["id"]] = state["failed"].get(topic["id"], 0) + 1
+            save_state(state)
+            print(f"[atlandi] {topic['id']}: {exc}")
+            topic = next_duel(duels, state)
+            if topic is None:
+                return 1
+    if raw is None:
+        print("[hata] 6 duello denendi, hicbiri yuklenemedi")
+        return 1
+
+    names = list(raw.keys())
+    print(f"[veri] {names[0]} vs {names[1]} x {len(years)} yil")
+    race = RaceData(raw, years)
+    out = os.path.join(OUT_DIR, f"{topic['id']}.mp4")
+    meta = {
+        "title": topic["chart_title"],
+        "subtitle": f"{topic['subtitle']} · {years[0]}–{years[-1]}",
+        "unit": topic.get("unit", ""),
+        "source": topic["source_label"],
+        "end_year": years[-1],
+        # duelloda soru "kim once?" — bar yarisindakinden farkli
+        "hook_lines": ("WHO WINS?", f"{names[0].upper()} VS {names[1].upper()}"),
+        "hook_label": f"{topic['subtitle']} · {years[0]}–{years[-1]}",
+    }
+    path, dur = render_duel(race, out, meta, kind="short")
+    print(f"[render] {path}  ({dur:.1f} sn)")
+
+    span = f"{years[0]}–{years[-1]}"
+    yt = {
+        "title": f"{topic['title']} ({span})"[:100],
+        "description": (
+            f"{names[0]} vs {names[1]} — {topic['subtitle']}, year by year "
+            f"from {years[0]} to {years[-1]}.\n\n"
+            "Who did you think would be ahead? Tell us in the comments.\n\n"
+            f"Data source: {topic['source_label']}\n"
+            f"Indicator: {topic['indicator']}\n\n"
+            "Every stat. Every year. Ranked.\n"
+            "New data races daily — subscribe.\n\n"
+            "#datavisualization #comparison #statistics"
+        ),
+        "tags": ["country comparison", "vs", "data visualization", "statistics",
+                 names[0].lower(), names[1].lower(), topic["theme"],
+                 topic["source_label"].lower()],
+    }
+    with open(out.replace(".mp4", ".json"), "w", encoding="utf-8") as f:
+        json.dump(yt, f, indent=2, ensure_ascii=False)
+
+    if dry:
+        print("[dry] yukleme atlandi")
+        return 0
+
+    import upload
+    video_id = upload.upload_video(path, yt, category="27")
+    state["published_duel"].append(topic["id"])
+    state.setdefault("log", []).append({
+        "id": topic["id"], "video_id": video_id, "kind": "duel",
+        "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    })
+    save_state(state)
+    print(f"[upload] https://youtu.be/{video_id}")
+    return 0
+
+
 def run_long(theme, dry=False):
     """Shorts olarak yayinlanmis konulardan tema bazli 8 dk derleme."""
     topics, state = load_topics(), load_state()
@@ -277,12 +376,14 @@ def run_validate():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["short", "long", "validate"])
+    ap.add_argument("mode", choices=["short", "long", "duel", "validate"])
     ap.add_argument("--theme", default="economy")
     ap.add_argument("--dry", action="store_true")
     args = ap.parse_args()
     if args.mode == "validate":
         return run_validate()
+    if args.mode == "duel":
+        return run_duel(args.dry)
     return run_short(args.dry) if args.mode == "short" else run_long(args.theme, args.dry)
 
 
