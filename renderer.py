@@ -277,7 +277,9 @@ def draw_hook(canvas, L, meta, alpha=1.0):
     p_main = skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=a)
 
     y = 560 if short else 400
-    for ln in ("WHICH COUNTRY", f"IS #1 IN {meta.get('end_year', '')}?"):
+    lines = meta.get("hook_lines") or \
+        ("WHICH COUNTRY", f"IS #1 IN {meta.get('end_year', '')}?")
+    for ln in lines:
         canvas.drawString(ln, L.mL, y, f_q, p_main)
         y += (112 if short else 92)
 
@@ -563,6 +565,166 @@ def render_card(out_path, title, subtitle, index, total, seconds=2.0, crf=18):
         ff.stdin.close()
         ff.wait()
     return out_path
+
+
+def draw_duel_frame(canvas, L, data, t, meta, lead_years, cta=0.0):
+    """
+    Iki ulke, tek gosterge, kafa kafaya.
+    Bar yarisindan bilerek farkli bir sekil: iki kalin bar, anlik lider rozeti
+    ve 'kac yil onde gecirdi' skoru. Amac akista tekduzelik kirmak — kanalda
+    80'den fazla neredeyse ayni gorunen video var.
+    """
+    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+
+    short = L.kind == "short"
+    a_name, b_name = data.entities[0], data.entities[1]
+    vals = data.values_at(t)
+    va, vb = vals[a_name], vals[b_name]
+    vmax = max(va, vb, 1e-9)
+
+    draw_header(canvas, L, meta)
+
+    year = str(data.label_at(t))
+    yw = L.f_year.measureText(year)
+    p_year = skia.Paint(AntiAlias=True, Color=YEAR_TINT)
+    if short:
+        canvas.drawString(year, L.W - yw - L.mL, L.mT - 40, L.f_year, p_year)
+    else:
+        canvas.drawString(year, L.W - yw - 70, L.H - 70, L.f_year, p_year)
+
+    f_name = make_font(60 if short else 50, "extrabold")
+    f_val  = make_font(44 if short else 38, "bold")
+    f_vs   = make_font(42 if short else 36, "extrabold")
+    f_tag  = make_font(26 if short else 23, "semibold")
+
+    bar_h = 250 if short else 158
+    gap   = 196 if short else 120
+    top   = L.mT + (100 if short else 34)
+    plot  = L.W - L.mL * 2
+
+    for i, (name, val) in enumerate(((a_name, va), (b_name, vb))):
+        lead = val >= max(va, vb)
+        y = top + i * (bar_h + gap)
+        w = max(plot * val / vmax, 6.0)
+        base = PALETTE[0] if i == 0 else PALETTE[1]
+        c = skia.Color4f.FromColor(base)
+        dim = 1.0 if lead else 0.42            # geride kalan soluk kalir
+        c1 = skia.Color4f(c.fR, c.fG, c.fB, dim)
+        c2 = skia.Color4f(c.fR * .74, c.fG * .74, c.fB * .74, dim)
+
+        canvas.drawString(name, L.mL, y - 26, f_name,
+                          skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+        if lead:
+            nx = L.mL + f_name.measureText(name) + 20
+            tw = f_tag.measureText("LEADS")
+            canvas.drawRect(skia.Rect.MakeXYWH(nx, y - 60, tw + 28, 42),
+                            skia.Paint(AntiAlias=True, Color=base))
+            canvas.drawString("LEADS", nx + 14, y - 31, f_tag,
+                              skia.Paint(AntiAlias=True, Color=0xFF101218))
+
+        canvas.drawRect(skia.Rect.MakeXYWH(L.mL, y, w, bar_h), skia.Paint(
+            AntiAlias=True, Shader=skia.GradientShader.MakeLinear(
+                [skia.Point(0, y), skia.Point(0, y + bar_h)],
+                [c1.toColor(), c2.toColor()])))
+
+        vs_txt = fmt_value(val, meta.get("unit", ""))
+        vw = f_val.measureText(vs_txt)
+        ty = y + bar_h / 2 + f_val.getSize() * 0.36
+        if vw + 48 < w:
+            canvas.drawString(vs_txt, L.mL + 26, ty, f_val,
+                              skia.Paint(AntiAlias=True, Color=0xFF101218))
+        else:
+            canvas.drawString(vs_txt, L.mL + w + 20, ty, f_val,
+                              skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+
+    vy = top + bar_h + (76 if short else 52)
+    canvas.drawString("VS", L.mL, vy, f_vs,
+                      skia.Paint(AntiAlias=True, Color=TEXT_DIM))
+    vw2 = f_vs.measureText("VS")
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL + vw2 + 18, vy - 12,
+                                       plot - vw2 - 18, 2),
+                    skia.Paint(AntiAlias=True, Color=0x221A1C22))
+
+    # mac hissi veren sayac: kac yil onde gecirdiler
+    f_sc  = make_font(72 if short else 58, "extrabold")
+    f_scl = make_font(24 if short else 21, "semibold")
+    sy = top + 2 * bar_h + gap + (118 if short else 88)
+    draw_tracked(canvas, "YEARS IN THE LEAD", L.mL, sy, f_scl,
+                 skia.Paint(AntiAlias=True, Color=TEXT_DIM), tracking=1.2)
+    canvas.drawString(f"{lead_years[0]} - {lead_years[1]}", L.mL,
+                      sy + (78 if short else 64), f_sc,
+                      skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+
+    if cta > 0:
+        draw_cta(canvas, L, cta)
+    draw_footer(canvas, L, meta)
+
+
+def render_duel(data, out_path, meta, kind="short",
+                seconds_per_step=None, hold_end=2.8, crf=18, preset="medium",
+                with_audio=True, hook_seconds=2.0):
+    """Duello videosu. render() ile ayni sozlesme: (yol, sure) doner."""
+    L = Layout(kind)
+    n = len(data.steps)
+    if seconds_per_step is None:
+        seconds_per_step = 0.58 if kind == "short" else 0.90
+    hook = int(max(hook_seconds, 0.0) * FPS)
+    body = int((n - 1) * seconds_per_step * FPS)
+    tail = int(hold_end * FPS)
+
+    a_name, b_name = data.entities[0], data.entities[1]
+
+    # "kac yil onde" skorunu yil yil onceden hesapla — her karede tekrar
+    # hesaplamak pahali olurdu
+    lead_tbl = []
+    la = lb = 0
+    for i in range(n):
+        v = data.values_at(float(i))
+        if v[a_name] >= v[b_name]:
+            la += 1
+        else:
+            lb += 1
+        lead_tbl.append((la, lb))
+
+    ff = subprocess.Popen([
+        "ffmpeg", "-y", "-loglevel", "error",
+        "-f", "rawvideo", "-pix_fmt", "rgba",
+        "-s", f"{L.W}x{L.H}", "-r", str(FPS), "-i", "-",
+        "-c:v", "libx264", "-preset", preset, "-crf", str(crf),
+        "-pix_fmt", "yuv420p", "-movflags", "+faststart", out_path
+    ], stdin=subprocess.PIPE)
+
+    surface = skia.Surface(L.W, L.H)
+    canvas = surface.getCanvas()
+    try:
+        cta_fade = max(int(0.5 * FPS), 1)
+        hook_fade = max(int(0.25 * FPS), 1)
+        for frame in range(hook + body + tail):
+            if frame < hook:
+                left = hook - frame
+                draw_hook(canvas, L, meta,
+                          min(frame / hook_fade, 1.0, left / hook_fade))
+                ff.stdin.write(bytes(surface.makeImageSnapshot().tobytes()))
+                continue
+            f = frame - hook
+            t = min(f / (seconds_per_step * FPS), n - 1)
+            idx = int(min(max(t, 0), n - 1))
+            cta = 0.0
+            if f >= body:
+                cta = min((f - body) / cta_fade, 1.0)
+            draw_duel_frame(canvas, L, data, t, meta, lead_tbl[idx], cta)
+            ff.stdin.write(bytes(surface.makeImageSnapshot().tobytes()))
+    finally:
+        ff.stdin.close()
+        ff.wait()
+
+    duration = (hook + body + tail) / FPS
+    if with_audio:
+        _add_ambient(out_path, duration,
+                     seed=abs(hash(meta.get("title", ""))) % 9999)
+    return out_path, duration
 
 
 def render(data, out_path, meta, kind="short",
