@@ -52,8 +52,16 @@ jobs:
           git config user.name  "eyc-bot"
           git config user.email "bot@everyyearcounts.local"
           git add state.json
-          git diff --staged --quiet || git commit -m "state: compilation $(date -u +%F)"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "state: compilation $(date -u +%F)"
+          # push reddedilirse durum kaybolmasin: rebase edip tekrar dene.
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "push reddedildi, rebase deneniyor ($i)"
+            git pull --rebase --autostash origin main || exit 1
+            sleep 5
+          done
+          exit 1
 
       - name: Hata durumunda issue ac
         if: failure()
