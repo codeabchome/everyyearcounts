@@ -79,7 +79,8 @@
     "ag_lnd_frst_k2__africa",
     "sp_pop_65up_to_zs__africa",
     "co2_per_capita__africa",
-    "coffee__world"
+    "coffee__world",
+    "cocoa__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -620,6 +621,12 @@
       "video_id": "V0bsZTLVan0",
       "kind": "duel",
       "at": "2026-09-17T19:08:47+00:00"
+    },
+    {
+      "id": "cocoa__world",
+      "video_id": "IIT0Jjc1bnQ",
+      "kind": "short",
+      "at": "2026-09-17T20:18:21+00:00"
     }
   ],
   "published_duel": [
