@@ -5,6 +5,11 @@ on:
     # gunde 1 duello - Shorts yayinlarinin arasina dusuyor
     - cron: '30 15 * * *'
   workflow_dispatch:
+    inputs:
+      dry:
+        description: 'Yuklemeden sadece render et (test)'
+        type: boolean
+        default: false
 
 concurrency:
   group: eyc-publish
@@ -41,7 +46,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-        run: python3 main.py duel
+        run: python3 main.py duel ${{ inputs.dry && '--dry' || '' }}
 
       - name: Durumu isle
         run: |
