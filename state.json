@@ -614,6 +614,15 @@
       "video_id": "2KbttwYNh9M",
       "kind": "short",
       "at": "2026-09-17T00:49:00+00:00"
+    },
+    {
+      "id": "duel__ny_gdp_mktp_cd__usa_chn",
+      "video_id": "V0bsZTLVan0",
+      "kind": "duel",
+      "at": "2026-09-17T19:08:47+00:00"
     }
+  ],
+  "published_duel": [
+    "duel__ny_gdp_mktp_cd__usa_chn"
   ]
 }
