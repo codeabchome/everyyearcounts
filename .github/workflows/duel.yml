@@ -3,7 +3,8 @@ name: Daily Duel
 on:
   schedule:
     # gunde 1 duello - Shorts yayinlarinin arasina dusuyor
-    - cron: '30 15 * * *'
+    # dakika bilerek :00/:30 disinda (bkz. shorts.yml notu)
+    - cron: '23 15 * * *'
   workflow_dispatch:
     inputs:
       dry:
