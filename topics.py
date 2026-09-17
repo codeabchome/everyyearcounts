@@ -85,6 +85,77 @@ SOURCE_LABEL = {"worldbank": "World Bank",
                 # uzerinden aliniyor. Ikisini de anmak dogrusu.
                 "faostat": "FAO via Our World in Data"}
 
+# ------------------------------------------------------------------ duello
+# "X vs Y" formati: iki ulke, tek gosterge, kafa kafaya.
+# Neden var: akista 80'den fazla neredeyse ayni gorunen bar yarisi birikti;
+# ikinci bir gorsel sekil tekduzeligi kiriyor. Ayrica karsilastirma basliklari
+# aramada bar yarisindan daha cok araniyor.
+#
+# Cift secimi bilincli: ekonomik/klasik rekabetler. Aktif catisma halindeki
+# ulkeler bilerek YOK — yorum politikasi (bkz. proje dosyasi §11) siyasi
+# provokasyona girmemeyi soyluyor, format da onu davet etmemeli.
+DUEL_PAIRS = [
+    ("USA", "CHN"), ("CHN", "IND"), ("DEU", "JPN"), ("BRA", "ARG"),
+    ("GBR", "FRA"), ("JPN", "KOR"), ("CAN", "AUS"), ("ESP", "ITA"),
+    ("NGA", "ZAF"), ("IDN", "VNM"), ("MEX", "BRA"), ("SAU", "ARE"),
+]
+
+# Baslikta kullanilacak kisa adlar (veri katmanindaki resmi adlar uzun olabilir)
+DUEL_LABEL = {
+    "USA": "USA", "CHN": "China", "IND": "India", "DEU": "Germany",
+    "JPN": "Japan", "BRA": "Brazil", "ARG": "Argentina", "GBR": "UK",
+    "FRA": "France", "KOR": "South Korea", "CAN": "Canada", "AUS": "Australia",
+    "ESP": "Spain", "ITA": "Italy", "NGA": "Nigeria", "ZAF": "South Africa",
+    "IDN": "Indonesia", "VNM": "Vietnam", "MEX": "Mexico",
+    "SAU": "Saudi Arabia", "ARE": "UAE",
+}
+
+# (kod, kaynak, baslik, birim, tema, baslangic)
+# Sadece kapsamasi genis gostergeler — duelloda iki ulkenin de neredeyse tum
+# yillarda verisi olmali, yoksa load_duel hata veriyor.
+DUEL_INDICATORS = [
+    ("NY.GDP.MKTP.CD",  "worldbank", "GDP",              " $",   "economy", 1960),
+    ("SP.POP.TOTL",     "worldbank", "Population",       "",     "society", 1960),
+    ("MS.MIL.XPND.CD",  "worldbank", "Military Spending"," $",   "power",   1960),
+    ("NY.GDP.PCAP.CD",  "worldbank", "GDP per Capita",   " $",   "economy", 1960),
+    ("SP.DYN.LE00.IN",  "worldbank", "Life Expectancy",  " yrs", "society", 1960),
+    ("NE.EXP.GNFS.CD",  "worldbank", "Exports",          " $",   "economy", 1960),
+    ("IT.NET.USER.ZS",  "worldbank", "Internet Users",   "%",    "tech",    1990),
+    ("co2",             "owid",      "CO2 Emissions",    " Mt",  "energy",  1960),
+]
+
+
+def build_duels():
+    """
+    Duello kuyrugu.
+
+    Sira onemli: ne ayni ikili arka arkaya gelmeli (izleyici "yine mi USA-Cin"
+    der), ne de ayni gosterge. Capraz gezerek ikisini de degistiriyoruz —
+    her gun hem baska bir ikili hem baska bir gosterge.
+    """
+    out = []
+    for offset in range(len(DUEL_INDICATORS)):
+        for pi, (a, b) in enumerate(DUEL_PAIRS):
+            code, source, label, unit, theme, start = \
+                DUEL_INDICATORS[(pi + offset) % len(DUEL_INDICATORS)]
+            na, nb = DUEL_LABEL.get(a, a), DUEL_LABEL.get(b, b)
+            out.append({
+                "id": f"duel__{code.replace('.', '_').lower()}__{a}_{b}".lower(),
+                "source": source,
+                "indicator": code,
+                "pair": [a, b],
+                "start": start,
+                "end": END_YEAR,
+                "unit": unit,
+                "theme": theme,
+                "title": f"{na} vs {nb}: {label}",
+                "chart_title": f"{na} vs {nb}",
+                "subtitle": label,
+                "source_label": SOURCE_LABEL[source],
+            })
+    return out
+
+
 def build():
     rows = []
     for (code, source, label, unit, theme, start, tier, scopes) in INDICATORS:
@@ -133,6 +204,7 @@ def main():
     for x in topics:
         t[x["tier"]] += 1
     print(f"{len(topics)} konu | tier1 {t[1]} tier2 {t[2]} tier3 {t[3]}")
+    print(f"{len(build_duels())} duello konusu")
     for i, x in enumerate(topics[:12], 1):
         print(f"  {i:2d}. {x['title']}")
 
