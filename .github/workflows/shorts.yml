@@ -50,8 +50,18 @@ jobs:
           git config user.name  "eyc-bot"
           git config user.email "bot@everyyearcounts.local"
           git add state.json
-          git diff --staged --quiet || git commit -m "state: $(date -u +%F_%H:%M)"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "state: $(date -u +%F_%H:%M)"
+          # push reddedilirse durum kaybolmasin: rebase edip tekrar dene.
+          # (17 Eyl 2026: repoya ayni anda commit atilinca state yazilamadi,
+          #  video yuklendi ama kayda gecmedi, ayni konu tekrar secilecekti.)
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "push reddedildi, rebase deneniyor ($i)"
+            git pull --rebase --autostash origin main || exit 1
+            sleep 5
+          done
+          exit 1
 
       - name: Hata durumunda issue ac
         if: failure()
