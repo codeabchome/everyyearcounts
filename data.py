@@ -282,6 +282,49 @@ def build_race(series, names, regions, scope, start, end,   # regions: kullanilm
     return raw, years
 
 
+def load_duel(topic):
+    """Duello konusu: tek gosterge, tam olarak iki ulke.
+
+    build_race kullanilmaz — orada 'ilk N ulke' secimi var, burada ulkeler
+    zaten belli. Donus sirasi topic['pair'] sirasidir; renderer birinciyi
+    ustteki bar olarak cizer.
+    """
+    start, end = int(topic["start"]), int(topic["end"])
+    a, b = topic["pair"]
+
+    if topic["source"] == "worldbank":
+        meta = wb_countries()
+        names = {i: v[0] for i, v in meta.items()}
+        series = wb_series(topic["indicator"], start, end)
+    elif topic["source"] == "owid":
+        series, names = owid_series(topic["indicator"], start, end)
+    elif topic["source"] == "faostat":
+        series, names = food_series(topic["indicator"], start, end)
+    else:
+        raise ValueError(f"bilinmeyen kaynak: {topic['source']}")
+
+    years = list(range(start, end + 1))
+    raw = {}
+    for iso in (a, b):
+        by_year = series.get(iso) or {}
+        have = [y for y in years if y in by_year]
+        if len(have) < 0.85 * len(years):
+            raise RuntimeError(
+                f"{iso} icin yeterli veri yok ({len(have)}/{len(years)})")
+        filled, last = [], None
+        for y in years:
+            v = by_year.get(y)
+            if v is None:
+                v = last if last is not None else by_year[have[0]]
+            filled.append(v)
+            last = v
+        label = names.get(iso, iso)
+        if label in raw:                      # ayni isim iki kez gelmesin
+            label = f"{label} ({iso})"
+        raw[label] = filled
+    return raw, years
+
+
 def load_topic(topic):
     """topics.yaml'daki tek bir konu kaydini veriye cevirir."""
     start, end = int(topic["start"]), int(topic["end"])
