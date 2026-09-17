@@ -78,7 +78,8 @@
     "bx_klt_dinv_cd_wd__africa",
     "ag_lnd_frst_k2__africa",
     "sp_pop_65up_to_zs__africa",
-    "co2_per_capita__africa"
+    "co2_per_capita__africa",
+    "coffee__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -607,6 +608,12 @@
       "video_id": "wWGPuL_tdMM",
       "kind": "short",
       "at": "2026-09-16T20:19:28+00:00"
+    },
+    {
+      "id": "coffee__world",
+      "video_id": "2KbttwYNh9M",
+      "kind": "short",
+      "at": "2026-09-17T00:49:00+00:00"
     }
   ]
 }
