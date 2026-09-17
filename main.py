@@ -87,7 +87,9 @@ def build_metadata(topic, years):
         title = f"{topic['title']} ({span})"[:97] + "..."
 
     desc = (
-        f"{topic['title']}, animated year by year from {years[0]} to {years[-1]}.\n\n"
+        f"Did you guess right? {topic['title']}, animated year by year "
+        f"from {years[0]} to {years[-1]}.\n\n"
+        "Tell us in the comments which country you picked.\n\n"
         f"Data source: {topic['source_label']}\n"
         f"Indicator: {topic['indicator']}\n\n"
         "Every stat. Every year. Ranked.\n"
@@ -135,8 +137,13 @@ def run_short(dry=False):
         "subtitle": f"{years[0]}–{years[-1]}",
         "unit": topic.get("unit", ""),
         "source": topic["source_label"],
+        # tahmin kancasi icin: soru karti bunlari kullanir
+        "end_year": years[-1],
+        "hook_label": topic["chart_title"],
     }
-    path, dur = render(race, out, meta, kind="short")
+    # Basa 2 sn'lik "hangi ulke #1?" karti. Kanalin en buyuk sorunu Shorts
+    # akisinda %62 kaydirilma orani; merak kancasi buna karsi denemedir.
+    path, dur = render(race, out, meta, kind="short", hook_seconds=2.0)
     print(f"[render] {path}  ({dur:.1f} sn)")
 
     yt = build_metadata(topic, years)
