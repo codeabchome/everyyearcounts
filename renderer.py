@@ -255,6 +255,72 @@ def draw_cta(canvas, L, alpha):
                       skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.75 * a))
 
 
+def draw_hook(canvas, L, meta, alpha=1.0):
+    """
+    Shorts'un ilk saniyelerinde gosterilen soru karti.
+    Amac tek: izleyici cevabi merak ettigi icin kaydirip gecmesin. Kanalin
+    en buyuk sorunu %62 kaydirma orani (16 Eyl 2026 olcumu), bu ona karsi.
+    Stil grafikle ayni kaliyor: beyaz zemin, keskin kose, Inter, marka kilidi.
+    """
+    a = max(0.0, min(1.0, alpha))
+    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+    draw_brand(canvas, L)
+
+    short = L.kind == "short"
+    f_q    = make_font(104 if short else 84, "extrabold")
+    f_ind  = make_font(46 if short else 40, "semibold")
+    f_hint = make_font(30 if short else 27, "regular")
+    f_mark = make_font(54 if short else 46, "extrabold")
+
+    p_main = skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=a)
+
+    y = 560 if short else 400
+    for ln in ("WHICH COUNTRY", f"IS #1 IN {meta.get('end_year', '')}?"):
+        canvas.drawString(ln, L.mL, y, f_q, p_main)
+        y += (112 if short else 92)
+
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, y - 34, 8, 44),
+                    skia.Paint(AntiAlias=True, Color=PALETTE[2], Alphaf=a))
+    # uzun gosterge adlari tasmasin diye sigana kadar kucult
+    label = meta.get("hook_label", meta.get("title", ""))
+    avail = L.W - L.mL * 2 - 24
+    size = f_ind.getSize()
+    while size > 26 and f_ind.measureText(label) > avail:
+        size -= 2
+        f_ind = make_font(size, "semibold")
+    canvas.drawString(label, L.mL + 24, y, f_ind, p_main)
+
+    # gizli barlar: cevabin sekli belli, ismi degil
+    y += (118 if short else 86)
+    bar_h = 104 if short else 72
+    gap   = 30 if short else 22
+    for i, fr in enumerate((0.92, 0.66, 0.45)):
+        yy = y + i * (bar_h + gap)
+        w = L.plot_w * fr
+        c = skia.Color4f.FromColor(PALETTE[i])
+        c2 = skia.Color4f(c.fR * .74, c.fG * .74, c.fB * .74, 1.0)
+        canvas.drawRect(skia.Rect.MakeXYWH(L.mL, yy, w, bar_h), skia.Paint(
+            AntiAlias=True, Alphaf=a * 0.30,
+            Shader=skia.GradientShader.MakeLinear(
+                [skia.Point(0, yy), skia.Point(0, yy + bar_h)],
+                [c.toColor(), c2.toColor()])))
+        canvas.drawString("?", L.mL + 26, yy + bar_h / 2 + f_mark.getSize() * 0.36,
+                          f_mark, skia.Paint(AntiAlias=True, Color=TEXT_MAIN,
+                                             Alphaf=a * 0.55))
+
+    hint = "answer at the end"
+    hy = y + 3 * (bar_h + gap) + (62 if short else 46)
+    hw = f_hint.measureText(hint)
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, hy - 34, hw + 44, 50),
+                    skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=a * 0.92))
+    canvas.drawString(hint, L.mL + 22, hy, f_hint,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=a))
+
+    draw_footer(canvas, L, meta)
+
+
 def draw_footer(canvas, L, meta):
     p_dim = skia.Paint(AntiAlias=True, Color=TEXT_DIM)
     y = L.H - 40
@@ -269,7 +335,7 @@ def draw_footer(canvas, L, meta):
                       skia.Paint(AntiAlias=True, Color=0x551A1C22))
 
 
-def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0):
+def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0, reveal=0.0):
     canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
         Shader=skia.GradientShader.MakeLinear(
             [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
@@ -336,6 +402,23 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0):
         else:                                 # etiket sigmiyor, ikisi de disarida
             canvas.drawString(e, L.mL + w + 16, ty, L.f_label, p_main)
             canvas.drawString(val_s, L.mL + w + 26 + lw, ty, L.f_value, p_dim)
+
+    # kancadaki sorunun karsiligi: sonda lider bara "#1" rozeti
+    if reveal > 0:
+        lead = order[0]
+        lw_ = L.plot_w * vals[lead] / vmax
+        ry = L.mT + tracker.pos[lead] * L.row_h + (L.row_h - bar_h) / 2
+        f_no = make_font(40 if L.kind == "short" else 34, "extrabold")
+        tag = "#1"
+        tw_ = f_no.measureText(tag)
+        bw = tw_ + 34
+        bx = L.mL + max(lw_ - bw - 16, 12)
+        canvas.drawRect(skia.Rect.MakeXYWH(bx, ry + bar_h / 2 - 27, bw, 54),
+                        skia.Paint(AntiAlias=True, Color=0xFF101218,
+                                   Alphaf=0.92 * min(reveal, 1.0)))
+        canvas.drawString(tag, bx + 17, ry + bar_h / 2 + f_no.getSize() * 0.36,
+                          f_no, skia.Paint(AntiAlias=True, Color=0xFFFFFFFF,
+                                           Alphaf=min(reveal, 1.0)))
 
     if cta > 0:
         draw_cta(canvas, L, cta)
@@ -484,11 +567,14 @@ def render_card(out_path, title, subtitle, index, total, seconds=2.0, crf=18):
 
 def render(data, out_path, meta, kind="short",
            seconds_per_step=None, hold_end=2.5, crf=18, preset="medium",
-           with_audio=True):
+           with_audio=True, hook_seconds=0.0):
+    """hook_seconds > 0 ise videonun basina soru karti eklenir (bkz. draw_hook).
+    Kart ayni encoder'dan gectigi icin ayri dosya/birlestirme gerekmez."""
     L = Layout(kind)
     n = len(data.steps)
     if seconds_per_step is None:
         seconds_per_step = 0.62 if kind == "short" else 0.95
+    hook   = int(max(hook_seconds, 0.0) * FPS)
     body   = int((n - 1) * seconds_per_step * FPS)
     tail   = int(hold_end * FPS)
     trans  = int((0.62 if kind == "short" else 0.72) * FPS)
@@ -507,20 +593,30 @@ def render(data, out_path, meta, kind="short",
     surface = skia.Surface(L.W, L.H)
     canvas  = surface.getCanvas()
     try:
-        cta_fade = max(int(0.5 * FPS), 1)
-        for frame in range(body + tail):
-            t = min(frame / (seconds_per_step * FPS), n - 1)
-            # son bekleme suresinde abone cagrisi yumusakca belirir
-            cta = 0.0
-            if frame >= body:
-                cta = min((frame - body) / cta_fade, 1.0)
-            draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta)
+        cta_fade  = max(int(0.5 * FPS), 1)
+        hook_fade = max(int(0.25 * FPS), 1)
+        for frame in range(hook + body + tail):
+            if frame < hook:
+                # kart sonunda yumusakca solar, yarisa gecis sert olmasin
+                left = hook - frame
+                draw_hook(canvas, L, meta,
+                          min(frame / hook_fade, 1.0, left / hook_fade))
+                ff.stdin.write(bytes(surface.makeImageSnapshot().tobytes()))
+                continue
+            f = frame - hook                      # yaris icindeki kare sayaci
+            t = min(f / (seconds_per_step * FPS), n - 1)
+            # son bekleme suresinde abone cagrisi ve "#1" rozeti belirir
+            cta = reveal = 0.0
+            if f >= body:
+                cta = min((f - body) / cta_fade, 1.0)
+                reveal = min((f - body) / hook_fade, 1.0)
+            draw_frame(canvas, L, data, tracker, colors, t, f, meta, cta, reveal)
             ff.stdin.write(bytes(surface.makeImageSnapshot().tobytes()))
     finally:
         ff.stdin.close()
         ff.wait()
 
-    duration = (body + tail) / FPS
+    duration = (hook + body + tail) / FPS
     if with_audio:
         _add_ambient(out_path, duration,
                      seed=abs(hash(meta.get("title", ""))) % 9999)
