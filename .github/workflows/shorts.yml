@@ -2,10 +2,13 @@ name: Daily Shorts
 
 on:
   schedule:
-    # gunde 3 Shorts - ABD Dogu saatine gore yayilmis
-    - cron: '30 12 * * *'
-    - cron: '30 17 * * *'
-    - cron: '30 22 * * *'
+    # gunde 3 Shorts - ABD Dogu saatine gore yayilmis.
+    # Dakikalar bilerek :00/:30 disinda: GitHub'in paylasimli cron kuyrugu
+    # tam saat ve yarim saat basinda tikaniyor, 17 Eyl 2026 olcumunde
+    # calismalar 2-4 saat gecikmeyle basliyordu.
+    - cron: '7 12 * * *'
+    - cron: '7 17 * * *'
+    - cron: '7 22 * * *'
   workflow_dispatch:
 
 concurrency:
