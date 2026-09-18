@@ -223,7 +223,8 @@ def run_duel(dry=False):
         "source": topic["source_label"],
         "end_year": years[-1],
         # duelloda soru "kim once?" — bar yarisindakinden farkli
-        "hook_lines": ("WHO WINS?", f"{names[0].upper()} VS {names[1].upper()}"),
+        # uc satir: tek satirda "UNITED STATES VS CHINA" ekrandan tasiyordu
+        "hook_lines": ("WHO WINS?", names[0].upper(), f"VS {names[1].upper()}"),
         "hook_label": f"{topic['subtitle']} · {years[0]}–{years[-1]}",
     }
     path, dur = render_duel(race, out, meta, kind="short")
