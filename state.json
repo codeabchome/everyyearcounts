@@ -81,7 +81,8 @@
     "co2_per_capita__africa",
     "coffee__world",
     "cocoa__world",
-    "coffee__americas"
+    "coffee__americas",
+    "cocoa__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -634,6 +635,12 @@
       "video_id": "WVmCYeOt-cE",
       "kind": "short",
       "at": "2026-09-18T00:05:39+00:00"
+    },
+    {
+      "id": "cocoa__africa",
+      "video_id": "yUkGRmw5uRE",
+      "kind": "short",
+      "at": "2026-09-18T16:20:31+00:00"
     }
   ],
   "published_duel": [
