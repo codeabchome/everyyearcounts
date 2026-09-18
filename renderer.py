@@ -21,16 +21,26 @@ from scipy.interpolate import PchipInterpolator
 FPS = 60
 
 # ------------------------------------------------------------------ tema
-BG_TOP, BG_BOT = 0xFFFFFFFF, 0xFFF2F3F6
-TEXT_MAIN = 0xFF1A1C22
-TEXT_DIM  = 0x881A1C22
-YEAR_TINT = 0x1E1A1C22
+# 18 Eyl 2026 yenilemesi. DNA ayni kaldi (beyaz zemin, keskin kose, Inter,
+# lidere normalize skala); degisen sey derinlik ve renk kalitesi:
+#   - barlarin altinda yumusak golge -> duz kagit gorunumu bitti
+#   - palet sekerlemeden cikip doygun/uyumlu editoryal tona gecti
+#   - ust kenarda ince aksan seridi: her karede marka isareti
+#   - degerler koyu cipte -> okunurluk ve "tasarlanmis" his
+BG_TOP, BG_BOT = 0xFFFFFFFF, 0xFFEFF1F6
+TEXT_MAIN = 0xFF12141A
+TEXT_DIM  = 0x8812141A
+YEAR_TINT = 0x1A12141A
 GLOW_DUR  = 0.45
+SHADOW    = 0x2612141A
 
-PALETTE = [0xFFFF5D5D, 0xFF4DA3FF, 0xFFFFC145, 0xFF4DE0A6, 0xFFB07CFF,
-           0xFFFF8A3D, 0xFF3DDCE0, 0xFFFF6FB5, 0xFFA8E34D, 0xFF7C8CFF,
-           0xFFE0554D, 0xFF56C1FF, 0xFFEED055, 0xFF57D98F, 0xFFC98CFF,
-           0xFFFFA9A9, 0xFF8FC7FF, 0xFF6FD1B0, 0xFFD3A6FF, 0xFFFFB870]
+PALETTE = [0xFFF2545B, 0xFF2E6BE6, 0xFFF5A524, 0xFF17B890, 0xFF8B5CF6,
+           0xFFFF7A45, 0xFF0EA5B7, 0xFFE8467C, 0xFF7CB518, 0xFF4F5BD5,
+           0xFFD7373F, 0xFF3B82F6, 0xFFE0930F, 0xFF0F9D77, 0xFF7048C9,
+           0xFFFF9770, 0xFF5AB9C7, 0xFFF06BA0, 0xFF9BCB3B, 0xFF6C77E0]
+
+# aksan seridi renkleri (ust kenar)
+ACCENT3 = (PALETTE[0], PALETTE[2], PALETTE[1])
 
 FONT_MGR = skia.FontMgr()
 FONT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
@@ -77,6 +87,60 @@ def draw_tracked(canvas, text, x, y, font, paint, tracking=0.0):
         canvas.drawString(ch, cx, y, font, paint)
         cx += font.measureText(ch) + tracking
     return cx - x
+
+
+def fit_font(text, size, weight, avail, floor=24):
+    """Metin genislige sigana kadar punto dusuren font uretir.
+    17 Eyl 2026: duello kancasinda "UNITED STATES VS CHINA" ekrandan tasti."""
+    f = make_font(size, weight)
+    while size > floor and f.measureText(text) > avail:
+        size -= 2
+        f = make_font(size, weight)
+    return f
+
+
+def draw_backdrop(canvas, L):
+    """Zemin + ust aksan seridi. Her cizim fonksiyonu bununla basliyor."""
+    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+    h = 10 if L.kind == "short" else 8
+    canvas.drawRect(skia.Rect.MakeWH(L.W, h), skia.Paint(
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, 0), skia.Point(L.W, 0)], list(ACCENT3))))
+
+
+def draw_bar(canvas, rect, base, shadow=True):
+    """Golge + dikey gradyan + sol parlak kapak. Keskin kose korunuyor."""
+    if shadow:
+        sh = skia.Rect.MakeXYWH(rect.x() + 3, rect.y() + 7,
+                                rect.width(), rect.height())
+        canvas.drawRect(sh, skia.Paint(
+            AntiAlias=True, Color=SHADOW,
+            MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 9)))
+    c = skia.Color4f.FromColor(base)
+    c2 = skia.Color4f(c.fR * 0.86, c.fG * 0.86, c.fB * 0.86, 1.0)
+    canvas.drawRect(rect, skia.Paint(AntiAlias=True,
+        Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(0, rect.y()), skia.Point(0, rect.bottom())],
+            [c.toColor(), c2.toColor()])))
+    cap = skia.Color4f(min(c.fR * 1.18, 1.0), min(c.fG * 1.18, 1.0),
+                       min(c.fB * 1.18, 1.0), 1.0)
+    canvas.drawRect(skia.Rect.MakeXYWH(rect.x(), rect.y(), 6, rect.height()),
+                    skia.Paint(AntiAlias=True, Color=cap.toColor()))
+
+
+def draw_chip(canvas, text, x, y, font, fill=None, fg=0xFFFFFFFF, alpha=1.0,
+              pad=18, h=None):
+    """Koyu (ya da renkli) kucuk etiket kutusu. Deger ve rozetlerde kullanilir."""
+    fill = TEXT_MAIN if fill is None else fill
+    tw = font.measureText(text)
+    hh = h or (font.getSize() + 22)
+    canvas.drawRect(skia.Rect.MakeXYWH(x, y - hh / 2, tw + pad * 2, hh),
+                    skia.Paint(AntiAlias=True, Color=fill, Alphaf=0.95 * alpha))
+    canvas.drawString(text, x + pad, y + font.getSize() * 0.36, font,
+                      skia.Paint(AntiAlias=True, Color=fg, Alphaf=alpha))
+    return tw + pad * 2
 
 
 # ------------------------------------------------------------------ layout
@@ -211,6 +275,7 @@ def draw_brand(canvas, L):
     # kanal adi (harf aralikli, kucuk ama net)
     draw_tracked(canvas, "EVERYYEARCOUNTS", bx + 62, L.brand_y,
                  L.f_brand, p_dark, tracking=1.6)
+    draw_sub_badge(canvas, L)
 
 
 def draw_header(canvas, L, meta):
@@ -218,129 +283,192 @@ def draw_header(canvas, L, meta):
     p_dim  = skia.Paint(AntiAlias=True, Color=TEXT_DIM)
 
     draw_brand(canvas, L)
-    canvas.drawString(meta["title"], L.mL, L.title_y, L.f_title, p_main)
+    f_t = fit_font(meta["title"], L.f_title.getSize(), "extrabold",
+                   L.W - L.mL * 2, floor=38)
+    canvas.drawString(meta["title"], L.mL, L.title_y, f_t, p_main)
     canvas.drawString(meta["subtitle"], L.mL, L.sub_y, L.f_sub, p_dim)
 
-    # ince ayrac cizgi + solda renkli vurgu
-    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, L.rule_y, 64, 4),
-                    skia.Paint(AntiAlias=True, Color=PALETTE[2]))
-    canvas.drawRect(skia.Rect.MakeXYWH(L.mL + 64, L.rule_y + 1.5, L.W - L.mL * 2 - 64, 1),
-                    skia.Paint(AntiAlias=True, Color=0x221A1C22))
+    # ayrac: solda gradyanli kalin vurgu, devaminda sac teli cizgi
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, L.rule_y, 108, 5), skia.Paint(
+        AntiAlias=True, Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(L.mL, 0), skia.Point(L.mL + 108, 0)],
+            [PALETTE[0], PALETTE[2]])))
+    canvas.drawRect(skia.Rect.MakeXYWH(L.mL + 108, L.rule_y + 2, L.W - L.mL * 2 - 108, 1),
+                    skia.Paint(AntiAlias=True, Color=0x1E12141A))
 
 
 def draw_cta(canvas, L, alpha):
-    """Videonun son saniyelerinde beliren abone cagrisi.
-    alpha 0..1; yumusak belirir, izleyiciyi rahatsiz etmez."""
+    """Videonun son saniyelerinde beliren abone + yorum cagrisi.
+    Iki satir: abone olma sebebi ve yorum sorusu. Yorum, YouTube'un
+    onerme sinyallerinden biri; kanca ile de tutarli ("cevabi bildin mi?")."""
     a = max(0.0, min(1.0, alpha))
-    f_big = make_font(46 if L.kind == "short" else 40, "extrabold")
-    f_sm  = make_font(28 if L.kind == "short" else 25, "regular")
+    short = L.kind == "short"
+    f_big = make_font(54 if short else 46, "extrabold")
+    f_sm  = make_font(28 if short else 25, "regular")
+    f_ask = make_font(30 if short else 26, "semibold")
 
     text = "SUBSCRIBE"
-    sub  = "new rankings every day"
-    tw = f_big.measureText(text)
-    sw = f_sm.measureText(sub)
-    box_w = max(tw, sw) + 72
-    box_h = 116
-    x = (L.W - box_w) / 2
-    y = L.H - box_h - (78 if L.kind == "short" else 62)
+    sub  = "new data races every day"
+    ask  = "Did you guess right? Comment below"
 
+    box_w = L.W - L.mL * 2
+    x = L.mL
+    # Kisa formatta kart, bar alaninin alt kismini bastan asagi kapatiyor.
+    # Daha kisa bir kart denendi ama altta tek bir bar gorunur kalip kazayla
+    # birakilmis gibi duruyordu. Ust kenar %68'te: YouTube'un alt %20'lik
+    # arayuz seridinin uzerinde, yani metin her cihazda okunuyor.
+    if short:
+        box_h = 214
+        # kart satir sinirina oturuyor, ustteki bari yarim kesmiyor
+        y = int(L.mT + 7 * L.row_h)
+        # kartin altinda kalan barlari zemin rengiyle ortuyoruz: aksi halde
+        # kartin altindan tek bir bar sirittiginda kaza gibi duruyor
+        canvas.drawRect(skia.Rect.MakeXYWH(0, y, L.W, L.H - y), skia.Paint(
+            AntiAlias=True, Color=BG_BOT, Alphaf=a))
+    else:
+        box_h = 168
+        y = L.H - box_h - 96
+
+    canvas.drawRect(skia.Rect.MakeXYWH(x + 4, y + 10, box_w, box_h), skia.Paint(
+        AntiAlias=True, Color=SHADOW, Alphaf=a,
+        MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 14)))
     canvas.drawRect(skia.Rect.MakeXYWH(x, y, box_w, box_h),
-                    skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=0.94 * a))
-    canvas.drawRect(skia.Rect.MakeXYWH(x, y, 8, box_h),
-                    skia.Paint(AntiAlias=True, Color=PALETTE[0], Alphaf=a))
+                    skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=0.96 * a))
+    canvas.drawRect(skia.Rect.MakeXYWH(x, y, box_w, 6), skia.Paint(
+        AntiAlias=True, Alphaf=a, Shader=skia.GradientShader.MakeLinear(
+            [skia.Point(x, 0), skia.Point(x + box_w, 0)], list(ACCENT3))))
 
-    canvas.drawString(text, x + 36, y + 56, f_big,
+    px = x + 40
+    cy = y + box_h / 2
+    canvas.drawString(text, px, cy - (34 if short else 26), f_big,
                       skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=a))
-    canvas.drawString(sub, x + 36, y + 92, f_sm,
-                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.75 * a))
+    canvas.drawString(sub, px, cy + (6 if short else 8), f_sm,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.62 * a))
+
+    ly = cy + (34 if short else 30)
+    canvas.drawRect(skia.Rect.MakeXYWH(px, ly, box_w - 80, 1),
+                    skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.18 * a))
+    f_ask = fit_font(ask, f_ask.getSize(), "semibold", box_w - 110, floor=20)
+    canvas.drawRect(skia.Rect.MakeXYWH(px, ly + 22, 5, 30),
+                    skia.Paint(AntiAlias=True, Color=PALETTE[2], Alphaf=a))
+    canvas.drawString(ask, px + 18, ly + 46, f_ask,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=0.92 * a))
 
 
 def draw_hook(canvas, L, meta, alpha=1.0):
     """
     Shorts'un ilk saniyelerinde gosterilen soru karti.
-    Amac tek: izleyici cevabi merak ettigi icin kaydirip gecmesin. Kanalin
-    en buyuk sorunu %62 kaydirma orani (16 Eyl 2026 olcumu), bu ona karsi.
-    Stil grafikle ayni kaliyor: beyaz zemin, keskin kose, Inter, marka kilidi.
+    Amac tek: izleyici cevabi merak ettigi icin kaydirip gecmesin (kaydirma
+    orani 16 Eyl 2026'da %62 olculdu).
+
+    18 Eyl: satirlar artik genislige gore kuculuyor. Onceki surumde duello
+    kancasindaki "UNITED STATES VS CHINA" ekranin sagindan tasiyordu.
     """
     a = max(0.0, min(1.0, alpha))
-    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
-        Shader=skia.GradientShader.MakeLinear(
-            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+    draw_backdrop(canvas, L)
     draw_brand(canvas, L)
 
     short = L.kind == "short"
-    f_q    = make_font(104 if short else 84, "extrabold")
     f_ind  = make_font(46 if short else 40, "semibold")
-    f_hint = make_font(30 if short else 27, "regular")
+    f_hint = make_font(31 if short else 27, "semibold")
     f_mark = make_font(54 if short else 46, "extrabold")
-
     p_main = skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=a)
 
-    y = 560 if short else 400
     lines = meta.get("hook_lines") or \
         ("WHICH COUNTRY", f"IS #1 IN {meta.get('end_year', '')}?")
+    lines = [ln for ln in lines if ln]
+
+    # her satir kendi puntosunu bulur, sonra hepsi en kucugunde birlestirilir:
+    # farkli puntolarda satirlar duzensiz gorunuyordu
+    avail = L.W - L.mL * 2
+    base_size = 104 if short else 84
+    size = base_size
+    for ln in lines:
+        size = min(size, fit_font(ln, base_size, "extrabold", avail, floor=44).getSize())
+    f_q = make_font(size, "extrabold")
+    step = size * 1.08
+
+    y = (620 if short else 410) - (len(lines) - 2) * step * 0.5
     for ln in lines:
         canvas.drawString(ln, L.mL, y, f_q, p_main)
-        y += (112 if short else 92)
+        y += step
 
+    y += (10 if short else 6)
     canvas.drawRect(skia.Rect.MakeXYWH(L.mL, y - 34, 8, 44),
                     skia.Paint(AntiAlias=True, Color=PALETTE[2], Alphaf=a))
-    # uzun gosterge adlari tasmasin diye sigana kadar kucult
     label = meta.get("hook_label", meta.get("title", ""))
-    avail = L.W - L.mL * 2 - 24
-    size = f_ind.getSize()
-    while size > 26 and f_ind.measureText(label) > avail:
-        size -= 2
-        f_ind = make_font(size, "semibold")
+    f_ind = fit_font(label, f_ind.getSize(), "semibold", avail - 24, floor=26)
     canvas.drawString(label, L.mL + 24, y, f_ind, p_main)
 
     # gizli barlar: cevabin sekli belli, ismi degil
     y += (118 if short else 86)
-    bar_h = 104 if short else 72
-    gap   = 30 if short else 22
+    bar_h = 122 if short else 72
+    gap   = 34 if short else 22
     for i, fr in enumerate((0.92, 0.66, 0.45)):
         yy = y + i * (bar_h + gap)
         w = L.plot_w * fr
         c = skia.Color4f.FromColor(PALETTE[i])
-        c2 = skia.Color4f(c.fR * .74, c.fG * .74, c.fB * .74, 1.0)
+        c2 = skia.Color4f(c.fR * .86, c.fG * .86, c.fB * .86, 1.0)
         canvas.drawRect(skia.Rect.MakeXYWH(L.mL, yy, w, bar_h), skia.Paint(
-            AntiAlias=True, Alphaf=a * 0.30,
+            AntiAlias=True, Alphaf=a * 0.34,
             Shader=skia.GradientShader.MakeLinear(
                 [skia.Point(0, yy), skia.Point(0, yy + bar_h)],
                 [c.toColor(), c2.toColor()])))
-        canvas.drawString("?", L.mL + 26, yy + bar_h / 2 + f_mark.getSize() * 0.36,
+        canvas.drawRect(skia.Rect.MakeXYWH(L.mL, yy, 6, bar_h),
+                        skia.Paint(AntiAlias=True, Color=PALETTE[i], Alphaf=a * 0.85))
+        canvas.drawString("?", L.mL + 30, yy + bar_h / 2 + f_mark.getSize() * 0.36,
                           f_mark, skia.Paint(AntiAlias=True, Color=TEXT_MAIN,
                                              Alphaf=a * 0.55))
 
-    hint = "answer at the end"
-    hy = y + 3 * (bar_h + gap) + (62 if short else 46)
-    hw = f_hint.measureText(hint)
-    canvas.drawRect(skia.Rect.MakeXYWH(L.mL, hy - 34, hw + 44, 50),
-                    skia.Paint(AntiAlias=True, Color=TEXT_MAIN, Alphaf=a * 0.92))
-    canvas.drawString(hint, L.mL + 22, hy, f_hint,
-                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF, Alphaf=a))
+    # iki cagri yan yana: merak (cevap sonda) + katilim (tahminini yaz)
+    hy = y + 3 * (bar_h + gap) + (74 if short else 54)
+    w1 = draw_chip(canvas, "ANSWER AT THE END", L.mL, hy, f_hint,
+                   fill=TEXT_MAIN, alpha=a, pad=20)
+    draw_chip(canvas, "COMMENT YOUR GUESS", L.mL + w1 + 14, hy, f_hint,
+              fill=PALETTE[0], fg=0xFFFFFFFF, alpha=a, pad=20)
 
     draw_footer(canvas, L, meta)
 
 
 def draw_footer(canvas, L, meta):
+    """Kaynak (solda) + kalici abone durtusu (sagda).
+    Sagdaki rozet her karede duruyor: son 2.5 saniyeyi bekleyemeden kaydiran
+    izleyici de cagriyi bir kere gormus oluyor."""
     p_dim = skia.Paint(AntiAlias=True, Color=TEXT_DIM)
     y = L.H - 40
-    label = "SOURCE"
-    lw = draw_tracked(canvas, label, L.mL, y, L.f_tag,
-                      skia.Paint(AntiAlias=True, Color=0x661A1C22), tracking=1.4)
+    lw = draw_tracked(canvas, "SOURCE", L.mL, y, L.f_tag,
+                      skia.Paint(AntiAlias=True, Color=0x6612141A), tracking=1.4)
     canvas.drawString(meta.get("source", ""), L.mL + lw + 14, y, L.f_src, p_dim)
 
     hint = "everyyearcounts"
     hw = L.f_src.measureText(hint)
     canvas.drawString(hint, L.W - hw - L.mL, y, L.f_src,
-                      skia.Paint(AntiAlias=True, Color=0x551A1C22))
+                      skia.Paint(AntiAlias=True, Color=0x5512141A))
+
+
+def draw_sub_badge(canvas, L):
+    """Ust sagda kalici abone rozeti (marka satiriyla ayni hizada).
+
+    Neden altta degil: Shorts'ta alt %20'yi YouTube'un kendi basligi ve
+    begen/yorum butonlari ortuyor; oraya konan her sey goze carpmiyor.
+    Ust %10 ise sadece ince ilerleme cubugu."""
+    f_s = make_font(24 if L.kind == "short" else 21, "extrabold")
+    tag = "SUBSCRIBE"
+    bw = f_s.measureText(tag) + 36
+    bh = 46 if L.kind == "short" else 40
+    bx = L.W - L.mL - bw
+    by = L.brand_y - bh + 10
+    canvas.drawRect(skia.Rect.MakeXYWH(bx + 2, by + 5, bw, bh), skia.Paint(
+        AntiAlias=True, Color=SHADOW,
+        MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 7)))
+    canvas.drawRect(skia.Rect.MakeXYWH(bx, by, bw, bh),
+                    skia.Paint(AntiAlias=True, Color=PALETTE[0]))
+    canvas.drawString(tag, bx + 18, by + bh / 2 + f_s.getSize() * 0.36, f_s,
+                      skia.Paint(AntiAlias=True, Color=0xFFFFFFFF))
 
 
 def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0, reveal=0.0):
-    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
-        Shader=skia.GradientShader.MakeLinear(
-            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+    draw_backdrop(canvas, L)
 
     vals  = data.values_at(t)
     order = sorted(vals, key=vals.get, reverse=True)
@@ -359,10 +487,14 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0, reveal
     year = str(data.label_at(t))
     yw = L.f_year.measureText(year)
     p_year = skia.Paint(AntiAlias=True, Color=YEAR_TINT)
+    f_yl = make_font(24 if L.kind == "short" else 21, "extrabold")
     if L.kind == "short":
-        canvas.drawString(year, L.W - yw - L.mL, L.mT - 30, L.f_year, p_year)
+        yx, yy = L.W - yw - L.mL, L.mT - 30
     else:
-        canvas.drawString(year, L.W - yw - 70, L.H - 70, L.f_year, p_year)
+        yx, yy = L.W - yw - 70, L.H - 70
+    canvas.drawString(year, yx, yy, L.f_year, p_year)
+    draw_tracked(canvas, "YEAR", yx + 6, yy - L.f_year.getSize() * 0.82, f_yl,
+                 skia.Paint(AntiAlias=True, Color=0x5512141A), tracking=3.0)
 
     # barlar
     visible = sorted(vals, key=lambda x: tracker.pos[x], reverse=True)
@@ -381,29 +513,25 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0, reveal
                 AntiAlias=True, Color=base, Alphaf=0.5 * ga,
                 MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 16)))
 
-        c = skia.Color4f.FromColor(base)
-        c2 = skia.Color4f(c.fR * 0.74, c.fG * 0.74, c.fB * 0.74, 1.0)
-        canvas.drawRect(rect, skia.Paint(AntiAlias=True,
-            Shader=skia.GradientShader.MakeLinear(
-                [skia.Point(0, y), skia.Point(0, y + bar_h)], [c.toColor(), c2.toColor()])))
+        draw_bar(canvas, rect, base)
 
-        ty = y + bar_h / 2 + L.f_label.getSize() * 0.36
+        cy = y + bar_h / 2
+        ty = cy + L.f_label.getSize() * 0.36
         lw = L.f_label.measureText(e)
         val_s = fmt_value(vals[e], meta.get("unit", ""))
         vw = L.f_value.measureText(val_s)
 
-        if lw + 40 < w:                       # etiket bar icine sigiyor
-            canvas.drawString(e, L.mL + 22, ty, L.f_label,
-                              skia.Paint(AntiAlias=True, Color=0xFF101218))
-            vx = L.mL + w + 16
-            if vx + vw > L.W - 20:            # tasacaksa bar icine sagdan hizala
-                canvas.drawString(val_s, L.mL + w - vw - 22, ty, L.f_value,
-                                  skia.Paint(AntiAlias=True, Color=0xFF101218))
-            else:
-                canvas.drawString(val_s, vx, ty, L.f_value, p_main)
+        if lw + 46 < w:                       # etiket bar icine sigiyor
+            canvas.drawString(e, L.mL + 26, ty, L.f_label,
+                              skia.Paint(AntiAlias=True, Color=0xFF0B0D12))
+            if L.mL + w + 20 + vw + 36 < L.W - 20:
+                draw_chip(canvas, val_s, L.mL + w + 16, cy, L.f_value, pad=16)
+            else:                             # tasiyorsa bar icine sagdan hizala
+                canvas.drawString(val_s, L.mL + w - vw - 24, ty, L.f_value,
+                                  skia.Paint(AntiAlias=True, Color=0xFF0B0D12))
         else:                                 # etiket sigmiyor, ikisi de disarida
-            canvas.drawString(e, L.mL + w + 16, ty, L.f_label, p_main)
-            canvas.drawString(val_s, L.mL + w + 26 + lw, ty, L.f_value, p_dim)
+            canvas.drawString(e, L.mL + w + 18, ty, L.f_label, p_main)
+            canvas.drawString(val_s, L.mL + w + 28 + lw, ty, L.f_value, p_dim)
 
     # kancadaki sorunun karsiligi: sonda lider bara "#1" rozeti
     if reveal > 0:
@@ -411,16 +539,11 @@ def draw_frame(canvas, L, data, tracker, colors, t, frame, meta, cta=0.0, reveal
         lw_ = L.plot_w * vals[lead] / vmax
         ry = L.mT + tracker.pos[lead] * L.row_h + (L.row_h - bar_h) / 2
         f_no = make_font(40 if L.kind == "short" else 34, "extrabold")
-        tag = "#1"
-        tw_ = f_no.measureText(tag)
-        bw = tw_ + 34
+        rv = min(reveal, 1.0)
+        bw = f_no.measureText("#1") + 34
         bx = L.mL + max(lw_ - bw - 16, 12)
-        canvas.drawRect(skia.Rect.MakeXYWH(bx, ry + bar_h / 2 - 27, bw, 54),
-                        skia.Paint(AntiAlias=True, Color=0xFF101218,
-                                   Alphaf=0.92 * min(reveal, 1.0)))
-        canvas.drawString(tag, bx + 17, ry + bar_h / 2 + f_no.getSize() * 0.36,
-                          f_no, skia.Paint(AntiAlias=True, Color=0xFFFFFFFF,
-                                           Alphaf=min(reveal, 1.0)))
+        draw_chip(canvas, "#1", bx, ry + bar_h / 2, f_no,
+                  fill=0xFF0B0D12, alpha=rv, pad=17, h=56)
 
     if cta > 0:
         draw_cta(canvas, L, cta)
@@ -574,9 +697,7 @@ def draw_duel_frame(canvas, L, data, t, meta, lead_years, cta=0.0):
     ve 'kac yil onde gecirdi' skoru. Amac akista tekduzelik kirmak — kanalda
     80'den fazla neredeyse ayni gorunen video var.
     """
-    canvas.drawRect(skia.Rect.MakeWH(L.W, L.H), skia.Paint(
-        Shader=skia.GradientShader.MakeLinear(
-            [skia.Point(0, 0), skia.Point(0, L.H)], [BG_TOP, BG_BOT])))
+    draw_backdrop(canvas, L)
 
     short = L.kind == "short"
     a_name, b_name = data.entities[0], data.entities[1]
@@ -599,9 +720,9 @@ def draw_duel_frame(canvas, L, data, t, meta, lead_years, cta=0.0):
     f_vs   = make_font(42 if short else 36, "extrabold")
     f_tag  = make_font(26 if short else 23, "semibold")
 
-    bar_h = 250 if short else 158
-    gap   = 196 if short else 120
-    top   = L.mT + (100 if short else 34)
+    bar_h = 286 if short else 158
+    gap   = 214 if short else 120
+    top   = L.mT + (86 if short else 34)
     plot  = L.W - L.mL * 2
 
     for i, (name, val) in enumerate(((a_name, va), (b_name, vb))):
@@ -614,30 +735,33 @@ def draw_duel_frame(canvas, L, data, t, meta, lead_years, cta=0.0):
         c1 = skia.Color4f(c.fR, c.fG, c.fB, dim)
         c2 = skia.Color4f(c.fR * .74, c.fG * .74, c.fB * .74, dim)
 
-        canvas.drawString(name, L.mL, y - 26, f_name,
+        # uzun ulke adlari (orn. "United Arab Emirates") tasmasin
+        f_nm = fit_font(name, f_name.getSize(), "extrabold",
+                        plot - (f_tag.measureText("LEADS") + 48), floor=40)
+        canvas.drawString(name, L.mL, y - 26, f_nm,
                           skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
         if lead:
-            nx = L.mL + f_name.measureText(name) + 20
-            tw = f_tag.measureText("LEADS")
-            canvas.drawRect(skia.Rect.MakeXYWH(nx, y - 60, tw + 28, 42),
-                            skia.Paint(AntiAlias=True, Color=base))
-            canvas.drawString("LEADS", nx + 14, y - 31, f_tag,
-                              skia.Paint(AntiAlias=True, Color=0xFF101218))
+            nx = L.mL + f_nm.measureText(name) + 20
+            draw_chip(canvas, "LEADS", nx, y - 39, f_tag,
+                      fill=base, fg=0xFF0B0D12, pad=14, h=42)
 
-        canvas.drawRect(skia.Rect.MakeXYWH(L.mL, y, w, bar_h), skia.Paint(
-            AntiAlias=True, Shader=skia.GradientShader.MakeLinear(
-                [skia.Point(0, y), skia.Point(0, y + bar_h)],
-                [c1.toColor(), c2.toColor()])))
+        rect = skia.Rect.MakeXYWH(L.mL, y, w, bar_h)
+        if lead:
+            draw_bar(canvas, rect, base)
+        else:                                  # geride kalan soluk ve golgesiz
+            canvas.drawRect(rect, skia.Paint(AntiAlias=True,
+                Shader=skia.GradientShader.MakeLinear(
+                    [skia.Point(0, y), skia.Point(0, y + bar_h)],
+                    [c1.toColor(), c2.toColor()])))
 
         vs_txt = fmt_value(val, meta.get("unit", ""))
         vw = f_val.measureText(vs_txt)
         ty = y + bar_h / 2 + f_val.getSize() * 0.36
-        if vw + 48 < w:
-            canvas.drawString(vs_txt, L.mL + 26, ty, f_val,
-                              skia.Paint(AntiAlias=True, Color=0xFF101218))
+        if vw + 56 < w:
+            canvas.drawString(vs_txt, L.mL + 30, ty, f_val,
+                              skia.Paint(AntiAlias=True, Color=0xFF0B0D12))
         else:
-            canvas.drawString(vs_txt, L.mL + w + 20, ty, f_val,
-                              skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+            draw_chip(canvas, vs_txt, L.mL + w + 18, y + bar_h / 2, f_val, pad=16)
 
     vy = top + bar_h + (76 if short else 52)
     canvas.drawString("VS", L.mL, vy, f_vs,
@@ -653,9 +777,17 @@ def draw_duel_frame(canvas, L, data, t, meta, lead_years, cta=0.0):
     sy = top + 2 * bar_h + gap + (118 if short else 88)
     draw_tracked(canvas, "YEARS IN THE LEAD", L.mL, sy, f_scl,
                  skia.Paint(AntiAlias=True, Color=TEXT_DIM), tracking=1.2)
-    canvas.drawString(f"{lead_years[0]} - {lead_years[1]}", L.mL,
-                      sy + (78 if short else 64), f_sc,
+    score = f"{lead_years[0]} - {lead_years[1]}"
+    sby = sy + (78 if short else 64)
+    canvas.drawString(score, L.mL, sby, f_sc,
                       skia.Paint(AntiAlias=True, Color=TEXT_MAIN))
+
+    # skorun yaninda katilim durtusu: duelloda "kimi tuttun" sorusu dogal
+    if short and cta <= 0:
+        f_ask = make_font(29, "semibold")
+        draw_chip(canvas, "WHO ARE YOU BACKING?",
+                  L.mL + f_sc.measureText(score) + 34, sby - f_sc.getSize() * 0.36,
+                  f_ask, fill=PALETTE[0], pad=20)
 
     if cta > 0:
         draw_cta(canvas, L, cta)
