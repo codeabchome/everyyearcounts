@@ -84,7 +84,8 @@
     "coffee__americas",
     "cocoa__africa",
     "wine__world",
-    "sugar__world"
+    "sugar__world",
+    "maize__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -661,6 +662,12 @@
       "video_id": "i2RpRSnPjCE",
       "kind": "short",
       "at": "2026-09-19T00:10:32+00:00"
+    },
+    {
+      "id": "maize__world",
+      "video_id": "7Mt8liqtOns",
+      "kind": "short",
+      "at": "2026-09-19T15:51:21+00:00"
     }
   ],
   "published_duel": [
