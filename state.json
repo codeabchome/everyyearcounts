@@ -668,10 +668,17 @@
       "video_id": "7Mt8liqtOns",
       "kind": "short",
       "at": "2026-09-19T15:51:21+00:00"
+    },
+    {
+      "id": "duel__ms_mil_xpnd_cd__deu_jpn",
+      "video_id": "LbVKf_MfWyM",
+      "kind": "duel",
+      "at": "2026-09-19T18:09:25+00:00"
     }
   ],
   "published_duel": [
     "duel__ny_gdp_mktp_cd__usa_chn",
-    "duel__sp_pop_totl__chn_ind"
+    "duel__sp_pop_totl__chn_ind",
+    "duel__ms_mil_xpnd_cd__deu_jpn"
   ]
 }
