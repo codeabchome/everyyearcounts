@@ -695,11 +695,18 @@
       "video_id": "uxZgr2IPbAQ",
       "kind": "short",
       "at": "2026-09-20T15:59:58+00:00"
+    },
+    {
+      "id": "duel__ny_gdp_pcap_cd__bra_arg",
+      "video_id": "9nRfDNLH-xA",
+      "kind": "duel",
+      "at": "2026-09-20T18:15:46+00:00"
     }
   ],
   "published_duel": [
     "duel__ny_gdp_mktp_cd__usa_chn",
     "duel__sp_pop_totl__chn_ind",
-    "duel__ms_mil_xpnd_cd__deu_jpn"
+    "duel__ms_mil_xpnd_cd__deu_jpn",
+    "duel__ny_gdp_pcap_cd__bra_arg"
   ]
 }
