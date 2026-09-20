@@ -88,7 +88,8 @@
     "maize__world",
     "wine__europe",
     "sugar__americas",
-    "maize__americas"
+    "maize__americas",
+    "rice__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -701,6 +702,12 @@
       "video_id": "9nRfDNLH-xA",
       "kind": "duel",
       "at": "2026-09-20T18:15:46+00:00"
+    },
+    {
+      "id": "rice__world",
+      "video_id": "mFQ81IStgsY",
+      "kind": "short",
+      "at": "2026-09-20T19:26:52+00:00"
     }
   ],
   "published_duel": [
