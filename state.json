@@ -91,7 +91,8 @@
     "maize__americas",
     "rice__world",
     "wheat__world",
-    "banana__world"
+    "banana__world",
+    "potato__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -728,6 +729,12 @@
       "video_id": "QIFaJrir7js",
       "kind": "duel",
       "at": "2026-09-21T20:04:05+00:00"
+    },
+    {
+      "id": "potato__world",
+      "video_id": "AEzDvx24gdY",
+      "kind": "short",
+      "at": "2026-09-21T21:03:24+00:00"
     }
   ],
   "published_duel": [
