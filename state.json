@@ -722,12 +722,19 @@
       "video_id": "C7B2DuuYUJg",
       "kind": "short",
       "at": "2026-09-21T18:13:40+00:00"
+    },
+    {
+      "id": "duel__sp_dyn_le00_in__gbr_fra",
+      "video_id": "QIFaJrir7js",
+      "kind": "duel",
+      "at": "2026-09-21T20:04:05+00:00"
     }
   ],
   "published_duel": [
     "duel__ny_gdp_mktp_cd__usa_chn",
     "duel__sp_pop_totl__chn_ind",
     "duel__ms_mil_xpnd_cd__deu_jpn",
-    "duel__ny_gdp_pcap_cd__bra_arg"
+    "duel__ny_gdp_pcap_cd__bra_arg",
+    "duel__sp_dyn_le00_in__gbr_fra"
   ]
 }
