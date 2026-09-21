@@ -90,7 +90,8 @@
     "sugar__americas",
     "maize__americas",
     "rice__world",
-    "wheat__world"
+    "wheat__world",
+    "banana__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -715,6 +716,12 @@
       "video_id": "L-znFNJhl_A",
       "kind": "short",
       "at": "2026-09-21T00:08:39+00:00"
+    },
+    {
+      "id": "banana__world",
+      "video_id": "C7B2DuuYUJg",
+      "kind": "short",
+      "at": "2026-09-21T18:13:40+00:00"
     }
   ],
   "published_duel": [
