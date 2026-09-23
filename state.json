@@ -777,6 +777,12 @@
       "video_id": "jBozK5ldvmI",
       "kind": "short",
       "at": "2026-09-23T16:48:42+00:00"
+    },
+    {
+      "id": "duel__co2__esp_ita",
+      "video_id": "AwbghX0V9Hs",
+      "kind": "duel",
+      "at": "2026-09-23T19:09:38+00:00"
     }
   ],
   "published_duel": [
@@ -785,6 +791,7 @@
     "duel__ms_mil_xpnd_cd__deu_jpn",
     "duel__ny_gdp_pcap_cd__bra_arg",
     "duel__sp_dyn_le00_in__gbr_fra",
-    "duel__it_net_user_zs__can_aus"
+    "duel__it_net_user_zs__can_aus",
+    "duel__co2__esp_ita"
   ]
 }
