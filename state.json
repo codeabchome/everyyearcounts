@@ -95,7 +95,8 @@
     "potato__world",
     "tomato__world",
     "grape__world",
-    "orange__world"
+    "orange__world",
+    "apple__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -763,6 +764,12 @@
       "video_id": "0jeq_tZSXXg",
       "kind": "short",
       "at": "2026-09-22T20:12:31+00:00"
+    },
+    {
+      "id": "apple__world",
+      "video_id": "IXHZQFt8yLQ",
+      "kind": "short",
+      "at": "2026-09-23T00:18:16+00:00"
     }
   ],
   "published_duel": [
