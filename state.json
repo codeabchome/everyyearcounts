@@ -98,7 +98,8 @@
     "orange__world",
     "apple__world",
     "soybean__world",
-    "rice__europe"
+    "rice__europe",
+    "wheat__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -790,6 +791,12 @@
       "video_id": "o8zwIT47Hng",
       "kind": "short",
       "at": "2026-09-23T20:19:19+00:00"
+    },
+    {
+      "id": "wheat__europe",
+      "video_id": "vCYgDRd4DV4",
+      "kind": "short",
+      "at": "2026-09-24T00:25:58+00:00"
     }
   ],
   "published_duel": [
