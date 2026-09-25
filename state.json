@@ -101,7 +101,8 @@
     "rice__europe",
     "wheat__europe",
     "banana__europe",
-    "potato__europe"
+    "potato__europe",
+    "tomato__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -817,6 +818,12 @@
       "video_id": "vGZ9YBg1HcM",
       "kind": "short",
       "at": "2026-09-24T20:28:05+00:00"
+    },
+    {
+      "id": "tomato__europe",
+      "video_id": "G5nlzOY0SGY",
+      "kind": "short",
+      "at": "2026-09-25T00:28:37+00:00"
     }
   ],
   "published_duel": [
