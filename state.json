@@ -831,6 +831,12 @@
       "video_id": "pJnjVax_ssc",
       "kind": "short",
       "at": "2026-09-25T17:06:41+00:00"
+    },
+    {
+      "id": "duel__sp_pop_totl__idn_vnm",
+      "video_id": "Y7B10lrFS18",
+      "kind": "duel",
+      "at": "2026-09-25T19:22:41+00:00"
     }
   ],
   "published_duel": [
@@ -841,6 +847,7 @@
     "duel__sp_dyn_le00_in__gbr_fra",
     "duel__it_net_user_zs__can_aus",
     "duel__co2__esp_ita",
-    "duel__ny_gdp_mktp_cd__nga_zaf"
+    "duel__ny_gdp_mktp_cd__nga_zaf",
+    "duel__sp_pop_totl__idn_vnm"
   ]
 }
