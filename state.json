@@ -108,7 +108,8 @@
     "apple__europe",
     "soybean__europe",
     "rice__asia",
-    "wheat__asia"
+    "wheat__asia",
+    "banana__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -878,6 +879,12 @@
       "video_id": "qNBRjnSnLKA",
       "kind": "short",
       "at": "2026-09-27T00:28:04+00:00"
+    },
+    {
+      "id": "banana__asia",
+      "video_id": "fpev6evQPxA",
+      "kind": "short",
+      "at": "2026-09-27T16:56:02+00:00"
     }
   ],
   "published_duel": [
