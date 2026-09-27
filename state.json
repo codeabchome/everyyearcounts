@@ -109,7 +109,8 @@
     "soybean__europe",
     "rice__asia",
     "wheat__asia",
-    "banana__asia"
+    "banana__asia",
+    "potato__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -892,6 +893,12 @@
       "video_id": "zeW03pJ_CcM",
       "kind": "duel",
       "at": "2026-09-27T19:06:09+00:00"
+    },
+    {
+      "id": "potato__asia",
+      "video_id": "MVJEmT22iPc",
+      "kind": "short",
+      "at": "2026-09-27T20:08:52+00:00"
     }
   ],
   "published_duel": [
