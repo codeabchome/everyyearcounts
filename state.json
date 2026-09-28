@@ -153,7 +153,8 @@
     "se_adt_litr_zs__asia": 3,
     "se_adt_litr_zs__africa": 3,
     "duel__ne_exp_gnfs_cd__jpn_kor": 3,
-    "duel__ny_gdp_pcap_cd__sau_are": 3
+    "duel__ny_gdp_pcap_cd__sau_are": 3,
+    "duel__ms_mil_xpnd_cd__chn_ind": 3
   },
   "log": [
     {
@@ -913,6 +914,12 @@
       "video_id": "hrQGwKhB7U8",
       "kind": "short",
       "at": "2026-09-28T19:38:55+00:00"
+    },
+    {
+      "id": "duel__ny_gdp_pcap_cd__deu_jpn",
+      "video_id": "HSu-mOTEM6s",
+      "kind": "duel",
+      "at": "2026-09-28T21:19:25+00:00"
     }
   ],
   "published_duel": [
@@ -926,6 +933,7 @@
     "duel__ny_gdp_mktp_cd__nga_zaf",
     "duel__sp_pop_totl__idn_vnm",
     "duel__ms_mil_xpnd_cd__mex_bra",
-    "duel__sp_pop_totl__usa_chn"
+    "duel__sp_pop_totl__usa_chn",
+    "duel__ny_gdp_pcap_cd__deu_jpn"
   ]
 }
