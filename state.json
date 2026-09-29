@@ -115,7 +115,8 @@
     "grape__asia",
     "orange__asia",
     "apple__asia",
-    "soybean__asia"
+    "soybean__asia",
+    "coal_co2__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -947,6 +948,12 @@
       "video_id": "Frs5SD1LKF8",
       "kind": "duel",
       "at": "2026-09-29T20:05:07+00:00"
+    },
+    {
+      "id": "coal_co2__africa",
+      "video_id": "MpBkSHzIABQ",
+      "kind": "short",
+      "at": "2026-09-29T21:24:15+00:00"
     }
   ],
   "published_duel": [
