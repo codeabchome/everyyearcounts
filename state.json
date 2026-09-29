@@ -114,7 +114,8 @@
     "tomato__asia",
     "grape__asia",
     "orange__asia",
-    "apple__asia"
+    "apple__asia",
+    "soybean__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -934,6 +935,12 @@
       "video_id": "0R2N_yHamrE",
       "kind": "short",
       "at": "2026-09-29T01:47:21+00:00"
+    },
+    {
+      "id": "soybean__asia",
+      "video_id": "m4W8dZr7vuo",
+      "kind": "short",
+      "at": "2026-09-29T18:04:13+00:00"
     }
   ],
   "published_duel": [
