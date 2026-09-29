@@ -941,6 +941,12 @@
       "video_id": "m4W8dZr7vuo",
       "kind": "short",
       "at": "2026-09-29T18:04:13+00:00"
+    },
+    {
+      "id": "duel__sp_dyn_le00_in__bra_arg",
+      "video_id": "Frs5SD1LKF8",
+      "kind": "duel",
+      "at": "2026-09-29T20:05:07+00:00"
     }
   ],
   "published_duel": [
@@ -955,6 +961,7 @@
     "duel__sp_pop_totl__idn_vnm",
     "duel__ms_mil_xpnd_cd__mex_bra",
     "duel__sp_pop_totl__usa_chn",
-    "duel__ny_gdp_pcap_cd__deu_jpn"
+    "duel__ny_gdp_pcap_cd__deu_jpn",
+    "duel__sp_dyn_le00_in__bra_arg"
   ]
 }
