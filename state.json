@@ -118,7 +118,8 @@
     "soybean__asia",
     "coal_co2__africa",
     "oil_co2__africa",
-    "cumulative_co2__africa"
+    "cumulative_co2__africa",
+    "rice__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -975,6 +976,12 @@
       "video_id": "S-WYNX4SO4k",
       "kind": "duel",
       "at": "2026-09-30T20:09:48+00:00"
+    },
+    {
+      "id": "rice__africa",
+      "video_id": "vZ4vxGPY9sI",
+      "kind": "short",
+      "at": "2026-09-30T21:27:03+00:00"
     }
   ],
   "published_duel": [
