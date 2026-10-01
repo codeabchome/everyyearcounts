@@ -996,6 +996,12 @@
       "video_id": "yPWoq7OnssE",
       "kind": "short",
       "at": "2026-10-01T18:25:57+00:00"
+    },
+    {
+      "id": "duel__co2__can_aus",
+      "video_id": "eB2K-5WxI7E",
+      "kind": "duel",
+      "at": "2026-10-01T20:27:32+00:00"
     }
   ],
   "published_duel": [
@@ -1012,6 +1018,7 @@
     "duel__sp_pop_totl__usa_chn",
     "duel__ny_gdp_pcap_cd__deu_jpn",
     "duel__sp_dyn_le00_in__bra_arg",
-    "duel__it_net_user_zs__jpn_kor"
+    "duel__it_net_user_zs__jpn_kor",
+    "duel__co2__can_aus"
   ]
 }
