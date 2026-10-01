@@ -119,7 +119,8 @@
     "coal_co2__africa",
     "oil_co2__africa",
     "cumulative_co2__africa",
-    "rice__africa"
+    "rice__africa",
+    "wheat__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -982,6 +983,12 @@
       "video_id": "vZ4vxGPY9sI",
       "kind": "short",
       "at": "2026-09-30T21:27:03+00:00"
+    },
+    {
+      "id": "wheat__africa",
+      "video_id": "HlKSAMKOuxs",
+      "kind": "short",
+      "at": "2026-10-01T01:14:33+00:00"
     }
   ],
   "published_duel": [
