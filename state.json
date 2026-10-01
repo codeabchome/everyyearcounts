@@ -121,7 +121,8 @@
     "cumulative_co2__africa",
     "rice__africa",
     "wheat__africa",
-    "banana__africa"
+    "banana__africa",
+    "potato__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1002,6 +1003,12 @@
       "video_id": "eB2K-5WxI7E",
       "kind": "duel",
       "at": "2026-10-01T20:27:32+00:00"
+    },
+    {
+      "id": "potato__africa",
+      "video_id": "kFDFsO6fjvE",
+      "kind": "short",
+      "at": "2026-10-01T21:52:53+00:00"
     }
   ],
   "published_duel": [
