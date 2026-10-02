@@ -122,7 +122,8 @@
     "rice__africa",
     "wheat__africa",
     "banana__africa",
-    "potato__africa"
+    "potato__africa",
+    "tomato__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1009,6 +1010,12 @@
       "video_id": "kFDFsO6fjvE",
       "kind": "short",
       "at": "2026-10-01T21:52:53+00:00"
+    },
+    {
+      "id": "tomato__africa",
+      "video_id": "hw_pRwe2wmE",
+      "kind": "short",
+      "at": "2026-10-02T01:35:02+00:00"
     }
   ],
   "published_duel": [
