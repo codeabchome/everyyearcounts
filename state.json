@@ -125,7 +125,8 @@
     "potato__africa",
     "tomato__africa",
     "grape__africa",
-    "orange__africa"
+    "orange__africa",
+    "apple__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1036,6 +1037,12 @@
       "video_id": "-FqAyoFDt6k",
       "kind": "short",
       "at": "2026-10-02T21:20:39+00:00"
+    },
+    {
+      "id": "apple__africa",
+      "video_id": "3JadgYGS7Ws",
+      "kind": "short",
+      "at": "2026-10-03T01:05:17+00:00"
     }
   ],
   "published_duel": [
