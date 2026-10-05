@@ -132,7 +132,8 @@
     "ne_imp_gnfs_cd__americas",
     "bx_klt_dinv_cd_wd__americas",
     "ag_lnd_frst_k2__americas",
-    "sp_pop_65up_to_zs__americas"
+    "sp_pop_65up_to_zs__americas",
+    "co2_per_capita__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1104,6 +1105,12 @@
       "video_id": "skEUPrF6z78",
       "kind": "duel",
       "at": "2026-10-05T22:07:16+00:00"
+    },
+    {
+      "id": "co2_per_capita__americas",
+      "video_id": "WFof159Fwek",
+      "kind": "short",
+      "at": "2026-10-05T23:11:00+00:00"
     }
   ],
   "published_duel": [
