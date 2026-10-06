@@ -179,7 +179,8 @@
     "duel__ny_gdp_pcap_cd__sau_are": 3,
     "duel__ms_mil_xpnd_cd__chn_ind": 3,
     "duel__ne_exp_gnfs_cd__gbr_fra": 3,
-    "duel__ms_mil_xpnd_cd__idn_vnm": 3
+    "duel__ms_mil_xpnd_cd__idn_vnm": 3,
+    "duel__ms_mil_xpnd_cd__usa_chn": 3
   },
   "log": [
     {
@@ -1125,6 +1126,12 @@
       "video_id": "RCiXAoCYkJk",
       "kind": "short",
       "at": "2026-10-06T18:19:47+00:00"
+    },
+    {
+      "id": "duel__ny_gdp_pcap_cd__chn_ind",
+      "video_id": "zELLcCRHT50",
+      "kind": "duel",
+      "at": "2026-10-06T20:26:21+00:00"
     }
   ],
   "published_duel": [
@@ -1146,6 +1153,7 @@
     "duel__ny_gdp_mktp_cd__esp_ita",
     "duel__sp_pop_totl__nga_zaf",
     "duel__ny_gdp_pcap_cd__mex_bra",
-    "duel__sp_dyn_le00_in__sau_are"
+    "duel__sp_dyn_le00_in__sau_are",
+    "duel__ny_gdp_pcap_cd__chn_ind"
   ]
 }
