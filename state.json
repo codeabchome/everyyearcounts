@@ -134,7 +134,8 @@
     "ag_lnd_frst_k2__americas",
     "sp_pop_65up_to_zs__americas",
     "co2_per_capita__americas",
-    "coal_co2__americas"
+    "coal_co2__americas",
+    "oil_co2__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1118,6 +1119,12 @@
       "video_id": "as357HQMR1A",
       "kind": "short",
       "at": "2026-10-06T02:13:05+00:00"
+    },
+    {
+      "id": "oil_co2__americas",
+      "video_id": "RCiXAoCYkJk",
+      "kind": "short",
+      "at": "2026-10-06T18:19:47+00:00"
     }
   ],
   "published_duel": [
