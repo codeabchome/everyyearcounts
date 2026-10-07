@@ -137,7 +137,8 @@
     "coal_co2__americas",
     "oil_co2__americas",
     "cumulative_co2__americas",
-    "rice__americas"
+    "rice__americas",
+    "wheat__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1146,6 +1147,12 @@
       "video_id": "DsCFyQq5zCA",
       "kind": "short",
       "at": "2026-10-07T01:25:55+00:00"
+    },
+    {
+      "id": "wheat__americas",
+      "video_id": "WAVuCPlXzxc",
+      "kind": "short",
+      "at": "2026-10-07T18:52:07+00:00"
     }
   ],
   "published_duel": [
