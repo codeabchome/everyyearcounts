@@ -139,7 +139,8 @@
     "cumulative_co2__americas",
     "rice__americas",
     "wheat__americas",
-    "banana__americas"
+    "banana__americas",
+    "potato__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1166,6 +1167,12 @@
       "video_id": "eziBPUwtfn8",
       "kind": "short",
       "at": "2026-10-07T21:59:00+00:00"
+    },
+    {
+      "id": "potato__americas",
+      "video_id": "yl7ij796TlQ",
+      "kind": "short",
+      "at": "2026-10-08T01:48:20+00:00"
     }
   ],
   "published_duel": [
