@@ -144,7 +144,8 @@
     "tomato__americas",
     "grape__americas",
     "orange__americas",
-    "apple__americas"
+    "apple__americas",
+    "soybean__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1207,6 +1208,12 @@
       "video_id": "mVvxkzmRix4",
       "kind": "duel",
       "at": "2026-10-09T20:11:31+00:00"
+    },
+    {
+      "id": "soybean__americas",
+      "video_id": "qQFHUFMGkZI",
+      "kind": "short",
+      "at": "2026-10-09T21:40:21+00:00"
     }
   ],
   "published_duel": [
