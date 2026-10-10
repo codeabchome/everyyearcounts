@@ -145,7 +145,8 @@
     "grape__americas",
     "orange__americas",
     "apple__americas",
-    "soybean__americas"
+    "soybean__americas",
+    "sp_dyn_tfrt_in__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1214,6 +1215,12 @@
       "video_id": "qQFHUFMGkZI",
       "kind": "short",
       "at": "2026-10-09T21:40:21+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__middle_east",
+      "video_id": "1Vo6nmpoiZo",
+      "kind": "short",
+      "at": "2026-10-10T01:42:12+00:00"
     }
   ],
   "published_duel": [
