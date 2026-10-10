@@ -1228,6 +1228,12 @@
       "video_id": "uYITGm3wasY",
       "kind": "short",
       "at": "2026-10-10T17:21:58+00:00"
+    },
+    {
+      "id": "duel__it_net_user_zs__gbr_fra",
+      "video_id": "TC0wrBs68NY",
+      "kind": "duel",
+      "at": "2026-10-10T19:23:25+00:00"
     }
   ],
   "published_duel": [
@@ -1252,6 +1258,7 @@
     "duel__sp_dyn_le00_in__sau_are",
     "duel__ny_gdp_pcap_cd__chn_ind",
     "duel__sp_dyn_le00_in__deu_jpn",
-    "duel__ne_exp_gnfs_cd__bra_arg"
+    "duel__ne_exp_gnfs_cd__bra_arg",
+    "duel__it_net_user_zs__gbr_fra"
   ]
 }
