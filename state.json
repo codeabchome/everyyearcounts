@@ -149,7 +149,8 @@
     "sp_dyn_tfrt_in__middle_east",
     "ne_imp_gnfs_cd__middle_east",
     "bx_klt_dinv_cd_wd__middle_east",
-    "ag_lnd_frst_k2__middle_east"
+    "ag_lnd_frst_k2__middle_east",
+    "sp_pop_65up_to_zs__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1248,6 +1249,12 @@
       "video_id": "rUoMK_Mj5wc",
       "kind": "short",
       "at": "2026-10-11T00:50:29+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__middle_east",
+      "video_id": "7ziD3UvUkr8",
+      "kind": "short",
+      "at": "2026-10-11T17:42:02+00:00"
     }
   ],
   "published_duel": [
