@@ -153,7 +153,8 @@
     "sp_pop_65up_to_zs__middle_east",
     "co2_per_capita__middle_east",
     "coal_co2__middle_east",
-    "oil_co2__middle_east"
+    "oil_co2__middle_east",
+    "cumulative_co2__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1288,6 +1289,12 @@
       "video_id": "Yag78I4_i4U",
       "kind": "duel",
       "at": "2026-10-12T22:33:54+00:00"
+    },
+    {
+      "id": "cumulative_co2__middle_east",
+      "video_id": "N8acolPS7EY",
+      "kind": "short",
+      "at": "2026-10-12T23:38:28+00:00"
     }
   ],
   "published_duel": [
