@@ -1282,6 +1282,12 @@
       "video_id": "PEnXfRdEvX0",
       "kind": "short",
       "at": "2026-10-12T21:15:20+00:00"
+    },
+    {
+      "id": "duel__ny_gdp_mktp_cd__can_aus",
+      "video_id": "Yag78I4_i4U",
+      "kind": "duel",
+      "at": "2026-10-12T22:33:54+00:00"
     }
   ],
   "published_duel": [
@@ -1308,6 +1314,7 @@
     "duel__sp_dyn_le00_in__deu_jpn",
     "duel__ne_exp_gnfs_cd__bra_arg",
     "duel__it_net_user_zs__gbr_fra",
-    "duel__co2__jpn_kor"
+    "duel__co2__jpn_kor",
+    "duel__ny_gdp_mktp_cd__can_aus"
   ]
 }
