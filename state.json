@@ -152,7 +152,8 @@
     "ag_lnd_frst_k2__middle_east",
     "sp_pop_65up_to_zs__middle_east",
     "co2_per_capita__middle_east",
-    "coal_co2__middle_east"
+    "coal_co2__middle_east",
+    "oil_co2__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1275,6 +1276,12 @@
       "video_id": "rDbQLsbej6E",
       "kind": "short",
       "at": "2026-10-12T01:12:32+00:00"
+    },
+    {
+      "id": "oil_co2__middle_east",
+      "video_id": "PEnXfRdEvX0",
+      "kind": "short",
+      "at": "2026-10-12T21:15:20+00:00"
     }
   ],
   "published_duel": [
