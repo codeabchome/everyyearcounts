@@ -156,7 +156,8 @@
     "oil_co2__middle_east",
     "cumulative_co2__middle_east",
     "wheat__middle_east",
-    "banana__middle_east"
+    "banana__middle_east",
+    "potato__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1316,6 +1317,12 @@
       "video_id": "qyvOZ74rO_4",
       "kind": "duel",
       "at": "2026-10-13T20:45:52+00:00"
+    },
+    {
+      "id": "potato__middle_east",
+      "video_id": "EKjp4JOOB7I",
+      "kind": "short",
+      "at": "2026-10-13T21:51:53+00:00"
     }
   ],
   "published_duel": [
