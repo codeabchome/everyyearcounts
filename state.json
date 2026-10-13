@@ -154,7 +154,8 @@
     "co2_per_capita__middle_east",
     "coal_co2__middle_east",
     "oil_co2__middle_east",
-    "cumulative_co2__middle_east"
+    "cumulative_co2__middle_east",
+    "wheat__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -199,7 +200,8 @@
     "duel__ms_mil_xpnd_cd__chn_ind": 3,
     "duel__ne_exp_gnfs_cd__gbr_fra": 3,
     "duel__ms_mil_xpnd_cd__idn_vnm": 3,
-    "duel__ms_mil_xpnd_cd__usa_chn": 3
+    "duel__ms_mil_xpnd_cd__usa_chn": 3,
+    "rice__middle_east": 3
   },
   "log": [
     {
@@ -1295,6 +1297,12 @@
       "video_id": "N8acolPS7EY",
       "kind": "short",
       "at": "2026-10-12T23:38:28+00:00"
+    },
+    {
+      "id": "wheat__middle_east",
+      "video_id": "HFt2psg6bhI",
+      "kind": "short",
+      "at": "2026-10-13T03:00:00+00:00"
     }
   ],
   "published_duel": [
