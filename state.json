@@ -160,7 +160,8 @@
     "potato__middle_east",
     "tomato__middle_east",
     "grape__middle_east",
-    "orange__middle_east"
+    "orange__middle_east",
+    "apple__middle_east"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1350,6 +1351,12 @@
       "video_id": "Qfvp8ALK_qs",
       "kind": "short",
       "at": "2026-10-14T20:41:42+00:00"
+    },
+    {
+      "id": "apple__middle_east",
+      "video_id": "AQaWe9gFJh4",
+      "kind": "short",
+      "at": "2026-10-15T00:27:54+00:00"
     }
   ],
   "published_duel": [
