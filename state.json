@@ -4,7 +4,8 @@
     "ny_gdp_mktp_cd__world",
     "sp_pop_totl__world",
     "ny_gdp_pcap_cd__world",
-    "fi_res_totl_cd__world"
+    "fi_res_totl_cd__world",
+    "vc_ihr_psrc_p5__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1212,6 +1213,12 @@
       "video_id": "AyfqRPLK6do",
       "kind": "short",
       "at": "2026-10-16T19:57:41+00:00"
+    },
+    {
+      "id": "vc_ihr_psrc_p5__world",
+      "video_id": "saPI6z-zEB8",
+      "kind": "short",
+      "at": "2026-10-17T00:19:46+00:00"
     }
   ],
   "published_duel": [
