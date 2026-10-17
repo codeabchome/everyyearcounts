@@ -7,7 +7,8 @@
     "fi_res_totl_cd__world",
     "vc_ihr_psrc_p5__world",
     "sp_dyn_le00_in__world",
-    "st_int_arvl__world"
+    "st_int_arvl__world",
+    "coffee__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1233,6 +1234,12 @@
       "video_id": "o-qbpWXSWgM",
       "kind": "short",
       "at": "2026-10-17T19:20:16+00:00"
+    },
+    {
+      "id": "coffee__world",
+      "video_id": "mGhd8jC74pE",
+      "kind": "short",
+      "at": "2026-10-17T23:58:45+00:00"
     }
   ],
   "published_duel": [
