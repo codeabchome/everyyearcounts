@@ -9,7 +9,8 @@
     "sp_dyn_le00_in__world",
     "st_int_arvl__world",
     "coffee__world",
-    "cocoa__world"
+    "cocoa__world",
+    "ms_mil_xpnd_cd__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1247,6 +1248,12 @@
       "video_id": "WHNCEAdmhEQ",
       "kind": "short",
       "at": "2026-10-18T15:49:00+00:00"
+    },
+    {
+      "id": "ms_mil_xpnd_cd__europe",
+      "video_id": "j-6r7s_VIQI",
+      "kind": "short",
+      "at": "2026-10-18T19:26:56+00:00"
     }
   ],
   "published_duel": [
