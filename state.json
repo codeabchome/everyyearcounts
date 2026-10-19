@@ -11,7 +11,8 @@
     "coffee__world",
     "cocoa__world",
     "ms_mil_xpnd_cd__europe",
-    "ny_gdp_mktp_cd__europe"
+    "ny_gdp_mktp_cd__europe",
+    "sp_pop_totl__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1261,6 +1262,12 @@
       "video_id": "J3d1BwEsWA8",
       "kind": "short",
       "at": "2026-10-19T00:08:45+00:00"
+    },
+    {
+      "id": "sp_pop_totl__africa",
+      "video_id": "ZJM0XqOLK-Q",
+      "kind": "short",
+      "at": "2026-10-19T18:43:21+00:00"
     }
   ],
   "published_duel": [
