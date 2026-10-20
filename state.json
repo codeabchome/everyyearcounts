@@ -13,7 +13,8 @@
     "ms_mil_xpnd_cd__europe",
     "ny_gdp_mktp_cd__europe",
     "sp_pop_totl__africa",
-    "ny_gdp_pcap_cd__europe"
+    "ny_gdp_pcap_cd__europe",
+    "fi_res_totl_cd__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1275,6 +1276,12 @@
       "video_id": "D5KJnkUnjrA",
       "kind": "short",
       "at": "2026-10-19T21:31:59+00:00"
+    },
+    {
+      "id": "fi_res_totl_cd__asia",
+      "video_id": "x4lRoUDpIIk",
+      "kind": "short",
+      "at": "2026-10-20T01:03:41+00:00"
     }
   ],
   "published_duel": [
