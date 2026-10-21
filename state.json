@@ -17,7 +17,8 @@
     "fi_res_totl_cd__asia",
     "vc_ihr_psrc_p5__americas",
     "sp_dyn_le00_in__europe",
-    "st_int_arvl__europe"
+    "st_int_arvl__europe",
+    "coffee__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1303,6 +1304,12 @@
       "video_id": "jcE1P1N5iT8",
       "kind": "short",
       "at": "2026-10-21T00:32:19+00:00"
+    },
+    {
+      "id": "coffee__americas",
+      "video_id": "GVJLiJf2s7o",
+      "kind": "short",
+      "at": "2026-10-21T17:07:14+00:00"
     }
   ],
   "published_duel": [
