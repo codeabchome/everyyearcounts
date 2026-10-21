@@ -16,7 +16,8 @@
     "ny_gdp_pcap_cd__europe",
     "fi_res_totl_cd__asia",
     "vc_ihr_psrc_p5__americas",
-    "sp_dyn_le00_in__europe"
+    "sp_dyn_le00_in__europe",
+    "st_int_arvl__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1296,6 +1297,12 @@
       "video_id": "Vzz1I27FA4k",
       "kind": "short",
       "at": "2026-10-20T20:34:19+00:00"
+    },
+    {
+      "id": "st_int_arvl__europe",
+      "video_id": "jcE1P1N5iT8",
+      "kind": "short",
+      "at": "2026-10-21T00:32:19+00:00"
     }
   ],
   "published_duel": [
