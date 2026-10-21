@@ -18,7 +18,8 @@
     "vc_ihr_psrc_p5__americas",
     "sp_dyn_le00_in__europe",
     "st_int_arvl__europe",
-    "coffee__americas"
+    "coffee__americas",
+    "cocoa__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1310,6 +1311,12 @@
       "video_id": "GVJLiJf2s7o",
       "kind": "short",
       "at": "2026-10-21T17:07:14+00:00"
+    },
+    {
+      "id": "cocoa__africa",
+      "video_id": "hicifQQgmlo",
+      "kind": "short",
+      "at": "2026-10-21T20:37:48+00:00"
     }
   ],
   "published_duel": [
