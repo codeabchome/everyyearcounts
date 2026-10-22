@@ -20,7 +20,8 @@
     "st_int_arvl__europe",
     "coffee__americas",
     "cocoa__africa",
-    "ms_mil_xpnd_cd__asia"
+    "ms_mil_xpnd_cd__asia",
+    "ny_gdp_mktp_cd__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1324,6 +1325,12 @@
       "video_id": "0dy1eWYp_7w",
       "kind": "short",
       "at": "2026-10-22T00:36:55+00:00"
+    },
+    {
+      "id": "ny_gdp_mktp_cd__asia",
+      "video_id": "n0XxgEPz6Dw",
+      "kind": "short",
+      "at": "2026-10-22T17:08:02+00:00"
     }
   ],
   "published_duel": [
