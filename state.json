@@ -24,7 +24,8 @@
     "ny_gdp_mktp_cd__asia",
     "sp_pop_totl__europe",
     "ny_gdp_pcap_cd__asia",
-    "sp_dyn_le00_in__africa"
+    "sp_dyn_le00_in__africa",
+    "ny_gdp_mktp_cd__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1352,6 +1353,12 @@
       "video_id": "fnzhkSpRWL4",
       "kind": "short",
       "at": "2026-10-23T17:00:01+00:00"
+    },
+    {
+      "id": "ny_gdp_mktp_cd__africa",
+      "video_id": "N7Dsp5alHCA",
+      "kind": "short",
+      "at": "2026-10-23T20:25:42+00:00"
     }
   ],
   "published_duel": [
