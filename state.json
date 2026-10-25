@@ -28,7 +28,8 @@
     "ny_gdp_mktp_cd__africa",
     "it_net_user_zs__world",
     "co2__world",
-    "ne_exp_gnfs_cd__world"
+    "ne_exp_gnfs_cd__world",
+    "bx_trf_pwkr_cd_dt__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1380,6 +1381,12 @@
       "video_id": "8qTHD8vlbSM",
       "kind": "short",
       "at": "2026-10-24T19:30:08+00:00"
+    },
+    {
+      "id": "bx_trf_pwkr_cd_dt__world",
+      "video_id": "WfjlxCB3FiQ",
+      "kind": "short",
+      "at": "2026-10-25T00:14:15+00:00"
     }
   ],
   "published_duel": [
