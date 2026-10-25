@@ -29,7 +29,8 @@
     "it_net_user_zs__world",
     "co2__world",
     "ne_exp_gnfs_cd__world",
-    "bx_trf_pwkr_cd_dt__world"
+    "bx_trf_pwkr_cd_dt__world",
+    "eg_fec_rnew_zs__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1387,6 +1388,12 @@
       "video_id": "WfjlxCB3FiQ",
       "kind": "short",
       "at": "2026-10-25T00:14:15+00:00"
+    },
+    {
+      "id": "eg_fec_rnew_zs__world",
+      "video_id": "ox6WtDUKgDI",
+      "kind": "short",
+      "at": "2026-10-25T16:03:21+00:00"
     }
   ],
   "published_duel": [
