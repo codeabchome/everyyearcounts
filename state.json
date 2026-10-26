@@ -31,7 +31,8 @@
     "ne_exp_gnfs_cd__world",
     "bx_trf_pwkr_cd_dt__world",
     "eg_fec_rnew_zs__world",
-    "sp_urb_totl__world"
+    "sp_urb_totl__world",
+    "sl_uem_totl_zs__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1401,6 +1402,12 @@
       "video_id": "O1ZN3Ty4myc",
       "kind": "short",
       "at": "2026-10-25T20:00:47+00:00"
+    },
+    {
+      "id": "sl_uem_totl_zs__world",
+      "video_id": "cBVJgh-knYY",
+      "kind": "short",
+      "at": "2026-10-26T00:06:40+00:00"
     }
   ],
   "published_duel": [
