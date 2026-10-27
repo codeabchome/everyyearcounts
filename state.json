@@ -34,7 +34,8 @@
     "sp_urb_totl__world",
     "sl_uem_totl_zs__world",
     "sh_xpd_chex_gd_zs__world",
-    "it_cel_sets_p2__world"
+    "it_cel_sets_p2__world",
+    "wine__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1422,6 +1423,12 @@
       "video_id": "aK1MHJbuDpc",
       "kind": "short",
       "at": "2026-10-26T22:17:43+00:00"
+    },
+    {
+      "id": "wine__world",
+      "video_id": "XalT9h_qh_c",
+      "kind": "short",
+      "at": "2026-10-27T01:55:55+00:00"
     }
   ],
   "published_duel": [
