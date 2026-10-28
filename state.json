@@ -39,7 +39,8 @@
     "sugar__world",
     "maize__world",
     "it_net_user_zs__africa",
-    "co2__asia"
+    "co2__asia",
+    "ne_exp_gnfs_cd__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1457,6 +1458,12 @@
       "video_id": "6TY7A8uAwfY",
       "kind": "short",
       "at": "2026-10-28T18:20:14+00:00"
+    },
+    {
+      "id": "ne_exp_gnfs_cd__asia",
+      "video_id": "HOrD1WwZvY8",
+      "kind": "short",
+      "at": "2026-10-28T21:40:57+00:00"
     }
   ],
   "published_duel": [
