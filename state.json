@@ -38,7 +38,8 @@
     "wine__world",
     "sugar__world",
     "maize__world",
-    "it_net_user_zs__africa"
+    "it_net_user_zs__africa",
+    "co2__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1450,6 +1451,12 @@
       "video_id": "W2ZaPe73nwQ",
       "kind": "short",
       "at": "2026-10-28T01:09:35+00:00"
+    },
+    {
+      "id": "co2__asia",
+      "video_id": "6TY7A8uAwfY",
+      "kind": "short",
+      "at": "2026-10-28T18:20:14+00:00"
     }
   ],
   "published_duel": [
