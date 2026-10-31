@@ -48,7 +48,8 @@
     "sh_xpd_chex_gd_zs__europe",
     "it_cel_sets_p2__africa",
     "wine__europe",
-    "sugar__americas"
+    "sugar__americas",
+    "maize__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1520,6 +1521,12 @@
       "video_id": "Ks4Fsq_bPq8",
       "kind": "short",
       "at": "2026-10-31T17:13:37+00:00"
+    },
+    {
+      "id": "maize__americas",
+      "video_id": "RlYhLy51AK4",
+      "kind": "short",
+      "at": "2026-10-31T20:28:54+00:00"
     }
   ],
   "published_duel": [
