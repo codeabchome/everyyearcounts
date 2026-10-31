@@ -46,7 +46,8 @@
     "sp_urb_totl__asia",
     "sl_uem_totl_zs__europe",
     "sh_xpd_chex_gd_zs__europe",
-    "it_cel_sets_p2__africa"
+    "it_cel_sets_p2__africa",
+    "wine__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1506,6 +1507,12 @@
       "video_id": "vlB1zu7nEB0",
       "kind": "short",
       "at": "2026-10-30T21:28:23+00:00"
+    },
+    {
+      "id": "wine__europe",
+      "video_id": "2kUl0tVe1Lk",
+      "kind": "short",
+      "at": "2026-10-31T01:31:47+00:00"
     }
   ],
   "published_duel": [
