@@ -51,7 +51,8 @@
     "sugar__americas",
     "maize__americas",
     "it_net_user_zs__asia",
-    "co2__europe"
+    "co2__europe",
+    "ne_exp_gnfs_cd__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1541,6 +1542,12 @@
       "video_id": "d7MlmF2QMJU",
       "kind": "short",
       "at": "2026-11-01T17:55:46+00:00"
+    },
+    {
+      "id": "ne_exp_gnfs_cd__europe",
+      "video_id": "tTwC3WlQ9DU",
+      "kind": "short",
+      "at": "2026-11-01T21:10:59+00:00"
     }
   ],
   "published_duel": [
