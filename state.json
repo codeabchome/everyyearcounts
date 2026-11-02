@@ -54,7 +54,8 @@
     "co2__europe",
     "ne_exp_gnfs_cd__europe",
     "sp_urb_totl__africa",
-    "fp_cpi_totl_zg__world"
+    "fp_cpi_totl_zg__world",
+    "sp_dyn_tfrt_in__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1562,6 +1563,12 @@
       "video_id": "UXfkzz4gtNY",
       "kind": "short",
       "at": "2026-11-02T21:42:28+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__world",
+      "video_id": "JWSS-7A98NI",
+      "kind": "short",
+      "at": "2026-11-02T23:54:22+00:00"
     }
   ],
   "published_duel": [
