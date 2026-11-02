@@ -53,7 +53,8 @@
     "it_net_user_zs__asia",
     "co2__europe",
     "ne_exp_gnfs_cd__europe",
-    "sp_urb_totl__africa"
+    "sp_urb_totl__africa",
+    "fp_cpi_totl_zg__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1555,6 +1556,12 @@
       "video_id": "Mu1CitcfxuU",
       "kind": "short",
       "at": "2026-11-02T01:28:24+00:00"
+    },
+    {
+      "id": "fp_cpi_totl_zg__world",
+      "video_id": "UXfkzz4gtNY",
+      "kind": "short",
+      "at": "2026-11-02T21:42:28+00:00"
     }
   ],
   "published_duel": [
