@@ -52,7 +52,8 @@
     "maize__americas",
     "it_net_user_zs__asia",
     "co2__europe",
-    "ne_exp_gnfs_cd__europe"
+    "ne_exp_gnfs_cd__europe",
+    "sp_urb_totl__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1548,6 +1549,12 @@
       "video_id": "tTwC3WlQ9DU",
       "kind": "short",
       "at": "2026-11-01T21:10:59+00:00"
+    },
+    {
+      "id": "sp_urb_totl__africa",
+      "video_id": "Mu1CitcfxuU",
+      "kind": "short",
+      "at": "2026-11-02T01:28:24+00:00"
     }
   ],
   "published_duel": [
