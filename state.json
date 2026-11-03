@@ -55,7 +55,8 @@
     "ne_exp_gnfs_cd__europe",
     "sp_urb_totl__africa",
     "fp_cpi_totl_zg__world",
-    "sp_dyn_tfrt_in__world"
+    "sp_dyn_tfrt_in__world",
+    "ne_imp_gnfs_cd__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1569,6 +1570,12 @@
       "video_id": "JWSS-7A98NI",
       "kind": "short",
       "at": "2026-11-02T23:54:22+00:00"
+    },
+    {
+      "id": "ne_imp_gnfs_cd__world",
+      "video_id": "DCDwWgIZ4zk",
+      "kind": "short",
+      "at": "2026-11-03T03:27:23+00:00"
     }
   ],
   "published_duel": [
