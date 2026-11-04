@@ -59,7 +59,8 @@
     "ne_imp_gnfs_cd__world",
     "bx_klt_dinv_cd_wd__world",
     "ag_lnd_frst_k2__world",
-    "sp_pop_65up_to_zs__world"
+    "sp_pop_65up_to_zs__world",
+    "gb_xpd_rsdv_gd_zs__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1597,6 +1598,12 @@
       "video_id": "aEcjDqI0Zfs",
       "kind": "short",
       "at": "2026-11-04T02:08:20+00:00"
+    },
+    {
+      "id": "gb_xpd_rsdv_gd_zs__world",
+      "video_id": "BkHNSyUES20",
+      "kind": "short",
+      "at": "2026-11-04T19:42:08+00:00"
     }
   ],
   "published_duel": [
