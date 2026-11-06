@@ -66,7 +66,8 @@
     "oil_co2__world",
     "cumulative_co2__world",
     "rice__world",
-    "wheat__world"
+    "wheat__world",
+    "banana__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1646,6 +1647,12 @@
       "video_id": "Lb_w0dcgYxk",
       "kind": "short",
       "at": "2026-11-06T19:18:47+00:00"
+    },
+    {
+      "id": "banana__world",
+      "video_id": "jjcnMsSEykE",
+      "kind": "short",
+      "at": "2026-11-06T22:06:09+00:00"
     }
   ],
   "published_duel": [
