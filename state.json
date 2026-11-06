@@ -64,7 +64,8 @@
     "co2_per_capita__world",
     "coal_co2__world",
     "oil_co2__world",
-    "cumulative_co2__world"
+    "cumulative_co2__world",
+    "rice__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1632,6 +1633,12 @@
       "video_id": "mKvRprIPQmI",
       "kind": "short",
       "at": "2026-11-05T22:42:24+00:00"
+    },
+    {
+      "id": "rice__world",
+      "video_id": "GZjWJqzeX6U",
+      "kind": "short",
+      "at": "2026-11-06T02:15:04+00:00"
     }
   ],
   "published_duel": [
