@@ -68,7 +68,8 @@
     "rice__world",
     "wheat__world",
     "banana__world",
-    "potato__world"
+    "potato__world",
+    "tomato__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1660,6 +1661,12 @@
       "video_id": "EJlV-pB0-So",
       "kind": "short",
       "at": "2026-11-07T01:48:35+00:00"
+    },
+    {
+      "id": "tomato__world",
+      "video_id": "wzw9g_zVDas",
+      "kind": "short",
+      "at": "2026-11-07T17:44:59+00:00"
     }
   ],
   "published_duel": [
