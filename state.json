@@ -72,7 +72,8 @@
     "tomato__world",
     "grape__world",
     "orange__world",
-    "apple__world"
+    "apple__world",
+    "soybean__world"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1688,6 +1689,12 @@
       "video_id": "MdQoTouTg9U",
       "kind": "short",
       "at": "2026-11-08T17:55:22+00:00"
+    },
+    {
+      "id": "soybean__world",
+      "video_id": "q38iHGKUupU",
+      "kind": "short",
+      "at": "2026-11-08T21:07:13+00:00"
     }
   ],
   "published_duel": [
