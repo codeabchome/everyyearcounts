@@ -74,7 +74,8 @@
     "orange__world",
     "apple__world",
     "soybean__world",
-    "sp_dyn_tfrt_in__europe"
+    "sp_dyn_tfrt_in__europe",
+    "ne_imp_gnfs_cd__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1702,6 +1703,12 @@
       "video_id": "VlxznMpwJ9E",
       "kind": "short",
       "at": "2026-11-09T01:39:17+00:00"
+    },
+    {
+      "id": "ne_imp_gnfs_cd__europe",
+      "video_id": "YkZYtrkXSvA",
+      "kind": "short",
+      "at": "2026-11-09T22:17:53+00:00"
     }
   ],
   "published_duel": [
