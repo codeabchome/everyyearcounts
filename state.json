@@ -76,7 +76,8 @@
     "soybean__world",
     "sp_dyn_tfrt_in__europe",
     "ne_imp_gnfs_cd__europe",
-    "bx_klt_dinv_cd_wd__europe"
+    "bx_klt_dinv_cd_wd__europe",
+    "ag_lnd_frst_k2__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1716,6 +1717,12 @@
       "video_id": "4AoGx1K_tLo",
       "kind": "short",
       "at": "2026-11-10T00:42:08+00:00"
+    },
+    {
+      "id": "ag_lnd_frst_k2__europe",
+      "video_id": "fhgZclm1zzo",
+      "kind": "short",
+      "at": "2026-11-10T04:06:06+00:00"
     }
   ],
   "published_duel": [
