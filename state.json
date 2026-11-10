@@ -78,7 +78,8 @@
     "ne_imp_gnfs_cd__europe",
     "bx_klt_dinv_cd_wd__europe",
     "ag_lnd_frst_k2__europe",
-    "sp_pop_65up_to_zs__europe"
+    "sp_pop_65up_to_zs__europe",
+    "co2_per_capita__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1730,6 +1731,12 @@
       "video_id": "ryxsF_0moMk",
       "kind": "short",
       "at": "2026-11-10T19:40:23+00:00"
+    },
+    {
+      "id": "co2_per_capita__europe",
+      "video_id": "mcFjlZRds8s",
+      "kind": "short",
+      "at": "2026-11-10T22:22:42+00:00"
     }
   ],
   "published_duel": [
