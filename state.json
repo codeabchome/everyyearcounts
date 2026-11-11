@@ -80,7 +80,8 @@
     "ag_lnd_frst_k2__europe",
     "sp_pop_65up_to_zs__europe",
     "co2_per_capita__europe",
-    "coal_co2__europe"
+    "coal_co2__europe",
+    "oil_co2__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1744,6 +1745,12 @@
       "video_id": "Jvrey4UUKjA",
       "kind": "short",
       "at": "2026-11-11T01:52:39+00:00"
+    },
+    {
+      "id": "oil_co2__europe",
+      "video_id": "O25D2g3sj3s",
+      "kind": "short",
+      "at": "2026-11-11T19:35:17+00:00"
     }
   ],
   "published_duel": [
