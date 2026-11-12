@@ -83,7 +83,8 @@
     "coal_co2__europe",
     "oil_co2__europe",
     "cumulative_co2__europe",
-    "rice__europe"
+    "rice__europe",
+    "wheat__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1765,6 +1766,12 @@
       "video_id": "wqhPyo076nI",
       "kind": "short",
       "at": "2026-11-12T02:52:39+00:00"
+    },
+    {
+      "id": "wheat__europe",
+      "video_id": "xw91ygXyFzE",
+      "kind": "short",
+      "at": "2026-11-12T19:52:18+00:00"
     }
   ],
   "published_duel": [
