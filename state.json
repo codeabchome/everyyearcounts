@@ -82,7 +82,8 @@
     "co2_per_capita__europe",
     "coal_co2__europe",
     "oil_co2__europe",
-    "cumulative_co2__europe"
+    "cumulative_co2__europe",
+    "rice__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1758,6 +1759,12 @@
       "video_id": "f4lwO2gZsB0",
       "kind": "short",
       "at": "2026-11-11T23:27:46+00:00"
+    },
+    {
+      "id": "rice__europe",
+      "video_id": "wqhPyo076nI",
+      "kind": "short",
+      "at": "2026-11-12T02:52:39+00:00"
     }
   ],
   "published_duel": [
