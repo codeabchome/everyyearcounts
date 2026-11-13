@@ -85,7 +85,8 @@
     "cumulative_co2__europe",
     "rice__europe",
     "wheat__europe",
-    "banana__europe"
+    "banana__europe",
+    "potato__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1779,6 +1780,12 @@
       "video_id": "8cCDQ1gH_Fg",
       "kind": "short",
       "at": "2026-11-12T22:44:01+00:00"
+    },
+    {
+      "id": "potato__europe",
+      "video_id": "HpXgxd3h6ho",
+      "kind": "short",
+      "at": "2026-11-13T02:33:59+00:00"
     }
   ],
   "published_duel": [
