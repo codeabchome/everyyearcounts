@@ -88,7 +88,8 @@
     "banana__europe",
     "potato__europe",
     "tomato__europe",
-    "grape__europe"
+    "grape__europe",
+    "orange__europe"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1800,6 +1801,12 @@
       "video_id": "BPamaOqXt_E",
       "kind": "short",
       "at": "2026-11-13T22:35:57+00:00"
+    },
+    {
+      "id": "orange__europe",
+      "video_id": "1xkfdZ0reYU",
+      "kind": "short",
+      "at": "2026-11-14T02:15:11+00:00"
     }
   ],
   "published_duel": [
