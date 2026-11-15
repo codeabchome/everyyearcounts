@@ -91,7 +91,8 @@
     "grape__europe",
     "orange__europe",
     "apple__europe",
-    "soybean__europe"
+    "soybean__europe",
+    "sp_dyn_tfrt_in__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1821,6 +1822,12 @@
       "video_id": "RYQQbZD4MrE",
       "kind": "short",
       "at": "2026-11-14T21:27:28+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__asia",
+      "video_id": "zXgteizXlsE",
+      "kind": "short",
+      "at": "2026-11-15T01:46:22+00:00"
     }
   ],
   "published_duel": [
