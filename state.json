@@ -95,7 +95,8 @@
     "sp_dyn_tfrt_in__asia",
     "ne_imp_gnfs_cd__asia",
     "bx_klt_dinv_cd_wd__asia",
-    "ag_lnd_frst_k2__asia"
+    "ag_lnd_frst_k2__asia",
+    "sp_pop_65up_to_zs__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1849,6 +1850,12 @@
       "video_id": "sLfj3fvly5A",
       "kind": "short",
       "at": "2026-11-16T01:49:59+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__asia",
+      "video_id": "IHO10oPdC-E",
+      "kind": "short",
+      "at": "2026-11-16T21:58:00+00:00"
     }
   ],
   "published_duel": [
