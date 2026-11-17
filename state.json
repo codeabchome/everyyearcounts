@@ -96,7 +96,8 @@
     "ne_imp_gnfs_cd__asia",
     "bx_klt_dinv_cd_wd__asia",
     "ag_lnd_frst_k2__asia",
-    "sp_pop_65up_to_zs__asia"
+    "sp_pop_65up_to_zs__asia",
+    "co2_per_capita__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1856,6 +1857,12 @@
       "video_id": "IHO10oPdC-E",
       "kind": "short",
       "at": "2026-11-16T21:58:00+00:00"
+    },
+    {
+      "id": "co2_per_capita__asia",
+      "video_id": "48zvSEbz8xE",
+      "kind": "short",
+      "at": "2026-11-17T00:49:13+00:00"
     }
   ],
   "published_duel": [
