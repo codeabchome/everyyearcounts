@@ -100,7 +100,8 @@
     "co2_per_capita__asia",
     "coal_co2__asia",
     "oil_co2__asia",
-    "cumulative_co2__asia"
+    "cumulative_co2__asia",
+    "rice__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1884,6 +1885,12 @@
       "video_id": "5H1ewOtXcbs",
       "kind": "short",
       "at": "2026-11-18T00:11:41+00:00"
+    },
+    {
+      "id": "rice__asia",
+      "video_id": "I_O6nzuSGvY",
+      "kind": "short",
+      "at": "2026-11-18T03:38:10+00:00"
     }
   ],
   "published_duel": [
