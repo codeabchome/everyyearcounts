@@ -101,7 +101,8 @@
     "coal_co2__asia",
     "oil_co2__asia",
     "cumulative_co2__asia",
-    "rice__asia"
+    "rice__asia",
+    "wheat__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1891,6 +1892,12 @@
       "video_id": "I_O6nzuSGvY",
       "kind": "short",
       "at": "2026-11-18T03:38:10+00:00"
+    },
+    {
+      "id": "wheat__asia",
+      "video_id": "UnjISoQffZk",
+      "kind": "short",
+      "at": "2026-11-18T20:24:53+00:00"
     }
   ],
   "published_duel": [
