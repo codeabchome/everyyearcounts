@@ -105,7 +105,8 @@
     "wheat__asia",
     "banana__asia",
     "potato__asia",
-    "tomato__asia"
+    "tomato__asia",
+    "grape__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1919,6 +1920,12 @@
       "video_id": "9oVLzIs9Eok",
       "kind": "short",
       "at": "2026-11-19T20:36:21+00:00"
+    },
+    {
+      "id": "grape__asia",
+      "video_id": "v9Dhb5VyDnE",
+      "kind": "short",
+      "at": "2026-11-19T23:33:35+00:00"
     }
   ],
   "published_duel": [
