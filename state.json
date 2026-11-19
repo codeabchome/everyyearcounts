@@ -103,7 +103,8 @@
     "cumulative_co2__asia",
     "rice__asia",
     "wheat__asia",
-    "banana__asia"
+    "banana__asia",
+    "potato__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1905,6 +1906,12 @@
       "video_id": "njS7_eBYD6g",
       "kind": "short",
       "at": "2026-11-18T23:24:03+00:00"
+    },
+    {
+      "id": "potato__asia",
+      "video_id": "ZECwOSwtLmY",
+      "kind": "short",
+      "at": "2026-11-19T03:10:44+00:00"
     }
   ],
   "published_duel": [
