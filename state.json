@@ -106,7 +106,8 @@
     "banana__asia",
     "potato__asia",
     "tomato__asia",
-    "grape__asia"
+    "grape__asia",
+    "orange__asia"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1926,6 +1927,12 @@
       "video_id": "v9Dhb5VyDnE",
       "kind": "short",
       "at": "2026-11-19T23:33:35+00:00"
+    },
+    {
+      "id": "orange__asia",
+      "video_id": "_LCIdSZ5U_Y",
+      "kind": "short",
+      "at": "2026-11-20T03:08:23+00:00"
     }
   ],
   "published_duel": [
