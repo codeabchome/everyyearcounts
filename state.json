@@ -111,7 +111,8 @@
     "apple__asia",
     "soybean__asia",
     "sp_dyn_tfrt_in__africa",
-    "ne_imp_gnfs_cd__africa"
+    "ne_imp_gnfs_cd__africa",
+    "bx_klt_dinv_cd_wd__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1961,6 +1962,12 @@
       "video_id": "7qzpjgrfM-M",
       "kind": "short",
       "at": "2026-11-21T19:07:36+00:00"
+    },
+    {
+      "id": "bx_klt_dinv_cd_wd__africa",
+      "video_id": "KBdxliAQLgE",
+      "kind": "short",
+      "at": "2026-11-21T22:12:14+00:00"
     }
   ],
   "published_duel": [
