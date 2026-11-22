@@ -113,7 +113,8 @@
     "sp_dyn_tfrt_in__africa",
     "ne_imp_gnfs_cd__africa",
     "bx_klt_dinv_cd_wd__africa",
-    "ag_lnd_frst_k2__africa"
+    "ag_lnd_frst_k2__africa",
+    "sp_pop_65up_to_zs__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1975,6 +1976,12 @@
       "video_id": "7z8mGJ9iV_w",
       "kind": "short",
       "at": "2026-11-22T02:04:18+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__africa",
+      "video_id": "Mr1F7gMEOxc",
+      "kind": "short",
+      "at": "2026-11-22T19:29:06+00:00"
     }
   ],
   "published_duel": [
