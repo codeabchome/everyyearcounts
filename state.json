@@ -114,7 +114,8 @@
     "ne_imp_gnfs_cd__africa",
     "bx_klt_dinv_cd_wd__africa",
     "ag_lnd_frst_k2__africa",
-    "sp_pop_65up_to_zs__africa"
+    "sp_pop_65up_to_zs__africa",
+    "co2_per_capita__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1982,6 +1983,12 @@
       "video_id": "Mr1F7gMEOxc",
       "kind": "short",
       "at": "2026-11-22T19:29:06+00:00"
+    },
+    {
+      "id": "co2_per_capita__africa",
+      "video_id": "2ndIu2MF1CY",
+      "kind": "short",
+      "at": "2026-11-22T22:28:23+00:00"
     }
   ],
   "published_duel": [
