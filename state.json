@@ -115,7 +115,8 @@
     "bx_klt_dinv_cd_wd__africa",
     "ag_lnd_frst_k2__africa",
     "sp_pop_65up_to_zs__africa",
-    "co2_per_capita__africa"
+    "co2_per_capita__africa",
+    "coal_co2__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -1989,6 +1990,12 @@
       "video_id": "2ndIu2MF1CY",
       "kind": "short",
       "at": "2026-11-22T22:28:23+00:00"
+    },
+    {
+      "id": "coal_co2__africa",
+      "video_id": "YV4YTJRs5Jo",
+      "kind": "short",
+      "at": "2026-11-23T02:30:52+00:00"
     }
   ],
   "published_duel": [
