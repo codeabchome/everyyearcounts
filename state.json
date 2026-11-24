@@ -117,7 +117,8 @@
     "sp_pop_65up_to_zs__africa",
     "co2_per_capita__africa",
     "coal_co2__africa",
-    "oil_co2__africa"
+    "oil_co2__africa",
+    "cumulative_co2__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -2003,6 +2004,12 @@
       "video_id": "tuisLRSmQiY",
       "kind": "short",
       "at": "2026-11-23T23:48:37+00:00"
+    },
+    {
+      "id": "cumulative_co2__africa",
+      "video_id": "D0KTWon41pU",
+      "kind": "short",
+      "at": "2026-11-24T03:20:22+00:00"
     }
   ],
   "published_duel": [
