@@ -120,7 +120,8 @@
     "oil_co2__africa",
     "cumulative_co2__africa",
     "rice__africa",
-    "wheat__africa"
+    "wheat__africa",
+    "banana__africa"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -2024,6 +2025,12 @@
       "video_id": "AVA3TZ2OG54",
       "kind": "short",
       "at": "2026-11-24T22:20:29+00:00"
+    },
+    {
+      "id": "banana__africa",
+      "video_id": "p6vW-7t6QrM",
+      "kind": "short",
+      "at": "2026-11-25T01:25:55+00:00"
     }
   ],
   "published_duel": [
