@@ -127,7 +127,8 @@
     "grape__africa",
     "orange__africa",
     "apple__africa",
-    "soybean__africa"
+    "soybean__africa",
+    "sp_dyn_tfrt_in__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -2073,6 +2074,12 @@
       "video_id": "gjiKso5OceY",
       "kind": "short",
       "at": "2026-11-27T01:01:55+00:00"
+    },
+    {
+      "id": "sp_dyn_tfrt_in__americas",
+      "video_id": "N2Kfw0AjHBk",
+      "kind": "short",
+      "at": "2026-11-27T04:06:19+00:00"
     }
   ],
   "published_duel": [
