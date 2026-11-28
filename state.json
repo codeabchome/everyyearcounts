@@ -130,7 +130,8 @@
     "soybean__africa",
     "sp_dyn_tfrt_in__americas",
     "ne_imp_gnfs_cd__americas",
-    "bx_klt_dinv_cd_wd__americas"
+    "bx_klt_dinv_cd_wd__americas",
+    "ag_lnd_frst_k2__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -2094,6 +2095,12 @@
       "video_id": "9mFdEaNX9Cg",
       "kind": "short",
       "at": "2026-11-28T00:33:32+00:00"
+    },
+    {
+      "id": "ag_lnd_frst_k2__americas",
+      "video_id": "Y8G8UsHDJsg",
+      "kind": "short",
+      "at": "2026-11-28T03:50:48+00:00"
     }
   ],
   "published_duel": [
