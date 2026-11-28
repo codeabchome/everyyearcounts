@@ -131,7 +131,8 @@
     "sp_dyn_tfrt_in__americas",
     "ne_imp_gnfs_cd__americas",
     "bx_klt_dinv_cd_wd__americas",
-    "ag_lnd_frst_k2__americas"
+    "ag_lnd_frst_k2__americas",
+    "sp_pop_65up_to_zs__americas"
   ],
   "published_long": [
     "ny_gdp_mktp_cd__world",
@@ -2101,6 +2102,12 @@
       "video_id": "Y8G8UsHDJsg",
       "kind": "short",
       "at": "2026-11-28T03:50:48+00:00"
+    },
+    {
+      "id": "sp_pop_65up_to_zs__americas",
+      "video_id": "tEjoEBdF-os",
+      "kind": "short",
+      "at": "2026-11-28T19:57:16+00:00"
     }
   ],
   "published_duel": [
